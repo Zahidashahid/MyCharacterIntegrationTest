@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Cherry
+  - Gem
+  - Enemy
+  - Water
+  - Obstacles
+  - Skeleton
+  - Arrow
+  - Collide
+  - HealthBar
+  - GM
+  - BGmusicGameObject
+  - SoundEffectGameObject
+  - Door
+  - SoundToggle
+  - MusicToggle
+  - MasterMusicToggle
+  - RangedAttackSkeleton
+  - ArrowLoot
+  - HealthLoot
+  - PlayerHealthBar
+  - ArrowStore
+  - Ground
+  - PauseMenuPanel
+  - Player1
+  - Player2
+  - ArrowStoreP1
+  - ArrowStoreP2
+  - P1HealthBar
+  - P2HealthBar
+  - Master volume slider
+  - MusicSlider
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Background
+  - Water
+  - UI
+  - Ground
+  - Player
+  - GameOver
+  - Water
+  - Enemy
+  - Obstacles
+  - Arrow
+  - HealthBar
+  - Gift
+  - Player1
+  - Player2
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 570833607
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 2462620257
+    locked: 0
+  - name: Obstacles
+    uniqueID: 1928963555
+    locked: 0
+  - name: player
+    uniqueID: 3191137133
+    locked: 0
+  - name: GameOver
+    uniqueID: 2846014419
+    locked: 0
