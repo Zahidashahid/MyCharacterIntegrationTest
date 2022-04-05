@@ -42,7 +42,8 @@ public class PlayerMovement : MonoBehaviour
     public float attackRange = 0.5f;
     public float attackRate = 1f; //one attack per second
     public float nextAttackTime = 0f;
-     float runSpeed = 5f;
+    float runSpeed = 4f;
+    float jumpHight = 7f;
     //float horizontalMove = 0f;
 
     public Transform attackPoint;
@@ -78,10 +79,6 @@ public class PlayerMovement : MonoBehaviour
         bgSound = GameObject.FindGameObjectWithTag("BGmusicGameObject").GetComponent<AudioSource>();
         //Eagle_animator = GameObject.FindGameObjectWithTag("Enemy").transform<Animator>();
         animator = GetComponent<Animator>(); ;
-
-        
-
-
         Debug.Log("Animator is assign " + animator.name);
         currentHealth = maxHealth;
         lifes = PlayerPrefs.GetInt("Lifes");
@@ -100,32 +97,30 @@ public class PlayerMovement : MonoBehaviour
         {
             lifes = 1;
             lifesText.text = "X " + lifes;
-
         }
         else if (PlayerPrefs.GetString("DifficultyLevel")== "Medium")
         {
             lifes = 2;
             lifesText.text = "X " + lifes;
-
         }
         else if (PlayerPrefs.GetString("DifficultyLevel")=="Easy")
         {
             lifes = 3;
             lifesText.text = "X " + lifes;
-
         }
         if (MainMenu.isNewGame || GameUIScript.isNewGame || (PlayerPrefs.GetInt("LevelCompleted") == 1)) 
         {
             Debug.Log("New Game Started");
-            //Reset Gift collected
+            /*------------Reset Gift collected---------------------*/
             PlayerPrefs.SetInt("RecentGemCollected", 0);
             PlayerPrefs.SetInt("RecentCherryCollected", 0);
             PlayerPrefs.SetInt("GemCollectedTillLastCheckPoint", 0);
             PlayerPrefs.SetInt("CherryCollectedTillLastCheckPoint", 0);
-            //Reset arrow Store
+            /*-------------Reset arrow Store----------------------*/
             PlayerPrefs.SetInt("ArrowPlayerHas", 10);
             PlayerPrefs.SetInt("CurrentHealth", 100);
-            gm.lastCheckPointPos = transformObj.position; // Set last check point zero when game restarted
+            /* -------- Set last check point zero when game restarted-----------*/
+            gm.lastCheckPointPos = transformObj.position; 
             PlayerPrefs.SetFloat("LastcheckPointX", transformObj.position.x);
             PlayerPrefs.SetFloat("LastcheckPointy", transformObj.position.y);
         }
@@ -154,23 +149,23 @@ public class PlayerMovement : MonoBehaviour
         // Move Player back
         CheckGamePaused();
          m = new Vector3(move.x, move.y)  * 10f *  Time.deltaTime;
-     /*   Debug.Log(" move.x " + move.x);
-        Debug.Log(" move.y " + move.y);
+        /*//Debug.Log(" move.x " + move.x);
+          Debug.Log(" move.y " + move.y);
         Debug.Log(" move.z " + move.z);*/
-
-        if (move.x == 0 && move.y == 0)
-        {
-            animator.SetFloat("Speed", Mathf.Abs(0));
-        }
-
-        else if (move.x > 0)
+        if (move.x > 0)
         {
             MovePlayerRight();
         }
         else if (move.x < 0)
         {
             MoveplayerLeft();
-        } 
+        }
+        else
+        {
+            StopMoving();
+        }
+        
+
         if ( isShieldBtnPressed )
         {
             //Debug.Log("SetShield Called");
@@ -191,16 +186,26 @@ public class PlayerMovement : MonoBehaviour
         // MelleAttack();
 
     }
-   
+   void StopMoving()
+    {
+        //Debug.Log("Stop Move");
+        if (move.x == 0 && move.y == 0)
+        {
+            animator.SetFloat("Speed", Mathf.Abs(0));
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+    }
    void MovePlayerRight()
    {
         /*animator.SetFloat("Speed", Mathf.Abs(40));
         transformObj.Translate(m, Space.World);
         transformObj.localScale = new Vector2(1, 1);*/
+        Debug.Log("I'm Moving right");
         rb.velocity = new Vector2(runSpeed, rb.velocity.y);
         transformObj.localScale = new Vector2(1, 1);
         animator.SetFloat("Speed", Mathf.Abs(40));
         direction = 2;
+        
    }
     void MoveplayerLeft()
     {
@@ -208,25 +213,20 @@ public class PlayerMovement : MonoBehaviour
         transformObj.localScale = new Vector2(-1, 1);
         animator.SetFloat("Speed", Mathf.Abs(40));
         direction = 1;
+       
     }
     void JumpPlayer()
     {
         if (jumpCount < 2 || IsGrounded())
         {
-
             jumpCount++;
             grounded = false;
-            //rb.velocity = new Vector2(rb.velocity.x, 11f);
-            rb.velocity = new Vector2(rb.velocity.x, 10f);
+            rb.velocity = new Vector2(1, jumpHight);
+            Debug.Log(" rb.velocity.x " + rb.velocity.x);
             animator.SetBool("IsJumping", true);
-            // animator.SetBool("Sheild", false);
-           // shield.activeShield = false;
-            //shield.shieldGO.SetActive(false);
             Debug.Log(" jump count is " + jumpCount);
-            
             Debug.Log(" IsGrounded() is " + IsGrounded());
             SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.jumpSound);
-            // animator.SetFloat("Speed", Mathf.Abs(40));
             grounded = false;
             if (direction == 1)
             {
@@ -245,14 +245,13 @@ public class PlayerMovement : MonoBehaviour
         {
             grounded = true;
             animator.SetBool("IsJumping", false);
-           // jump = true;
-
         }
     }
     void DashMovePlayer()
     {
         if (grounded)
         {
+            rb.velocity = new Vector2(10, rb.velocity.y);
             Debug.Log("DashMovePlayer() Grounded " + grounded);
             animator.SetFloat("Speed", Mathf.Abs(40));
             //animator.SetBool("IsJumping", true);
@@ -345,18 +344,6 @@ public class PlayerMovement : MonoBehaviour
     {
         activeShield = true;
         animator.SetBool("Sheild", true);
-/*
-        if (!activeShield)
-        {
-            activeShield = true;
-            animator.SetBool("Sheild", true);
-
-        }
-        else
-        {
-           
-        }*/
-
     }
     void DisableShield()
     {

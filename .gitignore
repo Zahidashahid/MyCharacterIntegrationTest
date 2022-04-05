@@ -458,3 +458,4 @@ FodyWeavers.xsd
 *.sln.iml
 Library/ArtifactDB
 Library/ArtifactDB-lock
+*.json
