@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
    // bool jump ;
     //bool crouch = false;
     bool grounded;
-    int jumpCount = 0;
+  public  int jumpCount = 0;
     public int direction = 2;
     public int currentHealth;
     public int maxHealth = 100;
