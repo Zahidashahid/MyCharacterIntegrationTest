@@ -140,7 +140,9 @@ public class CharacterController2D : MonoBehaviour
 		m_FacingRight = !m_FacingRight;
 
 		// Multiply the player's x local scale by -1.
-		transform.Rotate(0f,180f,0f);
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
 
 		// player flip point of attck also flip is direction
 		//transform.Rotate(0f, 180f, 0f);
