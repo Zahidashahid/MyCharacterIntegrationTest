@@ -5,27 +5,27 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637848223341957525
-    m_Hash: 2454357929
+      ticks: 637843877700906773
+    m_Hash: 810916263
   m_LockFileStatus:
     m_FilePath: D:/Unity Games/My Animation Test/TestMyAnimationPlatformGame2D/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637848223342505887
-    m_Hash: 928752585
+      ticks: 637843877702203340
+    m_Hash: 1477149857
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
   m_Packages:
     m_ResolvedPackages:
-    - packageId: com.unity.2d.animation@5.0.10
+    - packageId: com.unity.2d.animation@5.0.6
       testable: 0
       isDirectDependency: 1
-      version: 5.0.10
+      version: 5.0.6
       source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.2d.animation@5.0.10
+      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.2d.animation@5.0.6
       assetPath: Packages/com.unity.2d.animation
       name: com.unity.2d.animation
       displayName: 2D Animation
@@ -136,7 +136,7 @@ m_PackageAssets:
         verified: 5.0.10
       dependencies:
       - name: com.unity.2d.common
-        version: 4.0.4
+        version: 4.0.3
       - name: com.unity.mathematics
         version: 1.1.0
       - name: com.unity.2d.sprite
@@ -147,7 +147,7 @@ m_PackageAssets:
         version: 1.0.0
       resolvedDependencies:
       - name: com.unity.2d.common
-        version: 4.0.4
+        version: 4.0.3
       - name: com.unity.2d.sprite
         version: 1.0.0
       - name: com.unity.modules.uielements
@@ -179,13 +179,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637750142350000000
+      datePublishedTicks: 637594727470000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/2d.git
-        revision: 341b7316671d7e6703a7627f67c5fab262c4f1ac
+        revision: 9e7fd5cbe078d004f1e87ecdf3b57436664a690a
         path: 
     - packageId: com.unity.2d.pixel-perfect@4.0.1
       testable: 0
@@ -355,7 +355,7 @@ m_PackageAssets:
         version: 1.0.0
       resolvedDependencies:
       - name: com.unity.2d.common
-        version: 4.0.4
+        version: 4.0.3
       - name: com.unity.2d.sprite
         version: 1.0.0
       - name: com.unity.modules.uielements
@@ -369,7 +369,7 @@ m_PackageAssets:
       - name: com.unity.modules.uielementsnative
         version: 1.0.0
       - name: com.unity.2d.animation
-        version: 5.0.10
+        version: 5.0.6
       - name: com.unity.mathematics
         version: 1.1.0
       - name: com.unity.modules.animation
@@ -561,7 +561,7 @@ m_PackageAssets:
       - name: com.unity.mathematics
         version: 1.1.0
       - name: com.unity.2d.common
-        version: 4.0.4
+        version: 4.0.3
       - name: com.unity.2d.sprite
         version: 1.0.0
       - name: com.unity.modules.uielements
@@ -655,12 +655,12 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
-    - packageId: com.unity.cinemachine@2.6.11
+    - packageId: com.unity.cinemachine@2.6.10
       testable: 0
       isDirectDependency: 1
-      version: 2.6.11
+      version: 2.6.10
       source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.cinemachine@2.6.11
+      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.cinemachine@2.6.10
       assetPath: Packages/com.unity.cinemachine
       name: com.unity.cinemachine
       displayName: Cinemachine
@@ -806,20 +806,20 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637715450880000000
+      datePublishedTicks: 637654219840000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.com/Unity-Technologies/com.unity.cinemachine.git
-        revision: 0eef4802dbe9ea60fc58767471ce4c5ea86632de
+        url: git+https://github.com/Unity-Technologies/com.unity.cinemachine.git
+        revision: 21f619698ca31d69054e96556e03097e48e43c5d
         path: 
-    - packageId: com.unity.collab-proxy@1.14.16
+    - packageId: com.unity.collab-proxy@1.7.1
       testable: 0
       isDirectDependency: 1
-      version: 1.14.16
+      version: 1.7.1
       source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.collab-proxy@1.14.16
+      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.collab-proxy@1.7.1
       assetPath: Packages/com.unity.collab-proxy
       name: com.unity.collab-proxy
       displayName: Version Control
@@ -827,7 +827,7 @@ m_PackageAssets:
         name: 
         email: 
         url: 
-      category: 
+      category: Editor
       type: 
       description: The Version Control package gives you the ability to use either
         Collaborate or Plastic SCM for Unity (beta) in the Unity editor. To use Plastic
@@ -871,7 +871,6 @@ m_PackageAssets:
         - 1.14.12
         - 1.14.13
         - 1.14.15
-        - 1.14.16
         - 1.15.1
         - 1.15.4
         - 1.15.7
@@ -879,7 +878,6 @@ m_PackageAssets:
         - 1.15.12
         - 1.15.13
         - 1.15.15
-        - 1.15.16
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -905,7 +903,6 @@ m_PackageAssets:
         - 1.14.12
         - 1.14.13
         - 1.14.15
-        - 1.14.16
         - 1.15.1
         - 1.15.4
         - 1.15.7
@@ -913,7 +910,6 @@ m_PackageAssets:
         - 1.15.12
         - 1.15.13
         - 1.15.15
-        - 1.15.16
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -925,8 +921,12 @@ m_PackageAssets:
         - 2.1.0-preview.5
         - 2.1.0-preview.6
         verified: 1.7.1
-      dependencies: []
-      resolvedDependencies: []
+      dependencies:
+      - name: com.unity.nuget.newtonsoft-json
+        version: 2.0.0
+      resolvedDependencies:
+      - name: com.unity.nuget.newtonsoft-json
+        version: 2.0.0
       keywords:
       - backup
       - cloud
@@ -953,135 +953,20 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637847776380000000
+      datePublishedTicks: 637616921650000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.cds.internal.unity3d.com/unity/com.unity.collab-proxy.git
-        revision: ecef1c0665c0328592c4222213839497272b7d77
+        url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
+        revision: 30ef59f552633de9ff0401db4e73ac89982d4ac0
         path: 
-    - packageId: com.unity.connect.share@4.2.3
+    - packageId: com.unity.ide.rider@2.0.7
       testable: 0
       isDirectDependency: 1
-      version: 4.2.3
+      version: 2.0.7
       source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.connect.share@4.2.3
-      assetPath: Packages/com.unity.connect.share
-      name: com.unity.connect.share
-      displayName: WebGL Publisher
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: 
-      description: This tool allows you to make a WebGL build of your current project
-        and upload it to Unity's website, where it can be shared with others.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 1.0.0-preview
-        - 1.0.1-preview
-        - 1.0.2-preview
-        - 1.0.3-preview
-        - 1.0.4-preview
-        - 1.0.5-preview
-        - 1.0.6-preview.2
-        - 1.0.7-preview
-        - 1.0.8-preview
-        - 1.0.9-preview
-        - 1.0.10-preview
-        - 1.1.0-preview.1
-        - 1.2.0-preview.1
-        - 2.0.1-preview
-        - 2.0.2-preview.3
-        - 2.0.2-preview.4
-        - 2.0.3
-        - 2.0.5
-        - 2.0.6
-        - 2.1.0
-        - 3.0.0
-        - 4.0.1
-        - 4.0.2
-        - 4.0.3
-        - 4.1.0
-        - 4.1.1
-        - 4.2.1
-        - 4.2.2
-        - 4.2.3
-        compatible:
-        - 1.0.0-preview
-        - 1.0.1-preview
-        - 1.0.2-preview
-        - 1.0.3-preview
-        - 1.0.4-preview
-        - 1.0.5-preview
-        - 1.0.6-preview.2
-        - 1.0.7-preview
-        - 1.0.8-preview
-        - 1.0.9-preview
-        - 1.0.10-preview
-        - 1.1.0-preview.1
-        - 1.2.0-preview.1
-        - 2.0.1-preview
-        - 2.0.2-preview.3
-        - 2.0.2-preview.4
-        - 2.0.3
-        - 2.0.5
-        - 2.0.6
-        - 2.1.0
-        - 3.0.0
-        - 4.0.1
-        - 4.0.2
-        - 4.0.3
-        - 4.1.0
-        - 4.1.1
-        - 4.2.1
-        - 4.2.2
-        - 4.2.3
-        verified: 
-      dependencies:
-      - name: com.unity.editorcoroutines
-        version: 1.0.0
-      - name: com.unity.settings-manager
-        version: 1.0.2
-      resolvedDependencies:
-      - name: com.unity.editorcoroutines
-        version: 1.0.0
-      - name: com.unity.settings-manager
-        version: 1.0.2
-      keywords:
-      - webgl
-      - share
-      - connect
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637695698090000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: https://github.cds.internal.unity3d.com/unity/com.unity.connect.share.git
-        revision: 9a66a825d48494378f81fc94289eddd505df1c40
-        path: 
-    - packageId: com.unity.ide.rider@3.0.13
-      testable: 0
-      isDirectDependency: 1
-      version: 3.0.13
-      source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.ide.rider@3.0.13
+      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.ide.rider@2.0.7
       assetPath: Packages/com.unity.ide.rider
       name: com.unity.ide.rider
       displayName: JetBrains Rider Editor
@@ -1159,11 +1044,17 @@ m_PackageAssets:
         - 3.0.13
         verified: 2.0.7
       dependencies:
-      - name: com.unity.ext.nunit
-        version: 1.0.6
+      - name: com.unity.test-framework
+        version: 1.1.1
       resolvedDependencies:
+      - name: com.unity.test-framework
+        version: 1.1.31
       - name: com.unity.ext.nunit
         version: 1.0.6
+      - name: com.unity.modules.imgui
+        version: 1.0.0
+      - name: com.unity.modules.jsonserialize
+        version: 1.0.0
       keywords: []
       registry:
         id: main
@@ -1177,13 +1068,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637837345400000000
+      datePublishedTicks: 637334461080000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-        revision: 26f15837ac7ebf5038274dcc39e2b79da5fcdc93
+        revision: abb44f053e9a41d2e00e149e32a19bcec76e98b4
         path: 
     - packageId: com.unity.ide.visualstudio@2.0.15
       testable: 0
@@ -1735,12 +1626,12 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.textmeshpro.git
         revision: 01e57e3b7de18af9dfe9baaa0a0ff5cc4765c899
         path: 
-    - packageId: com.unity.timeline@1.7.1
+    - packageId: com.unity.timeline@1.4.8
       testable: 0
       isDirectDependency: 1
-      version: 1.7.1
+      version: 1.4.8
       source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.timeline@1.7.1
+      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.timeline@1.4.8
       assetPath: Packages/com.unity.timeline
       name: com.unity.timeline
       displayName: Timeline
@@ -1893,13 +1784,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637824211470000000
+      datePublishedTicks: 637557616100000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.timeline.git
-        revision: 9cec37f449d04026a6c454de9e1bf6f34672764e
+        revision: 527e4364e28028f20f04fc51db671eb4bb910a26
         path: 
     - packageId: com.unity.ugui@1.0.0
       testable: 0
@@ -1963,142 +1854,6 @@ m_PackageAssets:
         type: 
         url: 
         revision: 
-        path: 
-    - packageId: com.unity.visualeffectgraph@10.5.1
-      testable: 0
-      isDirectDependency: 1
-      version: 10.5.1
-      source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.visualeffectgraph@10.5.1
-      assetPath: Packages/com.unity.visualeffectgraph
-      name: com.unity.visualeffectgraph
-      displayName: Visual Effect Graph
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: 
-      description: The Visual Effect Graph is a node based visual effect editor.
-        It allows you to author next generation visual effects that Unity simulates
-        directly on the GPU. The Visual Effect Graph is production-ready for the
-        High Definition Render Pipeline and runs on all platforms supported by it.
-        Full support for the Universal Render Pipeline and compatible mobile devices
-        is still in development.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 4.3.0-preview
-        - 4.6.0-preview
-        - 4.8.0-preview
-        - 4.9.0-preview
-        - 4.10.0-preview
-        - 5.2.0-preview
-        - 5.2.1-preview
-        - 5.2.3-preview
-        - 5.3.1-preview
-        - 5.6.1-preview
-        - 5.7.2-preview
-        - 5.8.2-preview
-        - 5.10.0-preview
-        - 5.13.0-preview
-        - 5.16.1-preview
-        - 6.5.2-preview
-        - 6.5.3-preview
-        - 6.7.1-preview
-        - 6.9.0-preview
-        - 6.9.1-preview
-        - 6.9.2-preview
-        - 7.0.0
-        - 7.0.1
-        - 7.1.1
-        - 7.1.2
-        - 7.1.5
-        - 7.1.6
-        - 7.1.7
-        - 7.1.8
-        - 7.2.0
-        - 7.2.1
-        - 7.3.1
-        - 7.4.1
-        - 7.4.2
-        - 7.4.3
-        - 7.5.1
-        - 7.5.2
-        - 7.5.3
-        - 7.6.0
-        - 7.7.0
-        - 7.7.1
-        - 8.0.1
-        - 8.1.0
-        - 8.2.0
-        - 8.3.1
-        - 9.0.0-preview.13
-        - 9.0.0-preview.33
-        - 9.0.0-preview.54
-        - 9.0.0-preview.71
-        - 10.0.0-preview.27
-        - 10.1.0
-        - 10.2.0
-        - 10.2.1
-        - 10.2.2
-        - 10.3.1
-        - 10.3.2
-        - 10.4.0
-        - 10.5.0
-        - 10.5.1
-        - 10.6.0
-        - 10.7.0
-        - 10.8.0
-        - 10.8.1
-        compatible:
-        - 10.5.1
-        - 10.6.0
-        verified: 10.5.1
-      dependencies:
-      - name: com.unity.shadergraph
-        version: 10.5.1
-      - name: com.unity.render-pipelines.core
-        version: 10.5.1
-      resolvedDependencies:
-      - name: com.unity.shadergraph
-        version: 10.5.1
-      - name: com.unity.render-pipelines.core
-        version: 10.5.1
-      - name: com.unity.ugui
-        version: 1.0.0
-      - name: com.unity.modules.ui
-        version: 1.0.0
-      - name: com.unity.modules.imgui
-        version: 1.0.0
-      - name: com.unity.searcher
-        version: 4.3.2
-      keywords:
-      - vfx
-      - visualeffect
-      - graph
-      - effect
-      - particles
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637605796850000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: git+https://github.com/Unity-Technologies/Graphics.git
-        revision: 73f32e8fcc2d0cbf3b73a16a5e30eb5cede41576
         path: 
     - packageId: com.unity.modules.ai@1.0.0
       testable: 0
@@ -3842,321 +3597,6 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
-    - packageId: com.unity.shadergraph@10.5.1
-      testable: 0
-      isDirectDependency: 0
-      version: 10.5.1
-      source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.shadergraph@10.5.1
-      assetPath: Packages/com.unity.shadergraph
-      name: com.unity.shadergraph
-      displayName: Shader Graph
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: 
-      description: The Shader Graph package adds a visual Shader editing tool to
-        Unity. You can use this tool to create Shaders in a visual way instead of
-        writing code. Specific render pipelines can implement specific graph features.
-        Currently, both the High Definition Rendering Pipeline and the Universal
-        Rendering Pipeline support Shader Graph.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 0.1.8
-        - 0.1.9
-        - 0.1.17
-        - 1.0.0-beta
-        - 1.1.1-preview
-        - 1.1.2-preview
-        - 1.1.3-preview
-        - 1.1.4-preview
-        - 1.1.5-preview
-        - 1.1.6-preview
-        - 1.1.8-preview
-        - 1.1.9-preview
-        - 2.0.1-preview
-        - 2.0.3-preview
-        - 2.0.4-preview
-        - 2.0.4-preview.1
-        - 2.0.5-preview
-        - 2.0.6-preview
-        - 2.0.7-preview
-        - 2.0.8-preview
-        - 3.0.0-preview
-        - 3.1.0-preview
-        - 3.3.0-preview
-        - 4.0.0-preview
-        - 4.0.1-preview
-        - 4.1.0-preview
-        - 4.2.0-preview
-        - 4.3.0-preview
-        - 4.6.0-preview
-        - 4.8.0-preview
-        - 4.9.0-preview
-        - 4.10.0-preview
-        - 5.0.0-preview
-        - 5.1.0
-        - 5.2.0
-        - 5.2.1
-        - 5.2.2
-        - 5.2.3
-        - 5.3.1
-        - 5.6.1
-        - 5.7.2
-        - 5.8.2
-        - 5.9.0
-        - 5.10.0
-        - 5.13.0
-        - 5.16.1
-        - 6.5.2
-        - 6.5.3
-        - 6.7.1
-        - 6.9.0
-        - 6.9.1
-        - 6.9.2
-        - 7.0.0
-        - 7.0.1
-        - 7.1.1
-        - 7.1.2
-        - 7.1.5
-        - 7.1.6
-        - 7.1.7
-        - 7.1.8
-        - 7.2.0
-        - 7.2.1
-        - 7.3.1
-        - 7.4.1
-        - 7.4.2
-        - 7.4.3
-        - 7.5.1
-        - 7.5.2
-        - 7.5.3
-        - 7.6.0
-        - 7.7.0
-        - 7.7.1
-        - 8.0.1
-        - 8.1.0
-        - 8.2.0
-        - 8.3.1
-        - 9.0.0-preview.14
-        - 9.0.0-preview.34
-        - 9.0.0-preview.55
-        - 9.0.0-preview.72
-        - 10.0.0-preview.27
-        - 10.1.0
-        - 10.2.0
-        - 10.2.1
-        - 10.2.2
-        - 10.3.1
-        - 10.3.2
-        - 10.4.0
-        - 10.5.0
-        - 10.5.1
-        - 10.6.0
-        - 10.7.0
-        - 10.8.0
-        - 10.8.1
-        compatible:
-        - 10.5.1
-        - 10.6.0
-        verified: 10.5.1
-      dependencies:
-      - name: com.unity.render-pipelines.core
-        version: 10.5.1
-      - name: com.unity.searcher
-        version: 4.3.2
-      resolvedDependencies:
-      - name: com.unity.render-pipelines.core
-        version: 10.5.1
-      - name: com.unity.ugui
-        version: 1.0.0
-      - name: com.unity.modules.ui
-        version: 1.0.0
-      - name: com.unity.modules.imgui
-        version: 1.0.0
-      - name: com.unity.searcher
-        version: 4.3.2
-      keywords: []
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637605793850000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: git+https://github.com/Unity-Technologies/Graphics.git
-        revision: 73f32e8fcc2d0cbf3b73a16a5e30eb5cede41576
-        path: 
-    - packageId: com.unity.render-pipelines.core@10.5.1
-      testable: 0
-      isDirectDependency: 0
-      version: 10.5.1
-      source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.render-pipelines.core@10.5.1
-      assetPath: Packages/com.unity.render-pipelines.core
-      name: com.unity.render-pipelines.core
-      displayName: Core RP Library
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: 
-      description: SRP Core makes it easier to create or customize a Scriptable Render
-        Pipeline (SRP). SRP Core contains reusable code, including boilerplate code
-        for working with platform-specific graphics APIs, utility functions for common
-        rendering operations, and  shader libraries. The code in SRP Core is use
-        by the High Definition Render Pipeline (HDRP) and Universal Render Pipeline
-        (URP). If you are creating a custom SRP from scratch or customizing a prebuilt
-        SRP, using SRP Core will save you time.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 0.1.21
-        - 0.1.27
-        - 0.1.28
-        - 1.0.0-beta
-        - 1.0.1-beta
-        - 1.1.1-preview
-        - 1.1.2-preview
-        - 1.1.4-preview
-        - 1.1.5-preview
-        - 1.1.8-preview
-        - 1.1.10-preview
-        - 1.1.11-preview
-        - 2.0.1-preview
-        - 2.0.3-preview
-        - 2.0.4-preview
-        - 2.0.4-preview.1
-        - 2.0.5-preview
-        - 2.0.6-preview
-        - 2.0.7-preview
-        - 2.0.8-preview
-        - 3.0.0-preview
-        - 3.1.0-preview
-        - 3.3.0-preview
-        - 4.0.0-preview
-        - 4.0.1-preview
-        - 4.1.0-preview
-        - 4.2.0-preview
-        - 4.3.0-preview
-        - 4.6.0-preview
-        - 4.8.0-preview
-        - 4.9.0-preview
-        - 4.10.0-preview
-        - 5.0.0-preview
-        - 5.1.0
-        - 5.2.0
-        - 5.2.1
-        - 5.2.2
-        - 5.2.3
-        - 5.3.1
-        - 5.6.1
-        - 5.7.2
-        - 5.8.2
-        - 5.9.0
-        - 5.10.0
-        - 5.13.0
-        - 5.16.1
-        - 6.5.2
-        - 6.5.3
-        - 6.7.1
-        - 6.9.0
-        - 6.9.1
-        - 6.9.2
-        - 7.0.0
-        - 7.0.1
-        - 7.1.1
-        - 7.1.2
-        - 7.1.5
-        - 7.1.6
-        - 7.1.7
-        - 7.1.8
-        - 7.2.0
-        - 7.2.1
-        - 7.3.1
-        - 7.4.1
-        - 7.4.2
-        - 7.4.3
-        - 7.5.1
-        - 7.5.2
-        - 7.5.3
-        - 7.6.0
-        - 7.7.0
-        - 7.7.1
-        - 8.0.1
-        - 8.1.0
-        - 8.2.0
-        - 8.3.1
-        - 9.0.0-preview.13
-        - 9.0.0-preview.35
-        - 9.0.0-preview.38
-        - 9.0.0-preview.60
-        - 9.0.0-preview.77
-        - 10.0.0-preview.30
-        - 10.1.0
-        - 10.2.0
-        - 10.2.1
-        - 10.2.2
-        - 10.3.1
-        - 10.3.2
-        - 10.4.0
-        - 10.5.0
-        - 10.5.1
-        - 10.6.0
-        - 10.7.0
-        - 10.8.0
-        - 10.8.1
-        compatible:
-        - 10.5.1
-        - 10.6.0
-        verified: 10.5.1
-      dependencies:
-      - name: com.unity.ugui
-        version: 1.0.0
-      resolvedDependencies:
-      - name: com.unity.ugui
-        version: 1.0.0
-      - name: com.unity.modules.ui
-        version: 1.0.0
-      - name: com.unity.modules.imgui
-        version: 1.0.0
-      keywords: []
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637605791650000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: git+https://github.com/Unity-Technologies/Graphics.git
-        revision: 73f32e8fcc2d0cbf3b73a16a5e30eb5cede41576
-        path: 
     - packageId: com.unity.ext.nunit@1.0.6
       testable: 0
       isDirectDependency: 0
@@ -4220,109 +3660,61 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ext.nunit.git
         revision: 29ea4d6504a5f58fb3a6934db839aa80ae6d9d88
         path: 
-    - packageId: com.unity.editorcoroutines@1.0.0
+    - packageId: com.unity.nuget.newtonsoft-json@2.0.0
       testable: 0
       isDirectDependency: 0
-      version: 1.0.0
+      version: 2.0.0
       source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.editorcoroutines@1.0.0
-      assetPath: Packages/com.unity.editorcoroutines
-      name: com.unity.editorcoroutines
-      displayName: Editor Coroutines
+      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0
+      assetPath: Packages/com.unity.nuget.newtonsoft-json
+      name: com.unity.nuget.newtonsoft-json
+      displayName: Newtonsoft Json
       author:
         name: 
         email: 
         url: 
       category: 
       type: 
-      description: 'The editor coroutines package allows developers to start constructs
-        similar to Unity''s monobehaviour based coroutines within the editor using
-        abitrary objects. '
+      description: 'Newtonsoft Json for use in Unity projects and Unity packages.
+        Currently synced to version 12.0.2.
+
+
+        This package is used for advanced
+        json serialization and deserialization. Most Unity users will be better suited
+        using the existing json tools built into Unity.
+
+        To avoid assembly
+        clashes, please use this package if you intend to use Newtonsoft Json.'
       status: 4
       errors: []
       versions:
         all:
-        - 0.0.1-preview.3
-        - 0.0.1-preview.4
-        - 0.0.1-preview.5
-        - 0.0.2-preview.1
-        - 0.1.0-preview.1
-        - 0.1.0-preview.2
-        - 1.0.0
-        compatible:
-        - 0.0.1-preview.3
-        - 0.0.1-preview.4
-        - 0.0.1-preview.5
-        - 0.0.2-preview.1
-        - 0.1.0-preview.1
-        - 0.1.0-preview.2
-        - 1.0.0
-        verified: 1.0.0
-      dependencies: []
-      resolvedDependencies: []
-      keywords:
-      - coroutine
-      - coroutines
-      - editor
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637232611380000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: https://github.cds.internal.unity3d.com/unity/com.unity.editorcoroutines.git
-        revision: f67fc9992bbc7a553b17375de53a8b2db136528e
-        path: 
-    - packageId: com.unity.settings-manager@1.0.2
-      testable: 0
-      isDirectDependency: 0
-      version: 1.0.2
-      source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.settings-manager@1.0.2
-      assetPath: Packages/com.unity.settings-manager
-      name: com.unity.settings-manager
-      displayName: Settings Manager
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: 
-      description: A framework for making any serializable field a setting, complete
-        with a pre-built settings interface.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 0.1.0-preview.4
-        - 0.1.0-preview.8
-        - 1.0.0
-        - 1.0.1
-        - 1.0.2
-        - 1.0.3
+        - 1.0.0-preview.2
+        - 1.0.0-preview.3
+        - 1.0.0-preview.4
+        - 1.0.1-preview.1
+        - 1.1.2
+        - 2.0.0-preview
+        - 2.0.0-preview.1
+        - 2.0.0-preview.2
         - 2.0.0
-        - 2.0.1
+        - 2.0.1-preview.1
+        - 2.0.2
+        - 3.0.1
         compatible:
-        - 0.1.0-preview.4
-        - 0.1.0-preview.8
-        - 1.0.0
-        - 1.0.1
-        - 1.0.2
-        - 1.0.3
+        - 1.0.0-preview.2
+        - 1.0.0-preview.3
+        - 1.0.0-preview.4
+        - 1.0.1-preview.1
+        - 1.1.2
+        - 2.0.0-preview
+        - 2.0.0-preview.1
+        - 2.0.0-preview.2
         - 2.0.0
-        - 2.0.1
-        verified: 1.0.3
+        - 2.0.1-preview.1
+        - 2.0.2
+        - 3.0.1
+        verified: 2.0.2
       dependencies: []
       resolvedDependencies: []
       keywords: []
@@ -4338,13 +3730,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637187671360000000
+      datePublishedTicks: 637237898320000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: git+https://github.com/Unity-Technologies/com.unity.settings-manager.git
-        revision: e8eedc87ca7850bac0f7b2257db4edb8c300a0f3
+        url: https://github.cds.internal.unity3d.com/unity/com.unity.nuget.newtonsoft-json.git
+        revision: d2fd6ed876261bbd82f59199ad711e7667bf633a
         path: 
     - packageId: com.unity.mathematics@1.1.0
       testable: 0
@@ -4427,83 +3819,12 @@ m_PackageAssets:
         url: git@github.com:Unity-Technologies/Unity.Mathematics.git
         revision: 0a3dfafaf606098ea681de4c4be60f3aac63b773
         path: 
-    - packageId: com.unity.2d.path@4.0.1
+    - packageId: com.unity.2d.common@4.0.3
       testable: 0
       isDirectDependency: 0
-      version: 4.0.1
+      version: 4.0.3
       source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.2d.path@4.0.1
-      assetPath: Packages/com.unity.2d.path
-      name: com.unity.2d.path
-      displayName: 2D Path
-      author:
-        name: 
-        email: 
-        url: 
-      category: 2D
-      type: 
-      description: "2D Path provides tooling to edit shapes (polygons and B\xE9zier
-        splines) in EditorWindows and the SceneView."
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 1.0.0-preview.1
-        - 1.0.0-preview.4
-        - 2.0.1
-        - 2.0.2
-        - 2.0.3
-        - 2.0.4
-        - 2.0.5
-        - 2.0.6
-        - 2.1.0
-        - 2.1.1
-        - 3.0.0
-        - 3.0.1
-        - 3.0.2
-        - 4.0.0
-        - 4.0.1
-        - 4.0.2
-        - 5.0.0-pre.1
-        - 5.0.0-pre.2
-        - 5.0.0
-        - 5.0.1
-        - 5.0.2
-        compatible:
-        - 4.0.1
-        - 4.0.2
-        verified: 4.0.2
-      dependencies: []
-      resolvedDependencies: []
-      keywords:
-      - 2d
-      - path
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 637328350450000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: https://github.cds.internal.unity3d.com/unity/2d.git
-        revision: 7d7470f4ca0ea8353d4c9640b3b6ae9d1ebd9c1d
-        path: 
-    - packageId: com.unity.2d.common@4.0.4
-      testable: 0
-      isDirectDependency: 0
-      version: 4.0.4
-      source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.2d.common@4.0.4
+      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.2d.common@4.0.3
       assetPath: Packages/com.unity.2d.common
       name: com.unity.2d.common
       displayName: 2D Common
@@ -4589,74 +3910,65 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637750142160000000
+      datePublishedTicks: 637408843940000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/2d.git
-        revision: 341b7316671d7e6703a7627f67c5fab262c4f1ac
+        revision: c97def465b1932276762fc13f4cfee58da99d5e9
         path: 
-    - packageId: com.unity.searcher@4.3.2
+    - packageId: com.unity.2d.path@4.0.1
       testable: 0
       isDirectDependency: 0
-      version: 4.3.2
+      version: 4.0.1
       source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.searcher@4.3.2
-      assetPath: Packages/com.unity.searcher
-      name: com.unity.searcher
-      displayName: Searcher
+      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.2d.path@4.0.1
+      assetPath: Packages/com.unity.2d.path
+      name: com.unity.2d.path
+      displayName: 2D Path
       author:
         name: 
         email: 
         url: 
-      category: 
+      category: 2D
       type: 
-      description: General search window for use in the Editor. First target use
-        is for GraphView node search.
+      description: "2D Path provides tooling to edit shapes (polygons and B\xE9zier
+        splines) in EditorWindows and the SceneView."
       status: 4
       errors: []
       versions:
         all:
-        - 4.0.0-preview
+        - 1.0.0-preview.1
+        - 1.0.0-preview.4
+        - 2.0.1
+        - 2.0.2
+        - 2.0.3
+        - 2.0.4
+        - 2.0.5
+        - 2.0.6
+        - 2.1.0
+        - 2.1.1
+        - 3.0.0
+        - 3.0.1
+        - 3.0.2
         - 4.0.0
-        - 4.0.7-preview
-        - 4.0.7
-        - 4.0.8-preview
-        - 4.0.9
-        - 4.1.0-preview
-        - 4.1.0
-        - 4.2.0
-        - 4.3.0
-        - 4.3.1
-        - 4.3.2
-        - 4.6.0-preview
-        - 4.7.0-preview
-        - 4.9.1
-        - 4.9.2
+        - 4.0.1
+        - 4.0.2
+        - 5.0.0-pre.1
+        - 5.0.0-pre.2
+        - 5.0.0
+        - 5.0.1
+        - 5.0.2
         compatible:
-        - 4.0.0-preview
-        - 4.0.0
-        - 4.0.7-preview
-        - 4.0.7
-        - 4.0.8-preview
-        - 4.0.9
-        - 4.1.0-preview
-        - 4.1.0
-        - 4.2.0
-        - 4.3.0
-        - 4.3.1
-        - 4.3.2
-        - 4.6.0-preview
-        - 4.7.0-preview
-        - 4.9.1
-        - 4.9.2
-        verified: 4.3.2
+        - 4.0.1
+        - 4.0.2
+        verified: 4.0.2
       dependencies: []
       resolvedDependencies: []
       keywords:
-      - search
-      - searcher
+      - 2d
+      - path
       registry:
         id: main
         name: 
@@ -4669,13 +3981,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637509898070000000
+      datePublishedTicks: 637328350450000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.cds.internal.unity3d.com/unity/com.unity.searcher.git
-        revision: 798bfb84c8f09f7788a3a88c3c16d72c50451530
+        url: https://github.cds.internal.unity3d.com/unity/2d.git
+        revision: 7d7470f4ca0ea8353d4c9640b3b6ae9d1ebd9c1d
         path: 
   m_LocalPackages:
     m_LocalFileStatus: []
