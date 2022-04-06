@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 public class GiftData : MonoBehaviour
 {
     //Display data on setting
