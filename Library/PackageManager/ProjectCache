@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637848223341957525
-    m_Hash: 2454357929
+      ticks: 637848270401645700
+    m_Hash: 1614985710
   m_LockFileStatus:
     m_FilePath: D:/Unity Games/My Animation Test/TestMyAnimationPlatformGame2D/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637848223342505887
-    m_Hash: 928752585
+      ticks: 637848270402214262
+    m_Hash: 1482104041
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -1468,6 +1468,124 @@ m_PackageAssets:
         type: git
         url: git+https://github.com/Unity-Technologies/InputSystem.git
         revision: 041def76515febb36a83d1f928cfb7aefb85176c
+        path: 
+    - packageId: com.unity.render-pipelines.universal@10.5.1
+      testable: 0
+      isDirectDependency: 1
+      version: 10.5.1
+      source: 1
+      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.render-pipelines.universal@10.5.1
+      assetPath: Packages/com.unity.render-pipelines.universal
+      name: com.unity.render-pipelines.universal
+      displayName: Universal RP
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: The Universal Render Pipeline (URP) is a prebuilt Scriptable Render
+        Pipeline, made by Unity. URP provides artist-friendly workflows that let
+        you quickly and easily create optimized graphics across a range of platforms,
+        from mobile to high-end consoles and PCs.
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 7.0.0
+        - 7.0.1
+        - 7.1.1
+        - 7.1.2
+        - 7.1.5
+        - 7.1.6
+        - 7.1.7
+        - 7.1.8
+        - 7.2.0
+        - 7.2.1
+        - 7.3.1
+        - 7.4.1
+        - 7.4.2
+        - 7.4.3
+        - 7.5.1
+        - 7.5.2
+        - 7.5.3
+        - 7.6.0
+        - 7.7.0
+        - 7.7.1
+        - 8.0.1
+        - 8.1.0
+        - 8.2.0
+        - 8.3.1
+        - 9.0.0-preview.14
+        - 9.0.0-preview.35
+        - 9.0.0-preview.55
+        - 9.0.0-preview.72
+        - 10.0.0-preview.26
+        - 10.1.0
+        - 10.2.0
+        - 10.2.1
+        - 10.2.2
+        - 10.3.1
+        - 10.3.2
+        - 10.4.0
+        - 10.5.0
+        - 10.5.1
+        - 10.6.0
+        - 10.7.0
+        - 10.8.0
+        - 10.8.1
+        compatible:
+        - 10.5.1
+        - 10.6.0
+        verified: 10.5.1
+      dependencies:
+      - name: com.unity.mathematics
+        version: 1.1.0
+      - name: com.unity.render-pipelines.core
+        version: 10.5.1
+      - name: com.unity.shadergraph
+        version: 10.5.1
+      resolvedDependencies:
+      - name: com.unity.mathematics
+        version: 1.1.0
+      - name: com.unity.render-pipelines.core
+        version: 10.5.1
+      - name: com.unity.ugui
+        version: 1.0.0
+      - name: com.unity.modules.ui
+        version: 1.0.0
+      - name: com.unity.modules.imgui
+        version: 1.0.0
+      - name: com.unity.shadergraph
+        version: 10.5.1
+      - name: com.unity.searcher
+        version: 4.3.2
+      keywords:
+      - graphics
+      - performance
+      - rendering
+      - mobile
+      - render
+      - pipeline
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637605794350000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git+https://github.com/Unity-Technologies/Graphics.git
+        revision: 73f32e8fcc2d0cbf3b73a16a5e30eb5cede41576
         path: 
     - packageId: com.unity.test-framework@1.1.31
       testable: 0
@@ -4220,6 +4338,87 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ext.nunit.git
         revision: 29ea4d6504a5f58fb3a6934db839aa80ae6d9d88
         path: 
+    - packageId: com.unity.mathematics@1.1.0
+      testable: 0
+      isDirectDependency: 0
+      version: 1.1.0
+      source: 1
+      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.mathematics@1.1.0
+      assetPath: Packages/com.unity.mathematics
+      name: com.unity.mathematics
+      displayName: Mathematics
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: Unity's C# SIMD math library providing vector types and math functions
+        with a shader like syntax.
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 0.0.12-preview.2
+        - 0.0.12-preview.5
+        - 0.0.12-preview.8
+        - 0.0.12-preview.10
+        - 0.0.12-preview.11
+        - 0.0.12-preview.13
+        - 0.0.12-preview.17
+        - 0.0.12-preview.19
+        - 0.0.12-preview.20
+        - 1.0.0-preview.1
+        - 1.0.1
+        - 1.1.0-preview.1
+        - 1.1.0
+        - 1.2.1
+        - 1.2.4
+        - 1.2.5
+        - 1.2.6
+        compatible:
+        - 0.0.12-preview.2
+        - 0.0.12-preview.5
+        - 0.0.12-preview.8
+        - 0.0.12-preview.10
+        - 0.0.12-preview.11
+        - 0.0.12-preview.13
+        - 0.0.12-preview.17
+        - 0.0.12-preview.19
+        - 0.0.12-preview.20
+        - 1.0.0-preview.1
+        - 1.0.1
+        - 1.1.0-preview.1
+        - 1.1.0
+        - 1.2.1
+        - 1.2.4
+        - 1.2.5
+        - 1.2.6
+        verified: 1.2.6
+      dependencies: []
+      resolvedDependencies: []
+      keywords:
+      - unity
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 636984649280000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git@github.com:Unity-Technologies/Unity.Mathematics.git
+        revision: 0a3dfafaf606098ea681de4c4be60f3aac63b773
+        path: 
     - packageId: com.unity.editorcoroutines@1.0.0
       testable: 0
       isDirectDependency: 0
@@ -4345,87 +4544,6 @@ m_PackageAssets:
         type: git
         url: git+https://github.com/Unity-Technologies/com.unity.settings-manager.git
         revision: e8eedc87ca7850bac0f7b2257db4edb8c300a0f3
-        path: 
-    - packageId: com.unity.mathematics@1.1.0
-      testable: 0
-      isDirectDependency: 0
-      version: 1.1.0
-      source: 1
-      resolvedPath: D:\Unity Games\My Animation Test\TestMyAnimationPlatformGame2D\Library\PackageCache\com.unity.mathematics@1.1.0
-      assetPath: Packages/com.unity.mathematics
-      name: com.unity.mathematics
-      displayName: Mathematics
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: 
-      description: Unity's C# SIMD math library providing vector types and math functions
-        with a shader like syntax.
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 0.0.12-preview.2
-        - 0.0.12-preview.5
-        - 0.0.12-preview.8
-        - 0.0.12-preview.10
-        - 0.0.12-preview.11
-        - 0.0.12-preview.13
-        - 0.0.12-preview.17
-        - 0.0.12-preview.19
-        - 0.0.12-preview.20
-        - 1.0.0-preview.1
-        - 1.0.1
-        - 1.1.0-preview.1
-        - 1.1.0
-        - 1.2.1
-        - 1.2.4
-        - 1.2.5
-        - 1.2.6
-        compatible:
-        - 0.0.12-preview.2
-        - 0.0.12-preview.5
-        - 0.0.12-preview.8
-        - 0.0.12-preview.10
-        - 0.0.12-preview.11
-        - 0.0.12-preview.13
-        - 0.0.12-preview.17
-        - 0.0.12-preview.19
-        - 0.0.12-preview.20
-        - 1.0.0-preview.1
-        - 1.0.1
-        - 1.1.0-preview.1
-        - 1.1.0
-        - 1.2.1
-        - 1.2.4
-        - 1.2.5
-        - 1.2.6
-        verified: 1.2.6
-      dependencies: []
-      resolvedDependencies: []
-      keywords:
-      - unity
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 1
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 636984649280000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: git@github.com:Unity-Technologies/Unity.Mathematics.git
-        revision: 0a3dfafaf606098ea681de4c4be60f3aac63b773
         path: 
     - packageId: com.unity.2d.path@4.0.1
       testable: 0

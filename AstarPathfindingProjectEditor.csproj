@@ -69,8 +69,8 @@
     <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Editor\GraphEditors\GraphEditor.cs" />
     <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Editor\ModifierEditors\SmoothModifierEditor.cs" />
     <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Editor\GraphEditors\PointGeneratorEditor.cs" />
-    <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Editor\Legacy\LegacyEditorHelper2.cs" />
     <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Editor\ModifierEditors\RaycastModifierEditor.cs" />
+    <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Editor\Legacy\LegacyEditorHelper2.cs" />
     <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Editor\AstarPathEditor.cs" />
     <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Editor\AstarUpdateChecker.cs" />
   </ItemGroup>
@@ -323,6 +323,9 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.14.16\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem">
+      <HintPath>Library\PackageCache\com.unity.connect.share@4.2.3\Plugins\System.IO.Compression.FileSystem.dll</HintPath>
     </Reference>
     <Reference Include="Pathfinding.Ionic.Zip.Reduced">
       <HintPath>Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
