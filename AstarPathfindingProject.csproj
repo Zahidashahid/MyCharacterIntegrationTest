@@ -62,8 +62,8 @@
     <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Modifiers\SimpleSmoothModifier.cs" />
     <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Core\Path.cs" />
     <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Generators\Utilities\PointKDTree.cs" />
-    <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Modifiers\AlternativePath.cs" />
     <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Generators\Utilities\NavmeshTile.cs" />
+    <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Modifiers\AlternativePath.cs" />
     <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\ExampleScenes\ExampleScripts\DoorController.cs" />
     <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Core\Misc\GraphModifier.cs" />
     <Compile Include="Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\PackageTools\EnumFlagAttribute.cs" />
@@ -420,6 +420,9 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.14.16\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem">
+      <HintPath>Library\PackageCache\com.unity.connect.share@4.2.3\Plugins\System.IO.Compression.FileSystem.dll</HintPath>
     </Reference>
     <Reference Include="Pathfinding.Ionic.Zip.Reduced">
       <HintPath>Assets\_TerrainAutoUpgrade\Animation\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
