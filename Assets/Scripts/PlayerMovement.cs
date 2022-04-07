@@ -399,7 +399,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
        
         SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.meleeAttackSound);
-        animator.SetBool("Attack1", false);
+        animator.SetBool("Attack 2", false);
         string difficultyLevel = PlayerPrefs.GetString("DifficultyLevel");
         //Deteck enemies in range
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponAttackPoint.position, attackRange, enemyLayers);
