@@ -188,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
     }
    void StopMoving()
     {
-        Debug.Log("Stop Move");
+      //  Debug.Log("Stop Move");
         if (move.x == 0 && move.y == 0)
         {
             animator.SetFloat("Speed", Mathf.Abs(0));
@@ -200,20 +200,37 @@ public class PlayerMovement : MonoBehaviour
         /*animator.SetFloat("Speed", Mathf.Abs(40));
         transformObj.Translate(m, Space.World);
         transformObj.localScale = new Vector2(1, 1);*/
-        Debug.Log("I'm Moving right");
-        rb.velocity = new Vector2(runSpeed, rb.velocity.y);
-        transformObj.localScale = new Vector2(1, 1);
-        animator.SetFloat("Speed", Mathf.Abs(40));
         direction = 2;
+       // Debug.Log("I'm Moving right");
+        rb.velocity = new Vector2(runSpeed, rb.velocity.y);
+        Flip();
+        //transformObj.localScale = new Vector2(1, 1);
+        animator.SetFloat("Speed", Mathf.Abs(40));
+        
         
    }
     void MoveplayerLeft()
     {
-        rb.velocity = new Vector2(-runSpeed, rb.velocity.y);
-        transformObj.localScale = new Vector2(-1, 1);
-        animator.SetFloat("Speed", Mathf.Abs(40));
         direction = 1;
+        
+        rb.velocity = new Vector2(-runSpeed, rb.velocity.y);
+        Flip();
+       // transformObj.localScale = new Vector2(-1, 1);
+        animator.SetFloat("Speed", Mathf.Abs(40));
+        
        
+    }
+    private void Flip()
+    {
+        // Rotate the player
+        if (transform.localEulerAngles.y != 180 && direction == 1)
+            transform.Rotate(0f, 180f, 0f);
+        else if(transform.localEulerAngles.y != 0 && direction == 2)
+                transform.Rotate(0f, -180f, 0f);
+
+
+        // player flip point of attck also flip is direction
+        //transform.Rotate(0f, 180f, 0f);
     }
     void JumpPlayer()
     {

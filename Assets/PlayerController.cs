@@ -115,6 +115,14 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""GunShoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""01b8171f-5ed8-4e49-ae3a-73c03f2db329"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""PauseGame"",
                     ""type"": ""Button"",
                     ""id"": ""2266e04c-2f3c-42ae-a4be-956ff407942a"",
@@ -690,6 +698,28 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""action"": ""DashMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""301c5ece-9d76-45bb-a995-399a077f7a74"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GunShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c9564106-8b8a-48a7-8c13-60f973369c25"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GunShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -710,6 +740,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         m_Gameplay_RangeAttackPlayer2 = m_Gameplay.FindAction("RangeAttackPlayer2", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_ArowHit = m_Gameplay.FindAction("ArowHit", throwIfNotFound: true);
+        m_Gameplay_GunShoot = m_Gameplay.FindAction("GunShoot", throwIfNotFound: true);
         m_Gameplay_PauseGame = m_Gameplay.FindAction("PauseGame", throwIfNotFound: true);
         m_Gameplay_Shield = m_Gameplay.FindAction(" Shield", throwIfNotFound: true);
         m_Gameplay_Multiplayer1Movement = m_Gameplay.FindAction("Multiplayer1Movement", throwIfNotFound: true);
@@ -781,6 +812,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_RangeAttackPlayer2;
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_ArowHit;
+    private readonly InputAction m_Gameplay_GunShoot;
     private readonly InputAction m_Gameplay_PauseGame;
     private readonly InputAction m_Gameplay_Shield;
     private readonly InputAction m_Gameplay_Multiplayer1Movement;
@@ -807,6 +839,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         public InputAction @RangeAttackPlayer2 => m_Wrapper.m_Gameplay_RangeAttackPlayer2;
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @ArowHit => m_Wrapper.m_Gameplay_ArowHit;
+        public InputAction @GunShoot => m_Wrapper.m_Gameplay_GunShoot;
         public InputAction @PauseGame => m_Wrapper.m_Gameplay_PauseGame;
         public InputAction @Shield => m_Wrapper.m_Gameplay_Shield;
         public InputAction @Multiplayer1Movement => m_Wrapper.m_Gameplay_Multiplayer1Movement;
@@ -862,6 +895,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @ArowHit.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnArowHit;
                 @ArowHit.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnArowHit;
                 @ArowHit.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnArowHit;
+                @GunShoot.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnGunShoot;
+                @GunShoot.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnGunShoot;
+                @GunShoot.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnGunShoot;
                 @PauseGame.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPauseGame;
                 @PauseGame.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPauseGame;
                 @PauseGame.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPauseGame;
@@ -932,6 +968,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @ArowHit.started += instance.OnArowHit;
                 @ArowHit.performed += instance.OnArowHit;
                 @ArowHit.canceled += instance.OnArowHit;
+                @GunShoot.started += instance.OnGunShoot;
+                @GunShoot.performed += instance.OnGunShoot;
+                @GunShoot.canceled += instance.OnGunShoot;
                 @PauseGame.started += instance.OnPauseGame;
                 @PauseGame.performed += instance.OnPauseGame;
                 @PauseGame.canceled += instance.OnPauseGame;
@@ -980,6 +1019,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         void OnRangeAttackPlayer2(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnArowHit(InputAction.CallbackContext context);
+        void OnGunShoot(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
         void OnShield(InputAction.CallbackContext context);
         void OnMultiplayer1Movement(InputAction.CallbackContext context);

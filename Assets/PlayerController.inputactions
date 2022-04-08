@@ -102,6 +102,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "GunShoot",
+                    "type": "Button",
+                    "id": "01b8171f-5ed8-4e49-ae3a-73c03f2db329",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "PauseGame",
                     "type": "Button",
                     "id": "2266e04c-2f3c-42ae-a4be-956ff407942a",
@@ -675,6 +683,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "DashMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "301c5ece-9d76-45bb-a995-399a077f7a74",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GunShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c9564106-8b8a-48a7-8c13-60f973369c25",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GunShoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

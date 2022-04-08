@@ -8,7 +8,7 @@ public class Bow : MonoBehaviour
     //Bow of the Player
     PlayerController controls;
     Vector3 rotateBow;
-    public Transform shotPoint;
+    public Transform shootPoint;
     public GameObject projectile;
 
     public float offset;
@@ -19,15 +19,14 @@ public class Bow : MonoBehaviour
     int arrowLeft;
     public ArrowStore arrowStore;
 
+    
     private void Awake()
     {
         controls = new PlayerController();
         controls.Gameplay.ArowHit.performed += ctx => ArrowShoot();
         controls.Gameplay.RangeAttackGP.performed += ctx => Move(ctx.ReadValue<Vector2>());
         controls.Gameplay.RangeAttackGP.canceled += ctx => rotateBow = Vector2.zero;
-
-
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
         controls.Gameplay.MouseDirection.performed += ctx => BowRotate(ctx.ReadValue<Vector2>());
         controls.Gameplay.MouseDirection.canceled += ctx => rotateBow = Vector2.zero;
 
@@ -50,7 +49,7 @@ public class Bow : MonoBehaviour
             canAttack = false;
         }
 
-        Debug.Log("PauseGame.isGamePaused ==  " + PauseGame.isGamePaused);
+        //Debug.Log("PauseGame.isGamePaused ==  " + PauseGame.isGamePaused);
            
         /* Vector3 r = new Vector3(rotateBow.x, rotateBow.y, rotateBow.z) * 100f * Time.deltaTime;
          Debug.Log("rotateBow.z"+ rotateBow.z);
@@ -73,7 +72,7 @@ public class Bow : MonoBehaviour
              if (Input.GetMouseButtonDown(0))
              {
                  arrowStore.ArrowUsed();
-                 Instantiate(projectile, shotPoint.position, transform.rotation);
+                 Instantiate(projectile, shootPoint.position, transform.rotation);
 
              }
          }*/
@@ -95,16 +94,19 @@ public class Bow : MonoBehaviour
         }
             
     }
+   
     void ArrowShoot()
     {
         if (PauseGame.isGamePaused == false)
         {
+
+
             arrowLeft = PlayerPrefs.GetInt("ArrowPlayerHas");
 
             if (arrowLeft > 0 && canAttack)
             {
                 arrowStore.ArrowUsed();
-                Instantiate(projectile, shotPoint.position, transform.rotation);
+                Instantiate(projectile, shootPoint.position, transform.rotation);
                 nextAttackTime = 1;
             }
         }

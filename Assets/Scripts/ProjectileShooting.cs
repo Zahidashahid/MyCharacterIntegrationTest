@@ -23,7 +23,7 @@ public class ProjectileShooting : MonoBehaviour
     }
     void Start()
     {
-        speed = 0.1f;
+        speed = 1f;
         Invoke("DestroyProjectile", lifeTime);
         if (playerMovement.PlayerMovingDirection() == 1)
         {
