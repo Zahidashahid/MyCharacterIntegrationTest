@@ -25,7 +25,9 @@ public class ProjectileShooting : MonoBehaviour
     {
         speed = 1f;
         Invoke("DestroyProjectile", lifeTime);
-        if (playerMovement.PlayerMovingDirection() == 1)
+        velocity = (Vector3.right * speed);
+        /*-------Arrow moving logic------*/
+        /*if (playerMovement.PlayerMovingDirection() == 1)
         {
             spriteRenderer.flipX = true;
             velocity = (Vector3.left * speed );
@@ -33,8 +35,8 @@ public class ProjectileShooting : MonoBehaviour
         else
         {
             spriteRenderer.flipX = false;
-            velocity = (Vector3.right * speed );
-        }
+            
+        }*/
     }
     void FixedUpdate()
     {

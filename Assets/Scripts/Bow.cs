@@ -1,7 +1,7 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;*/
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Bow : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class Bow : MonoBehaviour
 
     public float offset;
     public float timeBtwShots;
-    public float startTimeBtwShots;
+   // public float startTimeBtwShots;
     public float nextAttackTime;
     bool canAttack;
     int arrowLeft;
@@ -27,8 +27,8 @@ public class Bow : MonoBehaviour
         controls.Gameplay.RangeAttackGP.performed += ctx => Move(ctx.ReadValue<Vector2>());
         controls.Gameplay.RangeAttackGP.canceled += ctx => rotateBow = Vector2.zero;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-        controls.Gameplay.MouseDirection.performed += ctx => BowRotate(ctx.ReadValue<Vector2>());
-        controls.Gameplay.MouseDirection.canceled += ctx => rotateBow = Vector2.zero;
+        /*controls.Gameplay.MouseDirection.performed += ctx => BowRotate(ctx.ReadValue<Vector2>());
+        controls.Gameplay.MouseDirection.canceled += ctx => rotateBow = Vector2.zero;*/
 
     }
     private void Start()
@@ -92,25 +92,20 @@ public class Bow : MonoBehaviour
             // Debug.Log("" + rotZ + offset);
             arrowLeft = PlayerPrefs.GetInt("ArrowPlayerHas");
         }
-            
     }
-   
     void ArrowShoot()
     {
         if (PauseGame.isGamePaused == false)
         {
-
-
             arrowLeft = PlayerPrefs.GetInt("ArrowPlayerHas");
 
             if (arrowLeft > 0 && canAttack)
             {
                 arrowStore.ArrowUsed();
                 Instantiate(projectile, shootPoint.position, transform.rotation);
-                nextAttackTime = 1;
+                nextAttackTime = 0.1f;
             }
         }
-          
     }
     private void OnEnable()
     {

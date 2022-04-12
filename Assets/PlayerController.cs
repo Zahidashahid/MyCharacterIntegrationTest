@@ -361,7 +361,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""91d5d712-6a71-4058-863d-c5254619fc95"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/numpadMinus"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

@@ -62,13 +62,15 @@ public class PlayerMovement : MonoBehaviour
         controls = new PlayerController();
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
+        controls.Gameplay.Move.canceled += ctx => StopMoving();
+      /*  controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
+        controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;*/
         controls.Gameplay.Jump.performed += ctx => JumpPlayer();
         controls.Gameplay.Shield.performed += ctx => isShieldBtnPressed = ctx.ReadValueAsButton();
         controls.Gameplay.Shield.canceled += ctx => isShieldBtnPressed = false;
         controls.Gameplay.MelleAttackSinglePlayer.performed += ctx   => MelleAttack();
         
         controls.Gameplay.DashMove.performed +=ctx   => DashMovePlayer();
-        
         //bgSound.Play();
     }
     private void Start()
@@ -160,12 +162,7 @@ public class PlayerMovement : MonoBehaviour
         {
             MoveplayerLeft();
         }
-        else
-        {
-            StopMoving();
-        }
-        
-
+      
         if ( isShieldBtnPressed )
         {
             //Debug.Log("SetShield Called");
@@ -188,8 +185,7 @@ public class PlayerMovement : MonoBehaviour
     }
    void StopMoving()
     {
-      //  Debug.Log("Stop Move");
-        if (move.x == 0 && move.y == 0)
+        if (move.x == 0)
         {
             animator.SetFloat("Speed", Mathf.Abs(0));
             rb.velocity = new Vector2(0, rb.velocity.y);
@@ -197,28 +193,17 @@ public class PlayerMovement : MonoBehaviour
     }
    void MovePlayerRight()
    {
-        /*animator.SetFloat("Speed", Mathf.Abs(40));
-        transformObj.Translate(m, Space.World);
-        transformObj.localScale = new Vector2(1, 1);*/
         direction = 2;
-       // Debug.Log("I'm Moving right");
         rb.velocity = new Vector2(runSpeed, rb.velocity.y);
         Flip();
-        //transformObj.localScale = new Vector2(1, 1);
         animator.SetFloat("Speed", Mathf.Abs(40));
-        
-        
    }
     void MoveplayerLeft()
     {
         direction = 1;
-        
         rb.velocity = new Vector2(-runSpeed, rb.velocity.y);
         Flip();
-       // transformObj.localScale = new Vector2(-1, 1);
         animator.SetFloat("Speed", Mathf.Abs(40));
-        
-       
     }
     private void Flip()
     {
@@ -266,26 +251,33 @@ public class PlayerMovement : MonoBehaviour
     }
     void DashMovePlayer()
     {
+        
+        Debug.Log("DashMovePlayer() Grounded " + grounded);
         if (grounded)
         {
-            rb.velocity = new Vector2(10, rb.velocity.y);
-            Debug.Log("DashMovePlayer() Grounded " + grounded);
-            animator.SetFloat("Speed", Mathf.Abs(40));
+            //rb.velocity = new Vector2(5, rb.velocity.y);
             //animator.SetBool("IsJumping", true);
+
+            Debug.Log("direction " + direction);
             if (direction == 1)
             {
-                rb.velocity = new Vector2(-10, rb.velocity.y);
-                transformObj.localScale = new Vector2(-1, 1);
-                animator.SetFloat("Speed", Mathf.Abs(40));
+               //rb.velocity =  Vector2.left * 8;
+                rb.velocity = new Vector2(-8, rb.velocity.y);
+                //transformObj.localScale = new Vector2(-1, 1);
+                
             }
             else if (direction == 2)
             {
-                rb.velocity = new Vector2(10, rb.velocity.y);
-                transformObj.localScale = new Vector2(1, 1);
-                animator.SetFloat("Speed", Mathf.Abs(40));
+               // rb.velocity =  Vector2.right * 8;
+                rb.velocity = new Vector2(8, rb.velocity.y);
+                //transformObj.localScale = new Vector2(1, 1);
+                //animator.SetFloat("Speed", Mathf.Abs(40));
             }
+
         }
+        
     }
+    
     void MovePlayer()
     {
         
@@ -552,6 +544,7 @@ public class PlayerMovement : MonoBehaviour
         currentHealth = 100;
         healthBar.SetHealth(currentHealth);
         animator = GetComponent<Animator>(); ;
+        rb.bodyType = RigidbodyType2D.Static;
         // Die Animation
 
         CheckForAwatarSelected();
@@ -562,10 +555,13 @@ public class PlayerMovement : MonoBehaviour
         SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.deathSound);
         Debug.Log("Sound played!");
         // bgSound.Stop();
+        
         yield return new WaitForSeconds(2f);
+       
         Debug.Log("Wait End!");
         // Set the player on check point position
         animator.SetBool("IsDied", false);
+        
         Debug.Log("Player Reactive!");
         if ((PlayerPrefs.GetString("CurrentLevel") == "Level 1"))
             transformObj.position = transformObj.position + new Vector3(0,10f,0);
@@ -573,8 +569,9 @@ public class PlayerMovement : MonoBehaviour
         {
             transformObj.position = gm.lastCheckPointPos;
             Debug.Log("lastCheckPointPos pistion ! " + gm.lastCheckPointPos);
-            Debug.Log("Player pistion transformObj ! " + transformObj.name);
+            Debug.Log("Player position transformObj ! " + transformObj.name);
         }
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
     public int PlayerMovingDirection()
     {
