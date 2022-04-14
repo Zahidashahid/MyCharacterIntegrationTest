@@ -103,7 +103,7 @@ public class Bow : MonoBehaviour
             {
                 arrowStore.ArrowUsed();
                 Instantiate(projectile, shootPoint.position, transform.rotation);
-                nextAttackTime = 0.1f;
+                nextAttackTime = 0.01f;
             }
         }
     }

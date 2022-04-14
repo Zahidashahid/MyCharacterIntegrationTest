@@ -361,7 +361,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""91d5d712-6a71-4058-863d-c5254619fc95"",
-                    ""path"": ""<Keyboard>/numpadMinus"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -372,7 +372,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""215a83b7-7924-42e5-bed4-397da6d70f0b"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -383,7 +383,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""e64d127b-a7f6-48fb-9a56-b9c4e337607d"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -394,7 +394,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""0f7a3108-a7f7-4656-b687-9efbf9217926"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -416,7 +416,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4fcad6e7-0c81-4771-a56d-499bfe5b6966"",
-                    ""path"": ""<Keyboard>/o"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -669,7 +669,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ee9c258e-7759-4f97-8dc7-62d343565740"",
-                    ""path"": ""<Keyboard>/k"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

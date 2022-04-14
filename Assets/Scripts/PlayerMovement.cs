@@ -42,7 +42,8 @@ public class PlayerMovement : MonoBehaviour
     public float attackRange = 0.5f;
     public float attackRate = 1f; //one attack per second
     public float nextAttackTime = 0f;
-    float runSpeed = 4f;
+    float runSpeed = 6f;
+    float dashMoveSpeed = 9f;
     float jumpHight = 7f;
     //float horizontalMove = 0f;
 
@@ -150,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
         // Debug.Log("Is Grounded! "+ grounded);
         // Move Player back
         CheckGamePaused();
-         m = new Vector3(move.x, move.y)  * 10f *  Time.deltaTime;
+        // m = new Vector3(move.x, move.y)  * 10f *  Time.deltaTime;
         /*//Debug.Log(" move.x " + move.x);
           Debug.Log(" move.y " + move.y);
         Debug.Log(" move.z " + move.z);*/
@@ -262,14 +263,14 @@ public class PlayerMovement : MonoBehaviour
             if (direction == 1)
             {
                //rb.velocity =  Vector2.left * 8;
-                rb.velocity = new Vector2(-8, rb.velocity.y);
+                rb.velocity = new Vector2(-dashMoveSpeed, rb.velocity.y);
                 //transformObj.localScale = new Vector2(-1, 1);
                 
             }
             else if (direction == 2)
             {
                // rb.velocity =  Vector2.right * 8;
-                rb.velocity = new Vector2(8, rb.velocity.y);
+                rb.velocity = new Vector2(dashMoveSpeed, rb.velocity.y);
                 //transformObj.localScale = new Vector2(1, 1);
                 //animator.SetFloat("Speed", Mathf.Abs(40));
             }
