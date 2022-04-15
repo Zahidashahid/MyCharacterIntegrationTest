@@ -18,17 +18,22 @@ public class Bow : MonoBehaviour
     bool canAttack;
     int arrowLeft;
     public ArrowStore arrowStore;
+    public PlayerMovement playerMovement;
+    Vector2 BowRotateValue;
 
-    
+
     private void Awake()
     {
         controls = new PlayerController();
         controls.Gameplay.ArowHit.performed += ctx => ArrowShoot();
         controls.Gameplay.RangeAttackGP.performed += ctx => Move(ctx.ReadValue<Vector2>());
         controls.Gameplay.RangeAttackGP.canceled += ctx => rotateBow = Vector2.zero;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-        /*controls.Gameplay.MouseDirection.performed += ctx => BowRotate(ctx.ReadValue<Vector2>());
-        controls.Gameplay.MouseDirection.canceled += ctx => rotateBow = Vector2.zero;*/
+
+        controls.Gameplay.MouseDirection.performed += ctx => BowRotate(ctx.ReadValue<Vector2>());
+        controls.Gameplay.MouseDirection.performed += ctx => BowRotateValue = ctx.ReadValue<Vector2>();
+        controls.Gameplay.MouseDirection.canceled += ctx => rotateBow = Vector2.zero;
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+
 
     }
     private void Start()
@@ -39,6 +44,16 @@ public class Bow : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (BowRotateValue.x < 0 && playerMovement.direction == 2)
+        {
+            Debug.Log(" gun change" + BowRotateValue.x + playerMovement.name );
+            playerMovement.PlayerChangeDirection();
+        }
+        else if (BowRotateValue.x  > 0 && playerMovement.direction == 2)
+        {
+            Debug.Log("" + BowRotateValue.x);
+          //  playerMovement.Flip();
+        }
         if (nextAttackTime <= -1)
         {
             canAttack = true;
@@ -85,7 +100,8 @@ public class Bow : MonoBehaviour
     void BowRotate(Vector2 vector)
     {
         //Vector3 difference = Camera.main.ScreenToWorldPoint(Input.MouseDirection) - transform.position;
-        if (PauseGame.isGamePaused == false)
+       
+        if (PauseGame.isGamePaused == false )
         {
             float rotZ = Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, rotZ + offset);

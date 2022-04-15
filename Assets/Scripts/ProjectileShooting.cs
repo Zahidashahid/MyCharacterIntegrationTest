@@ -14,6 +14,7 @@ public class ProjectileShooting : MonoBehaviour
     public Transform arrowTransform;
     PlayerMovement playerMovement; // Refer to script
     public SpriteRenderer spriteRenderer;
+    public GameObject impactEffect;
     /*public AudioSource arrowHitSound;*/
     Vector2 velocity;
     void Awake()
@@ -88,10 +89,12 @@ public class ProjectileShooting : MonoBehaviour
                 Destroy(hit);
             }
                 DestroyProjectile();
+            GameObject impactGameObject = Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
         }
     }
     void DestroyProjectile()
     {
+
         Destroy(gameObject);
     }
     

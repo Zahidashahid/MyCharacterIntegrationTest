@@ -218,6 +218,20 @@ public class PlayerMovement : MonoBehaviour
         // player flip point of attck also flip is direction
         //transform.Rotate(0f, 180f, 0f);
     }
+    public void PlayerChangeDirection()
+    {
+        if ( direction == 1)
+        {
+            direction = 2;
+            transform.Rotate(0f, 180f, 0f);
+        }
+        else if ( direction == 2)
+        {
+            direction = 1;
+            transform.Rotate(0f, -180f, 0f);
+        }
+        Debug.Log("Direction " + direction + " rotaion " + transform.rotation.y);
+    }
     void JumpPlayer()
     {
         if (jumpCount < 2 || IsGrounded())

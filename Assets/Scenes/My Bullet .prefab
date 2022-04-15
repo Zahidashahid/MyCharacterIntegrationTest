@@ -103,3 +103,4 @@ MonoBehaviour:
     m_Bits: 1392
   arrowTransform: {fileID: 3081004591860669570}
   spriteRenderer: {fileID: 3081004591860669571}
+  impactEffect: {fileID: 1474776796067301254, guid: 9a945279540d6004e820d8edb2dac772, type: 3}
