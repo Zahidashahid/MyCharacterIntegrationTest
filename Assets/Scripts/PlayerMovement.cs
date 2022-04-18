@@ -223,12 +223,12 @@ public class PlayerMovement : MonoBehaviour
         if ( direction == 1)
         {
             direction = 2;
-            transform.Rotate(0f, 180f, 0f);
+            Flip();
         }
         else if ( direction == 2)
         {
             direction = 1;
-            transform.Rotate(0f, -180f, 0f);
+            Flip();
         }
         Debug.Log("Direction " + direction + " rotaion " + transform.rotation.y);
     }

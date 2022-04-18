@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class CemraController : MonoBehaviour
@@ -13,7 +12,7 @@ public class CemraController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Vector3 desiredPosiiton = new Vector3(player.position.x + 8 , player.position.y +5, transform.position.z);
+        Vector3 desiredPosiiton = new Vector3(player.position.x  , player.position.y + 5 , transform.position.z);
         Vector3 smoothedPosiiton = Vector3.Lerp(transform.position, desiredPosiiton, smoothSpeed);
         transform.position = smoothedPosiiton;
     }

@@ -45,17 +45,15 @@ public class PauseGame : MonoBehaviour
     {
         isGamePaused = !hasFocus;
         if (hasFocus == false)
-            Time.timeScale = 0;
+            Pause();
         else
-            Time.timeScale = 1;
+            Resume();
     }
 
     void OnApplicationPause()
     {
-       
         if (!isGamePaused)
         {
-
             Pause();
             Debug.Log("Pause called");
         }
@@ -64,10 +62,6 @@ public class PauseGame : MonoBehaviour
             Resume();
             Debug.Log("Resume called");
         }
-    }
-    void PauseGamePress()
-    {
-        
     }
     public void Resume()
     {

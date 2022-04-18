@@ -32,28 +32,27 @@ public class Bow : MonoBehaviour
         controls.Gameplay.MouseDirection.performed += ctx => BowRotate(ctx.ReadValue<Vector2>());
         controls.Gameplay.MouseDirection.performed += ctx => BowRotateValue = ctx.ReadValue<Vector2>();
         controls.Gameplay.MouseDirection.canceled += ctx => rotateBow = Vector2.zero;
-        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        
 
 
     }
     private void Start()
     {
+       // offset = -5f;
         nextAttackTime = -1;
         canAttack = true;
-
+        playerMovement = GetComponentInParent<PlayerMovement>();
+       
     }
-    void FixedUpdate()
+    void Update()
     {
-        if (BowRotateValue.x < 0 && playerMovement.direction == 2)
-        {
-            Debug.Log(" gun change" + BowRotateValue.x + playerMovement.name );
-            playerMovement.PlayerChangeDirection();
-        }
-        else if (BowRotateValue.x  > 0 && playerMovement.direction == 2)
-        {
-            Debug.Log("" + BowRotateValue.x);
-          //  playerMovement.Flip();
-        }
+        /* if (playerMovement.direction == 1)
+         {
+             BowRotateValue.x = -BowRotateValue.x;
+             Debug.Log("Heading towadrs left " + BowRotateValue.x);
+         }*/
+
+       
         if (nextAttackTime <= -1)
         {
             canAttack = true;
@@ -100,12 +99,29 @@ public class Bow : MonoBehaviour
     void BowRotate(Vector2 vector)
     {
         //Vector3 difference = Camera.main.ScreenToWorldPoint(Input.MouseDirection) - transform.position;
-       
+        float midYcordinate = vector.y / 2;
+        Vector3 midXcordinate = Camera.main.transform.position;
         if (PauseGame.isGamePaused == false )
         {
+
             float rotZ = Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, rotZ + offset);
-            // Debug.Log("" + rotZ + offset);
+            /*Debug.Log("" + BowRotateValue.x);
+            Debug.Log("" + playerMovement.transform.position.x);*/
+
+            Vector2 cam = Camera.main.WorldToScreenPoint(vector);
+            Debug.Log(" cam " + Screen.currentResolution);
+            Debug.Log(" cam " + BowRotateValue.x);
+            if (BowRotateValue.x < 0 && playerMovement.direction == 2)
+             {
+                 Debug.Log(" gun change" + BowRotateValue.x + playerMovement.name );
+                 playerMovement.PlayerChangeDirection();
+             }
+             else if (BowRotateValue.x > 0 && playerMovement.direction == 1)
+             {
+                  Debug.Log("" + BowRotateValue.x);
+                 playerMovement.PlayerChangeDirection();
+             }
             arrowLeft = PlayerPrefs.GetInt("ArrowPlayerHas");
         }
     }

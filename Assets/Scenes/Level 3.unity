@@ -1555,6 +1555,7 @@ MonoBehaviour:
   timeBtwShots: 3
   nextAttackTime: 0
   arrowStore: {fileID: 1097549135}
+  playerMovement: {fileID: 0}
 --- !u!61 &290729927
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20986,6 +20987,7 @@ MonoBehaviour:
   timeBtwShots: 3
   nextAttackTime: 0
   arrowStore: {fileID: 1097549135}
+  playerMovement: {fileID: 0}
 --- !u!1 &1806290798
 GameObject:
   m_ObjectHideFlags: 0

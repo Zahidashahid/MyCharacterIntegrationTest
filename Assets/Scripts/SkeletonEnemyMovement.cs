@@ -275,14 +275,14 @@ public class SkeletonEnemyMovement : MonoBehaviour
         {
             rotation.y = 180f;
             direction = 2;
-            Debug.Log("Skeleton Flip to left" );
+            //Debug.Log("Skeleton Flip to left" );
 
         }
         else if (inRange &&  transform.position.x < target.position.x && direction == 2)
         {
             rotation.y = 180f;
             direction = 1;
-            Debug.Log("Skeleton Flip to right");
+            //Debug.Log("Skeleton Flip to right");
         }
         else
         {

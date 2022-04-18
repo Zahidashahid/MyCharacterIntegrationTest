@@ -49,11 +49,11 @@ public class MelleAttack : MonoBehaviour
     }
     public void MelleAttackLogic() // melle attack 
     {
-        Debug.Log("Here In Melee attack script " );
+        //Debug.Log("Here In Melee attack script " );
         distance = Vector2.Distance(transform.position, target.transform.position);
         attackDistance = 8;
-        Debug.Log(" Value of distance is " + distance);
-        Debug.Log("Value of attack distance is " + attackDistance);
+        /*Debug.Log(" Value of distance is " + distance);
+        Debug.Log("Value of attack distance is " + attackDistance);*/
         
         if (attackDistance >= distance)
         {
