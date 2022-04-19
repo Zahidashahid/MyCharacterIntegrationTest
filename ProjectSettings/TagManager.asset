@@ -35,6 +35,7 @@ TagManager:
   - P2HealthBar
   - Master volume slider
   - MusicSlider
+  - Gun
   layers:
   - Default
   - TransparentFX
@@ -53,8 +54,8 @@ TagManager:
   - Gift
   - Player1
   - Player2
-  - 
-  - 
+  - RightArm
+  - LfetArm
   - 
   - 
   - 
@@ -83,6 +84,12 @@ TagManager:
     locked: 0
   - name: player
     uniqueID: 3191137133
+    locked: 0
+  - name: LeftArm
+    uniqueID: 1040412247
+    locked: 0
+  - name: Arm
+    uniqueID: 3260773931
     locked: 0
   - name: GameOver
     uniqueID: 2846014419
