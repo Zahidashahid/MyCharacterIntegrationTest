@@ -11,7 +11,6 @@ public class Bow : MonoBehaviour
     public Transform shootPoint;
     public GameObject projectile;
 
-    public float offset;
     public float timeBtwShots;
    // public float startTimeBtwShots;
     public float nextAttackTime;
@@ -38,7 +37,6 @@ public class Bow : MonoBehaviour
     }
     private void Start()
     {
-       // offset = -5f;
         nextAttackTime = -1;
         canAttack = true;
         playerMovement = GetComponentInParent<PlayerMovement>();
@@ -48,8 +46,8 @@ public class Bow : MonoBehaviour
     {
         /* if (playerMovement.direction == 1)
          {
-             BowRotateValue.x = -BowRotateValue.x;
-             Debug.Log("Heading towadrs left " + BowRotateValue.x);
+             mousePoint.x = -mousePoint.x;
+             Debug.Log("Heading towadrs left " + mousePoint.x);
          }*/
 
        
@@ -98,29 +96,32 @@ public class Bow : MonoBehaviour
     }
     void BowRotate(Vector2 vector)
     {
-        //Vector3 difference = Camera.main.ScreenToWorldPoint(Input.MouseDirection) - transform.position;
-        float midYcordinate = vector.y / 2;
-        Vector3 midXcordinate = Camera.main.transform.position;
+        /*-----------Weapon i.e spreat object rotation with mouse position --------*/
+        Vector2 mousePoint = Camera.main.ScreenToWorldPoint(vector) - transform.position;
+
         if (PauseGame.isGamePaused == false )
         {
 
-            float rotZ = Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, rotZ + offset);
-            /*Debug.Log("" + BowRotateValue.x);
-            Debug.Log("" + playerMovement.transform.position.x);*/
+            float rotZ = Mathf.Atan2(mousePoint.y, mousePoint.x) * Mathf.Rad2Deg;
+            if(playerMovement.direction == 2)
+                transform.rotation = Quaternion.Euler(0f, 0f, rotZ );
+            else
+                transform.rotation = Quaternion.Euler(0f, 180f, 180 - rotZ);
+            Debug.Log("rotZ " + rotZ );
+         
 
-            Vector2 cam = Camera.main.WorldToScreenPoint(vector);
-            Debug.Log(" cam " + Screen.currentResolution);
-            Debug.Log(" cam " + BowRotateValue.x);
-            if (BowRotateValue.x < 0 && playerMovement.direction == 2)
+
+            if (mousePoint.x < 0 && playerMovement.direction == 2)
              {
-                 Debug.Log(" gun change" + BowRotateValue.x + playerMovement.name );
-                 playerMovement.PlayerChangeDirection();
+                 Debug.Log(" gun change" + mousePoint.x + playerMovement.name );
+                transform.Rotate(180f, 180f, 180f);
+                playerMovement.PlayerChangeDirection();
              }
-             else if (BowRotateValue.x > 0 && playerMovement.direction == 1)
+             else if (mousePoint.x > 0 && playerMovement.direction == 1)
              {
-                  Debug.Log("" + BowRotateValue.x);
-                 playerMovement.PlayerChangeDirection();
+                  Debug.Log("" + mousePoint.x);
+                transform.Rotate(0f, 180f, 0f);
+                playerMovement.PlayerChangeDirection();
              }
             arrowLeft = PlayerPrefs.GetInt("ArrowPlayerHas");
         }

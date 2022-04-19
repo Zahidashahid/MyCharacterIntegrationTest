@@ -11,7 +11,6 @@ public class Weapon : MonoBehaviour
     public LineRenderer lineRenderer;
     void Awake()
     {
-
         controls = new PlayerController();
         controls.Gameplay.GunShoot.performed += ctx => Shoot();
     }
