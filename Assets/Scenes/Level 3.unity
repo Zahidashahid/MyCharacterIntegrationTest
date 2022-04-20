@@ -3007,7 +3007,7 @@ GameObject:
   - component: {fileID: 553945084}
   m_Layer: 17
   m_Name: RightArm
-  m_TagString: Untagged
+  m_TagString: BodyParts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13002,7 +13002,7 @@ GameObject:
   - component: {fileID: 814051746}
   m_Layer: 12
   m_Name: IS - Bow 472-1
-  m_TagString: Untagged
+  m_TagString: WeaponSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17457,7 +17457,7 @@ GameObject:
   - component: {fileID: 1371645076}
   m_Layer: 18
   m_Name: 'LeftArm '
-  m_TagString: Untagged
+  m_TagString: BodyParts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

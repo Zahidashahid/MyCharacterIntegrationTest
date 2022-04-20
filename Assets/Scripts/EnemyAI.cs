@@ -54,6 +54,7 @@ public class EnemyAI : MonoBehaviour
                     PlayerPrefs.SetInt("CurrentHealth", 100);
                     PlayerPrefs.SetInt("Lifes", 3);
                     SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.deathSound);
+                    
                     StartCoroutine(playerMovement.Die());
                     this.enabled = false;
                 }

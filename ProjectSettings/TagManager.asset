@@ -36,6 +36,8 @@ TagManager:
   - Master volume slider
   - MusicSlider
   - Gun
+  - BodyParts
+  - WeaponSprite
   layers:
   - Default
   - TransparentFX

@@ -51,7 +51,9 @@ public class PlayerMovement : MonoBehaviour
     public Transform weaponAttackPoint;
     public LayerMask enemyLayers;
 
-    private Shield shield; //Player Shield
+    //private Shield shield; //Player Shield
+    private GameObject bodyParts;
+    private GameObject weapon;
     private GameMaster gm;
     public TMP_Text lifesText;
     GameUIScript gameUIScript;
@@ -64,12 +66,16 @@ public class PlayerMovement : MonoBehaviour
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
         controls.Gameplay.Move.canceled += ctx => StopMoving();
+        controls.Gameplay.Move.canceled += ctx => SetActiveBodyParts();
       /*  controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;*/
         controls.Gameplay.Jump.performed += ctx => JumpPlayer();
+        controls.Gameplay.Jump.canceled += ctx => SetActiveBodyParts();
         controls.Gameplay.Shield.performed += ctx => isShieldBtnPressed = ctx.ReadValueAsButton();
         controls.Gameplay.Shield.canceled += ctx => isShieldBtnPressed = false;
+        controls.Gameplay.Shield.canceled += ctx => SetActiveBodyParts();
         controls.Gameplay.MelleAttackSinglePlayer.performed += ctx   => MelleAttack();
+        controls.Gameplay.MelleAttackSinglePlayer.canceled += ctx   => SetActiveBodyParts();
         
         controls.Gameplay.DashMove.performed +=ctx   => DashMovePlayer();
         //bgSound.Play();
@@ -78,8 +84,9 @@ public class PlayerMovement : MonoBehaviour
     {
         numberOfDamgeTake = 0;
         CheckForAwatarSelected();
-        shield = GetComponent<Shield>();
         bgSound = GameObject.FindGameObjectWithTag("BGmusicGameObject").GetComponent<AudioSource>();
+        bodyParts = GameObject.FindGameObjectWithTag("BodyParts");
+        weapon = GameObject.FindGameObjectWithTag("WeaponSprite");
         //Eagle_animator = GameObject.FindGameObjectWithTag("Enemy").transform<Animator>();
         animator = GetComponent<Animator>(); ;
         Debug.Log("Animator is assign " + animator.name);
@@ -194,6 +201,7 @@ public class PlayerMovement : MonoBehaviour
     }
    void MovePlayerRight()
    {
+        DisableBodyParts();
         direction = 2;
         rb.velocity = new Vector2(runSpeed, rb.velocity.y);
         Flip();
@@ -201,6 +209,7 @@ public class PlayerMovement : MonoBehaviour
    }
     void MoveplayerLeft()
     {
+        DisableBodyParts();
         direction = 1;
         rb.velocity = new Vector2(-runSpeed, rb.velocity.y);
         Flip();
@@ -236,6 +245,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (jumpCount < 2 || IsGrounded())
         {
+            DisableBodyParts();
             jumpCount++;
             grounded = false;
             rb.velocity = new Vector2(1, jumpHight);
@@ -366,22 +376,24 @@ public class PlayerMovement : MonoBehaviour
     }
     void SetShield()
     {
+        DisableBodyParts();
         activeShield = true;
         animator.SetBool("Sheild", true);
     }
     void DisableShield()
     {
+        //SetActiveBodyParts();
         activeShield = false;
         animator.SetBool("Sheild", false);
     }
     void MelleAttack()
     {
-
         Debug.Log(Time.deltaTime + " ||| " + nextAttackTime); 
         if (Time.time >= nextAttackTime)
         {
-
+            DisableBodyParts();
             StartCoroutine(Attack());
+           
             //Attack();
             nextAttackTime = Time.time + 1f / attackRate;
             /*
@@ -472,16 +484,19 @@ public class PlayerMovement : MonoBehaviour
             else   
                 break;
         }
-        
     }
     /*-------------Show Attack point oject in scene for better Visibility--------------------*/
-    void OnDrawGizmoSelected()
+    public void SetActiveBodyParts()
     {
-        if(attackPoint == null)
-        {
-            return;
-        }
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Debug.Log("Setting Active");
+        bodyParts.SetActive (true);
+        weapon.SetActive (true);
+    }
+    public void DisableBodyParts()
+    {
+        Debug.Log("Diable ");
+        bodyParts.SetActive(false);
+        weapon.SetActive(false);
     }
     public void TakeDamage(int damage)
     {
@@ -495,29 +510,36 @@ public class PlayerMovement : MonoBehaviour
                 currentHealth -= damage;
                 PlayerPrefs.SetInt("CurrentHealth", currentHealth);
                 healthBar.SetHealth(currentHealth);
-                StartCoroutine(Hurt());
+                // DisableBodyParts();
+
+                if (currentHealth > 0.01)
+                    StartCoroutine(Hurt());
+                //SetActiveBodyParts();
                 // play hurt animation
                 // StartCoroutine(HurtAnimation());
-                if (currentHealth <= 0)
-                {
-                    PlayerPrefs.SetInt("CurrentHealth", 100);
-                    lifes -= 1;
-                    lifesText.text = "X " + lifes;
-                    PlayerPrefs.SetInt("Lifes", lifes);     
-                }
-                if (currentHealth <= 0 && lifes <= 0)
+
+                if (currentHealth <= 0 && lifes <= 1)
                 {
                     // bgSound.Stop();
                     PlayerPrefs.SetInt("CurrentHealth", 100);
                     PlayerPrefs.SetInt("Lifes", 3);
+                    // Reset gifts collected and last check point
+
                     SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.deathSound);
+                    FindObjectOfType<GameUIScript>().ResetDataOfLastGame();
+                    FindObjectOfType<GameUIScript>().RestLastCheckPoint();
                     StartCoroutine(Die());
                     this.enabled = false;
                 }
-                else if (currentHealth <= 0)
+                else if (currentHealth <= 0 && lifes > 1)
                 {
                     StartCoroutine(OnOneDeath());
+                    PlayerPrefs.SetInt("CurrentHealth", 100);
+                    lifes -= 1;
+                    lifesText.text = "X " + lifes;
+                    PlayerPrefs.SetInt("Lifes", lifes);
                 }
+
             }
             else
                 numberOfDamgeTake += 1;
@@ -536,14 +558,17 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator Hurt()
     {
+        DisableBodyParts();
         animator.SetBool("IsHurt", true);
         yield return new WaitForSeconds(0.3f);
         animator.SetBool("IsHurt", false);
+        SetActiveBodyParts();
     }
    
     public IEnumerator Die()
     {
         // Die Animation
+        DisableBodyParts();
         animator.SetBool("IsDied", true);
         Debug.Log("Player died!");
         bgSound.Stop();
@@ -552,16 +577,17 @@ public class PlayerMovement : MonoBehaviour
         // Disable the player
         FindObjectOfType<GameUIScript>().GameOver();
         SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.deathSound);
+        
     }
     
     public IEnumerator OnOneDeath()
     {
+        DisableBodyParts();
         currentHealth = 100;
         healthBar.SetHealth(currentHealth);
         animator = GetComponent<Animator>(); ;
         rb.bodyType = RigidbodyType2D.Static;
         // Die Animation
-
         CheckForAwatarSelected();
         animator.SetBool("IsDied", true);
         Debug.Log("Player died!"); 
@@ -570,13 +596,9 @@ public class PlayerMovement : MonoBehaviour
         SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.deathSound);
         Debug.Log("Sound played!");
         // bgSound.Stop();
-        
         yield return new WaitForSeconds(2f);
-       
-        Debug.Log("Wait End!");
         // Set the player on check point position
         animator.SetBool("IsDied", false);
-        
         Debug.Log("Player Reactive!");
         if ((PlayerPrefs.GetString("CurrentLevel") == "Level 1"))
             transformObj.position = transformObj.position + new Vector3(0,10f,0);
@@ -587,6 +609,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Player position transformObj ! " + transformObj.name);
         }
         rb.bodyType = RigidbodyType2D.Dynamic;
+        SetActiveBodyParts();
     }
     public int PlayerMovingDirection()
     {

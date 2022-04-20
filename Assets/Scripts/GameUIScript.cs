@@ -147,14 +147,9 @@ public class GameUIScript : MonoBehaviour
                 gameOverText.enabled = false;*/
         //SceneManager.LoadScene("Level 1");
         restartBtnSound.Play();
-        isNewGame = true;
-        PlayerPrefs.SetInt("ArrowPlayerHas", 10);
+     
+        ResetDataOfLastGame();
 
-        PlayerPrefs.SetInt("RecentGemCollected", 0);
-        PlayerPrefs.SetInt("RecentCherryCollected", 0);
-        PlayerPrefs.SetInt("GemCollectedTillLastCheckPoint", 0);
-        PlayerPrefs.SetInt("CherryCollectedTillLastCheckPoint", 0);
-        //Reset the last check point
         bgSound.Play();
         Time.timeScale = 1f;
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -162,20 +157,29 @@ public class GameUIScript : MonoBehaviour
         string currentLevel = PlayerPrefs.GetString("CurrentLevel");
         SceneManager.LoadScene(currentLevel);
     }
-
-    public void RestartLevel()
+    public void ResetDataOfLastGame()
     {
-        pauseGameScript.Resume();
-        playerMovement.Reset();
+        MainMenu.isNewGame = true;
         isNewGame = true;
+        PlayerPrefs.SetInt("ArrowPlayerHas", 10);
 
-        //Reset Gift collected
         PlayerPrefs.SetInt("RecentGemCollected", 0);
         PlayerPrefs.SetInt("RecentCherryCollected", 0);
         PlayerPrefs.SetInt("GemCollectedTillLastCheckPoint", 0);
         PlayerPrefs.SetInt("CherryCollectedTillLastCheckPoint", 0);
-        //Reset arrow Store
-        PlayerPrefs.SetInt("ArrowPlayerHas", 10);
+    }
+    public void RestLastCheckPoint()
+    {
+
+        PlayerPrefs.SetFloat("LastcheckPointX", -4);
+        PlayerPrefs.SetFloat("LastcheckPointy", 4);
+    }
+    public void RestartLevel()
+    {
+        pauseGameScript.Resume();
+        playerMovement.Reset();
+        ResetDataOfLastGame();
+
         //Reset Last check point
         string currentLevel = PlayerPrefs.GetString("CurrentLevel");
         SceneManager.LoadScene(currentLevel);
