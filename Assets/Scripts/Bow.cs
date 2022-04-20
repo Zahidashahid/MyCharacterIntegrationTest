@@ -74,7 +74,6 @@ public class Bow : MonoBehaviour
             }
             else if (mousePoint.x > 0 && playerMovement.direction == 1)
             {
-                Debug.Log("" + mousePoint.x);
                 transform.Rotate(0f, 180f, 0f);
                 playerMovement.PlayerChangeDirection();
             }

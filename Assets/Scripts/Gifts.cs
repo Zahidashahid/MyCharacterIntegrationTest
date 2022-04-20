@@ -20,9 +20,9 @@ public class Gifts : MonoBehaviour
         //collider = GetComponent<Collider>();
         cherryAmount =  PlayerPrefs.GetInt("RecentCherryCollected");
         gemAmount = PlayerPrefs.GetInt("RecentGemCollected");
-        Debug.Log("gemAmount =" + PlayerPrefs.GetInt("RecentGemCollected"));
+     /*   Debug.Log("gemAmount =" + PlayerPrefs.GetInt("RecentGemCollected"));
         Debug.Log("cherryAmount =" + PlayerPrefs.GetInt("RecentCherryCollected"));
-        Debug.Log("gift data fatched");
+        Debug.Log("gift data fatched");*/
 
     }
     private void Update()

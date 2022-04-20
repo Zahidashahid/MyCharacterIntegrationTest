@@ -70,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
       /*  controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;*/
         controls.Gameplay.Jump.performed += ctx => JumpPlayer();
-        controls.Gameplay.Jump.canceled += ctx => SetActiveBodyParts();
         controls.Gameplay.Shield.performed += ctx => isShieldBtnPressed = ctx.ReadValueAsButton();
         controls.Gameplay.Shield.canceled += ctx => isShieldBtnPressed = false;
         controls.Gameplay.Shield.canceled += ctx => SetActiveBodyParts();
@@ -88,8 +87,7 @@ public class PlayerMovement : MonoBehaviour
         bodyParts = GameObject.FindGameObjectWithTag("BodyParts");
         weapon = GameObject.FindGameObjectWithTag("WeaponSprite");
         //Eagle_animator = GameObject.FindGameObjectWithTag("Enemy").transform<Animator>();
-        animator = GetComponent<Animator>(); ;
-        Debug.Log("Animator is assign " + animator.name);
+        animator = GetComponent<Animator>(); 
         currentHealth = maxHealth;
         lifes = PlayerPrefs.GetInt("Lifes");
         currentHealth = PlayerPrefs.GetInt("CurrentHealth");
@@ -239,20 +237,17 @@ public class PlayerMovement : MonoBehaviour
             direction = 1;
             Flip();
         }
-        Debug.Log("Direction " + direction + " rotaion " + transform.rotation.y);
     }
     void JumpPlayer()
     {
         if (jumpCount < 2 || IsGrounded())
         {
-            DisableBodyParts();
             jumpCount++;
             grounded = false;
             rb.velocity = new Vector2(1, jumpHight);
-            Debug.Log(" rb.velocity.x " + rb.velocity.x);
             animator.SetBool("IsJumping", true);
-            Debug.Log(" jump count is " + jumpCount);
-            Debug.Log(" IsGrounded() is " + IsGrounded());
+           /* Debug.Log(" jump count is " + jumpCount);
+            Debug.Log(" IsGrounded() is " + IsGrounded());*/
             SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.jumpSound);
             grounded = false;
             if (direction == 1)
@@ -594,7 +589,6 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(" died!" + animator.GetBool("IsDied"));
        // PlayerPrefs.SetInt("ArrowPlayerHas", 10);
         SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.deathSound);
-        Debug.Log("Sound played!");
         // bgSound.Stop();
         yield return new WaitForSeconds(2f);
         // Set the player on check point position
@@ -604,9 +598,9 @@ public class PlayerMovement : MonoBehaviour
             transformObj.position = transformObj.position + new Vector3(0,10f,0);
         else
         {
-            transformObj.position = gm.lastCheckPointPos;
+            transformObj.position = gm.lastCheckPointPos;/*
             Debug.Log("lastCheckPointPos pistion ! " + gm.lastCheckPointPos);
-            Debug.Log("Player position transformObj ! " + transformObj.name);
+            Debug.Log("Player position transformObj ! " + transformObj.name);*/
         }
         rb.bodyType = RigidbodyType2D.Dynamic;
         SetActiveBodyParts();
