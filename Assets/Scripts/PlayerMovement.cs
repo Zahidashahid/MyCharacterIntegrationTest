@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     public int numberOfDamgeTake ;
 
     public bool activeShield;
+    public bool isWalking;
 
     //private float dashTime = 40f;
     public float attackRange = 0.5f;
@@ -66,7 +67,6 @@ public class PlayerMovement : MonoBehaviour
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
         controls.Gameplay.Move.canceled += ctx => StopMoving();
-        controls.Gameplay.Move.canceled += ctx => SetActiveBodyParts();
       /*  controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;*/
         controls.Gameplay.Jump.performed += ctx => JumpPlayer();
@@ -155,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Debug.Log("Is Grounded! "+ grounded);
         // Move Player back
-        CheckGamePaused();
+        //CheckGamePaused();
         // m = new Vector3(move.x, move.y)  * 10f *  Time.deltaTime;
         /*//Debug.Log(" move.x " + move.x);
           Debug.Log(" move.y " + move.y);
@@ -191,15 +191,17 @@ public class PlayerMovement : MonoBehaviour
     }
    void StopMoving()
     {
+        isWalking = false;
         if (move.x == 0)
         {
+           
             animator.SetFloat("Speed", Mathf.Abs(0));
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }
    void MovePlayerRight()
    {
-        DisableBodyParts();
+        isWalking = true;
         direction = 2;
         rb.velocity = new Vector2(runSpeed, rb.velocity.y);
         Flip();
@@ -207,7 +209,7 @@ public class PlayerMovement : MonoBehaviour
    }
     void MoveplayerLeft()
     {
-        DisableBodyParts();
+        isWalking = true;
         direction = 1;
         rb.velocity = new Vector2(-runSpeed, rb.velocity.y);
         Flip();
@@ -227,15 +229,18 @@ public class PlayerMovement : MonoBehaviour
     }
     public void PlayerChangeDirection()
     {
-        if ( direction == 1)
+        if(isWalking == false)
         {
-            direction = 2;
-            Flip();
-        }
-        else if ( direction == 2)
-        {
-            direction = 1;
-            Flip();
+            if (direction == 1)
+            {
+                direction = 2;
+                Flip();
+            }
+            else if (direction == 2)
+            {
+                direction = 1;
+                Flip();
+            }
         }
     }
     void JumpPlayer()
@@ -613,15 +618,15 @@ public class PlayerMovement : MonoBehaviour
             return 2;
     }
 
-    void CheckGamePaused()
+/*    void CheckGamePaused()
     {
         if (PauseGame.isGamePaused)
         {
             //bgSound.pitch *= .5f;
         }
-       /* else
-            bgSound.pitch = 1f;*/
-    }
+       *//* else
+            bgSound.pitch = 1f;*//*
+    }*/
 
     public void Reset()
     {

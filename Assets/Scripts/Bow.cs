@@ -62,20 +62,37 @@ public class Bow : MonoBehaviour
         if (PauseGame.isGamePaused == false )
         {
             float rotZ = Mathf.Atan2(mousePoint.y, mousePoint.x) * Mathf.Rad2Deg;
-            if(playerMovement.direction == 2)
-                transform.rotation = Quaternion.Euler(0f, 0f, rotZ );
+           
+            if (playerMovement.direction == 2)
+            {
+                if ( rotZ > -90 && rotZ < 90)
+                {
+                    transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+                }
+            }
             else
-                transform.rotation = Quaternion.Euler(0f, 180f, 180 - rotZ);
+            {
+                if ((rotZ > 90 && rotZ < 180) || (rotZ > -180 && rotZ < -90))
+                {
+                    transform.rotation = Quaternion.Euler(0f, 180f, 180 - rotZ);
+                }
+            }
             
             if (mousePoint.x < 0 && playerMovement.direction == 2)
             {
-                transform.Rotate(180f, 180f, 180f);
-                playerMovement.PlayerChangeDirection();
+                if(playerMovement.isWalking == false)
+                {
+                    transform.Rotate(180f, 180f, 180f);
+                    playerMovement.PlayerChangeDirection();
+                }
             }
             else if (mousePoint.x > 0 && playerMovement.direction == 1)
             {
-                transform.Rotate(0f, 180f, 0f);
-                playerMovement.PlayerChangeDirection();
+                if(playerMovement.isWalking == false)
+                {
+                    transform.Rotate(0f, 180f, 0f);
+                    playerMovement.PlayerChangeDirection();
+                }
             }
             arrowLeft = PlayerPrefs.GetInt("ArrowPlayerHas");
         }
