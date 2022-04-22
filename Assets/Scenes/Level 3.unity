@@ -1554,6 +1554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 21341084}
   projectile: {fileID: 3081004591860669597, guid: ee22beff04f265c4fac7fd797e53a3bc, type: 3}
+  animator: {fileID: 0}
   timeBtwShots: 3
   nextAttackTime: 0
   arrowStore: {fileID: 1097549135}
@@ -12077,6 +12078,7 @@ MonoBehaviour:
   lifes: 3
   numberOfDamgeTake: 0
   activeShield: 0
+  isWalking: 0
   attackRange: 3
   attackRate: 3
   nextAttackTime: 2
@@ -18780,6 +18782,7 @@ MonoBehaviour:
   lifes: 0
   numberOfDamgeTake: 0
   activeShield: 0
+  isWalking: 0
   attackRange: 1
   attackRate: 1
   nextAttackTime: 0
@@ -21324,6 +21327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 131234007}
   projectile: {fileID: 3834169631787135528, guid: 476d68b852c24ae43b7faf05067e41ed, type: 3}
+  animator: {fileID: 0}
   timeBtwShots: 3
   nextAttackTime: 0
   arrowStore: {fileID: 1097549135}
@@ -23976,6 +23980,7 @@ MonoBehaviour:
   lifes: 3
   numberOfDamgeTake: 0
   activeShield: 0
+  isWalking: 0
   attackRange: 3
   attackRate: 3
   nextAttackTime: 2

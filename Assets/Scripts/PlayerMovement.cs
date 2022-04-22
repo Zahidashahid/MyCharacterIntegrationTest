@@ -46,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
     float runSpeed = 6f;
     float dashMoveSpeed = 9f;
     float jumpHight = 7f;
-    //float horizontalMove = 0f;
 
     public Transform attackPoint;
     public Transform weaponAttackPoint;
@@ -551,7 +550,7 @@ public class PlayerMovement : MonoBehaviour
     {
         activeShield = false;
         animator.SetBool("Sheild", false);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(0.8f);
         activeShield = true;
         animator.SetBool("Sheild", true);
         numberOfDamgeTake = 0;
@@ -560,9 +559,11 @@ public class PlayerMovement : MonoBehaviour
     {
         DisableBodyParts();
         animator.SetBool("IsHurt", true);
-        yield return new WaitForSeconds(0.3f);
+        rb.bodyType = RigidbodyType2D.Static;
+        yield return new WaitForSeconds(0.8f);
         animator.SetBool("IsHurt", false);
         SetActiveBodyParts();
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
    
     public IEnumerator Die()
@@ -596,6 +597,7 @@ public class PlayerMovement : MonoBehaviour
         SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.deathSound);
         // bgSound.Stop();
         yield return new WaitForSeconds(2f);
+       
         // Set the player on check point position
         animator.SetBool("IsDied", false);
         Debug.Log("Player Reactive!");
@@ -609,6 +611,7 @@ public class PlayerMovement : MonoBehaviour
         }
         rb.bodyType = RigidbodyType2D.Dynamic;
         SetActiveBodyParts();
+        
     }
     public int PlayerMovingDirection()
     {

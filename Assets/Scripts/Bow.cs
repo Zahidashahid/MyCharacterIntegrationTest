@@ -11,7 +11,7 @@ public class Bow : MonoBehaviour
     Vector3 rotateBow;
     public Transform shootPoint;
     public GameObject projectile;
-
+    public Animator animator;
     public float timeBtwShots;
     public float nextAttackTime;
     bool canAttack;
@@ -24,6 +24,7 @@ public class Bow : MonoBehaviour
     {
         controls = new PlayerController();
         controls.Gameplay.ArowHit.performed += ctx => ArrowShoot();
+        controls.Gameplay.ArowHit.canceled += ctx => ArrowShootStop();
         controls.Gameplay.RangeAttackGP.performed += ctx => Move(ctx.ReadValue<Vector2>());
         controls.Gameplay.RangeAttackGP.canceled += ctx => rotateBow = Vector2.zero;
 
@@ -36,7 +37,7 @@ public class Bow : MonoBehaviour
         nextAttackTime = -1;
         canAttack = true;
         playerMovement = GetComponentInParent<PlayerMovement>();
-       
+        animator = GetComponentInParent<Animator>();
     }
     void Update()
     {
@@ -105,10 +106,15 @@ public class Bow : MonoBehaviour
             if (arrowLeft > 0 && canAttack)
             {
                 arrowStore.ArrowUsed();
+                animator.SetBool("Attack1", true);
                 Instantiate(projectile, shootPoint.position, transform.rotation);
                 nextAttackTime = 0.01f;
             }
         }
+    }
+    void ArrowShootStop()
+    {
+        animator.SetBool("Attack1", false);
     }
     private void OnEnable()
     {

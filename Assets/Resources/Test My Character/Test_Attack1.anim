@@ -14,46 +14,59 @@ AnimationClip:
   m_RotationCurves: []
   m_CompressedRotationCurves: []
   m_EulerCurves: []
-  m_PositionCurves: []
-  m_ScaleCurves: []
-  m_FloatCurves:
+  m_PositionCurves:
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -0.46
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: {x: -3.232, y: 0.13, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
         weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+        inWeight: {x: 0, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0, y: 0.33333334, z: 0.33333334}
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_Offset.x
-    path: 
-    classID: 60
-    script: {fileID: 0}
+    path: ArrowGameObject/RightArm
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0.207, y: 0.168, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: ArrowGameObject/IS - Bow 472-1
+  m_ScaleCurves: []
+  m_FloatCurves: []
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -5782281541851378790, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
+      value: {fileID: -1137341121950903042, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
+    - time: 0.016666668
+      value: {fileID: 1955445387488471438, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
+    - time: 0.033333335
+      value: {fileID: 2833253478284396263, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
+    - time: 0.05
+      value: {fileID: -5962673593370537443, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
     - time: 0.06666667
-      value: {fileID: -8544753890835424817, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
-    - time: 0.15
-      value: {fileID: 8518187136487611317, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
-    - time: 0.21666667
-      value: {fileID: 1069153962943939473, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
-    - time: 0.3
-      value: {fileID: 4701836457577628699, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
-    - time: 0.36666667
-      value: {fileID: 426964518914046091, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
-    - time: 0.45
-      value: {fileID: -5453505529890009055, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
-    - time: 0.51666665
-      value: {fileID: -3591509848170650452, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
+      value: {fileID: -3206966068896644243, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
+    - time: 0.083333336
+      value: {fileID: 3260265408162018777, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
+    - time: 0.1
+      value: {fileID: 3090338140564006587, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
+    - time: 0.11666667
+      value: {fileID: 6646940092265395631, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -73,27 +86,34 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     - serializedVersion: 2
-      path: 0
-      attribute: 413499720
+      path: 335766634
+      attribute: 1
       script: {fileID: 0}
-      typeID: 60
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 1329976004
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
       customType: 0
       isPPtrCurve: 0
     pptrCurveMapping:
-    - {fileID: -5782281541851378790, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
-    - {fileID: -8544753890835424817, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
-    - {fileID: 8518187136487611317, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
-    - {fileID: 1069153962943939473, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
-    - {fileID: 4701836457577628699, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
-    - {fileID: 426964518914046091, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
-    - {fileID: -5453505529890009055, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
-    - {fileID: -3591509848170650452, guid: 2702175dd4fe2ba43a09ec31d8104761, type: 3}
+    - {fileID: -1137341121950903042, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
+    - {fileID: 1955445387488471438, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
+    - {fileID: 2833253478284396263, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
+    - {fileID: -5962673593370537443, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
+    - {fileID: -3206966068896644243, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
+    - {fileID: 3260265408162018777, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
+    - {fileID: 3090338140564006587, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
+    - {fileID: 6646940092265395631, guid: 4b0e1981653314644830e761dff2d5f9, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5333333
+    m_StopTime: 0.13333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -114,7 +134,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -0.46
+        value: -3.232
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -124,9 +144,104 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_Offset.x
-    path: 
-    classID: 60
+    attribute: m_LocalPosition.x
+    path: ArrowGameObject/RightArm
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.13
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: ArrowGameObject/RightArm
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: ArrowGameObject/RightArm
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.207
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: ArrowGameObject/IS - Bow 472-1
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.168
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: ArrowGameObject/IS - Bow 472-1
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: ArrowGameObject/IS - Bow 472-1
+    classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
