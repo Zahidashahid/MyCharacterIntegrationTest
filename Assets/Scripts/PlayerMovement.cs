@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     public float nextAttackTime = 0f;
     float runSpeed = 6f;
     float dashMoveSpeed = 9f;
-    float jumpHight = 7f;
+    float jumpHight = 10f;
 
     public Transform attackPoint;
     public Transform weaponAttackPoint;
@@ -248,7 +248,7 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpCount++;
             grounded = false;
-            rb.velocity = new Vector2(1, jumpHight);
+            rb.velocity = new Vector2(1f, jumpHight);
             animator.SetBool("IsJumping", true);
            /* Debug.Log(" jump count is " + jumpCount);
             Debug.Log(" IsGrounded() is " + IsGrounded());*/
@@ -256,11 +256,11 @@ public class PlayerMovement : MonoBehaviour
             grounded = false;
             if (direction == 1)
             {
-                rb.velocity = new Vector2(-5, rb.velocity.y);
+                rb.velocity = new Vector2(-3, rb.velocity.y);
             }
             else if (direction == 2)
             {
-                rb.velocity = new Vector2(5, rb.velocity.y);
+                rb.velocity = new Vector2(3, rb.velocity.y);
             }
             if (jumpCount > 2)
             {
