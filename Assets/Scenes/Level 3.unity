@@ -1553,6 +1553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 21341084}
+  animator: {fileID: 0}
   projectile: {fileID: 3081004591860669597, guid: ee22beff04f265c4fac7fd797e53a3bc, type: 3}
   timeBtwShots: 3
   nextAttackTime: 0
@@ -2453,7 +2454,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -132.99988, y: -935}
+  m_AnchoredPosition: {x: -132.99986, y: -935}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &490540004
@@ -12077,6 +12078,7 @@ MonoBehaviour:
   lifes: 3
   numberOfDamgeTake: 0
   activeShield: 0
+  isWalking: 0
   attackRange: 3
   attackRate: 3
   nextAttackTime: 2
@@ -18780,6 +18782,7 @@ MonoBehaviour:
   lifes: 0
   numberOfDamgeTake: 0
   activeShield: 0
+  isWalking: 0
   attackRange: 1
   attackRate: 1
   nextAttackTime: 0
@@ -21323,6 +21326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 131234007}
+  animator: {fileID: 0}
   projectile: {fileID: 3834169631787135528, guid: 476d68b852c24ae43b7faf05067e41ed, type: 3}
   timeBtwShots: 3
   nextAttackTime: 0
@@ -23272,7 +23276,6 @@ GameObject:
   - component: {fileID: 1940599840}
   - component: {fileID: 1940599839}
   - component: {fileID: 1940599850}
-  - component: {fileID: 1940599844}
   m_Layer: 7
   m_Name: MushrromPlayer
   m_TagString: Player
@@ -23905,22 +23908,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1940599844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940599834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89ca78b314b6d704c96a098fba088a9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 40
-  firePoint: {fileID: 21341084}
-  impactEffect: {fileID: 6002365281979414768, guid: 0b22848e09bd1f84bb21fa6280088c68, type: 3}
-  lineRenderer: {fileID: 802127758}
 --- !u!114 &1940599845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23976,6 +23963,7 @@ MonoBehaviour:
   lifes: 3
   numberOfDamgeTake: 0
   activeShield: 0
+  isWalking: 0
   attackRange: 3
   attackRate: 3
   nextAttackTime: 2
