@@ -39,6 +39,7 @@ public class DashMove : MonoBehaviour
         }
         else
         {
+            Debug.Log("Dash move script");
             if (dashTime <= 0)
             {
                 direction = 0;

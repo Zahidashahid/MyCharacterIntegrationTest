@@ -161,7 +161,7 @@ public class SkeletonEnemyMovement : MonoBehaviour
     {
         if (currentHealth > 0)
         {
-            Debug.Log("Damaging the enemy :- shield.ActiveShield " + shield.ActiveShield);
+           // Debug.Log("Damaging the enemy :- shield.ActiveShield " + shield.ActiveShield);
             if (numberOfDamgeTake > 3)
                 StartCoroutine(SheildTimer());
             if (!shield.ActiveShield || (transform.position.x > target.position.x && direction == 1) || (transform.position.x < target.position.x && direction == 2))

@@ -11,13 +11,14 @@ public class PlayerMovement : MonoBehaviour
     PlayerController controls;
     Vector3 move;
     bool isShieldBtnPressed;
-    Vector3 m;
+    bool isJumpBtnPressed;
+   // Vector3 m;
     public HealthBar healthBar;
     public CharacterController2D controller;
     [SerializeField] public LayerMask m_WhatIsGround;
     public Rigidbody2D rb;
     private BoxCollider2D boxCollider2d;
-   
+
     public Animator animator;
     public Transform transformObj;
     //public Animator eagle_animator;
@@ -26,10 +27,15 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource DeathSound;
     public AudioSource meleeAttackSound;*/
     public AudioSource bgSound;
-   // bool jump ;
+    // bool jump ;
     //bool crouch = false;
-    bool grounded;
-  public  int jumpCount = 0;
+    //bool grounded;
+    
+    public  float fallMultiplier = 2.5f;
+    public  float lowJumpMultiplier = 2f;
+    [Range(1, 10)]
+    public  float jumpVelocity = 10;
+    public  int jumpCount = 0;
     public int direction = 2;
     public int currentHealth;
     public int maxHealth = 100;
@@ -64,11 +70,15 @@ public class PlayerMovement : MonoBehaviour
         lifes = 3;
         controls = new PlayerController();
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
+        controls.Gameplay.Move.performed += ctx => isWalking = true;
+        controls.Gameplay.Move.canceled += ctx => isWalking = false;
         controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
         controls.Gameplay.Move.canceled += ctx => StopMoving();
       /*  controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;*/
         controls.Gameplay.Jump.performed += ctx => JumpPlayer();
+        controls.Gameplay.Jump.performed += ctx => isJumpBtnPressed = true;
+        controls.Gameplay.Jump.canceled += ctx => isJumpBtnPressed = false;
         controls.Gameplay.Shield.performed += ctx => isShieldBtnPressed = ctx.ReadValueAsButton();
         controls.Gameplay.Shield.canceled += ctx => isShieldBtnPressed = false;
         controls.Gameplay.Shield.canceled += ctx => SetActiveBodyParts();
@@ -95,11 +105,11 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Max health of player is " + maxHealth);*/
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(currentHealth);
-        grounded = true;
+       // grounded = true;
         // bgSound.Play();
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
-        Debug.Log("gm.lastCheckPointPos "+ gm.lastCheckPointPos  + gm.lastCheckPointPos);
-        Debug.Log("Num of Level completed " + PlayerPrefs.GetInt("LevelCompleted"));
+        /*Debug.Log("gm.lastCheckPointPos "+ gm.lastCheckPointPos  + gm.lastCheckPointPos);
+        Debug.Log("Num of Level completed " + PlayerPrefs.GetInt("LevelCompleted"));*/
         if (PlayerPrefs.GetString("DifficultyLevel") == "Hard")
         {
             lifes = 1;
@@ -149,16 +159,26 @@ public class PlayerMovement : MonoBehaviour
              PlayerPrefs.SetFloat("LastcheckPointX" , transformObj.position.x);
              PlayerPrefs.SetFloat("LastcheckPointy", transformObj.position.y);
         }
+        /*------For better jump---------*/
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime; ;
+        }
+        else if (rb.velocity.y > 0 && !isJumpBtnPressed)
+        {
+           rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime; ;
+        }
     }
     private void FixedUpdate()
     {
-        // Debug.Log("Is Grounded! "+ grounded);
         // Move Player back
         //CheckGamePaused();
         // m = new Vector3(move.x, move.y)  * 10f *  Time.deltaTime;
         /*//Debug.Log(" move.x " + move.x);
           Debug.Log(" move.y " + move.y);
         Debug.Log(" move.z " + move.z);*/
+
+        //Debug.Log("IsGrounded " + IsGrounded());
         if (move.x > 0)
         {
             MovePlayerRight();
@@ -178,37 +198,32 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("DisableShield Called");
             DisableShield();
         }
-        /* if ( (move.y > 0 && move.x < 0 ) || (move.y > 0 && move.x > 0))
-        {
-            JumpPlayer();
-        }*/
+   
+
         /*animator.SetFloat("Speed", Mathf.Abs(40));
         transformObj.Translate(m, Space.World);*/
-        // MovePlayer();
-        // MelleAttack();
+            // MovePlayer();
+            // MelleAttack();
 
     }
    void StopMoving()
-    {
-        isWalking = false;
-        if (move.x == 0)
+   {
+        if (!isWalking )
         {
-           
             animator.SetFloat("Speed", Mathf.Abs(0));
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
-    }
+   }
    void MovePlayerRight()
    {
-        isWalking = true;
         direction = 2;
         rb.velocity = new Vector2(runSpeed, rb.velocity.y);
         Flip();
         animator.SetFloat("Speed", Mathf.Abs(40));
-   }
+        
+    }
     void MoveplayerLeft()
     {
-        isWalking = true;
         direction = 1;
         rb.velocity = new Vector2(-runSpeed, rb.velocity.y);
         Flip();
@@ -247,20 +262,22 @@ public class PlayerMovement : MonoBehaviour
         if (jumpCount < 2 || IsGrounded())
         {
             jumpCount++;
-            grounded = false;
-            rb.velocity = new Vector2(1f, jumpHight);
+            Debug.Log(" jump count is " + jumpCount);
+            //grounded = false;
+            GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpVelocity;
+            // rb.velocity = new Vector2(1f, rb.velocity.y);
             animator.SetBool("IsJumping", true);
            /* Debug.Log(" jump count is " + jumpCount);
             Debug.Log(" IsGrounded() is " + IsGrounded());*/
             SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.jumpSound);
-            grounded = false;
+            //grounded = false;
             if (direction == 1)
             {
-                rb.velocity = new Vector2(-3, rb.velocity.y);
+                rb.velocity = new Vector2(-1, rb.velocity.y);
             }
             else if (direction == 2)
             {
-                rb.velocity = new Vector2(3, rb.velocity.y);
+                rb.velocity = new Vector2(1, rb.velocity.y);
             }
             if (jumpCount > 2)
             {
@@ -269,15 +286,15 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            grounded = true;
+            //grounded = true;
             animator.SetBool("IsJumping", false);
         }
     }
     void DashMovePlayer()
     {
         
-        Debug.Log("DashMovePlayer() Grounded " + grounded);
-        if (grounded)
+        Debug.Log("DashMovePlayer() Grounded " + IsGrounded());
+        if (IsGrounded())
         {
             //rb.velocity = new Vector2(5, rb.velocity.y);
             //animator.SetBool("IsJumping", true);
@@ -302,77 +319,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
     
-    void MovePlayer()
-    {
-        
-        /*  if (Input.GetKey(KeyCode.LeftArrow))// && grounded
-          {
-              rb.velocity = new Vector2(-runSpeed, rb.velocity.y);
-              transform.localScale = new Vector2(-1, 1);
-              animator.SetFloat("Speed", Mathf.Abs(40));
-              direction = 1;
-          }
-          // Move Player Forward
-          else if (Input.GetKey(KeyCode.RightArrow))//&& grounded
-          {
-              rb.velocity = new Vector2(runSpeed, rb.velocity.y);
-              transform.localScale = new Vector2(1, 1);
-              animator.SetFloat("Speed", Mathf.Abs(40));
-              direction = 2;
-          }
-          else
-          {
-              animator.SetFloat("Speed", Mathf.Abs(0));
-          }
-          // Jump Player if on ground ,  double jump
-          if ((jumpCount < 2 || IsGrounded()) && (Input.GetKeyDown(KeyCode.Space)))
-          {
-              jumpCount++;
-              grounded = false;
-              //rb.velocity = new Vector2(rb.velocity.x, 11f);
-              rb.velocity = new Vector2(rb.velocity.x, 10f);
-              animator.SetBool("IsJumping", true);
-              //Debug.Log(" jump count is " + jumpCount);
-              SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.jumpSound);
-              animator.SetFloat("Speed", Mathf.Abs(40));
-              if (direction == 1)
-              {
-                  rb.velocity = new Vector2(-5, rb.velocity.y);
-              }
-              else if (direction == 2)
-              {
-                  rb.velocity = new Vector2(5, rb.velocity.y);
-              }
-              animator.SetFloat("Speed", Mathf.Abs(40));
-              if (jumpCount > 2)
-              {
-                  jumpCount = 0;
-              }
-          }
-          else
-          {
-              if (Input.GetKeyUp(KeyCode.Space))   //when  Space key is up. 
-              {
-                  rb.velocity = new Vector2(rb.velocity.x, 0f);
-                  animator.SetBool("IsJumping", false);
-                  jump = true;
-
-              }
-          }
-          // Dash move 
-          if (Input.GetKey(KeyCode.P) && grounded)
-          {
-              animator.SetFloat("Speed", Mathf.Abs(40));
-              if (direction == 1)
-              {
-                  rb.velocity = new Vector2(-10, rb.velocity.y);
-              }
-              else if (direction == 2)
-              {
-                  rb.velocity = new Vector2(10, rb.velocity.y);
-              }
-          }*/
-    }
+    
     void SetShield()
     {
         DisableBodyParts();
@@ -412,16 +359,16 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnLanding()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 0f);
+        //rb.velocity = new Vector2(rb.velocity.x, 0f);
        // Debug.Log("In OnLanding method");
         animator.SetBool("IsJumping", false);
-        grounded = true;
+        
         jumpCount = 0;
     }
+    
     private bool IsGrounded()
-    {
+    {   
         RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, 0.1f, m_WhatIsGround);
-       // Debug.Log(raycastHit2d.collider);
         return raycastHit2d.collider != null;
     }
     /* <summary>
@@ -493,7 +440,6 @@ public class PlayerMovement : MonoBehaviour
     }
     public void DisableBodyParts()
     {
-        Debug.Log("Diable ");
         bodyParts.SetActive(false);
         weapon.SetActive(false);
     }

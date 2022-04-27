@@ -55,12 +55,10 @@ public class PauseGame : MonoBehaviour
         if (!isGamePaused)
         {
             Pause();
-            Debug.Log("Pause called");
         }
         else if (isGamePaused)
         {
             Resume();
-            Debug.Log("Resume called");
         }
     }
     public void Resume()

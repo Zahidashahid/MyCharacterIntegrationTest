@@ -52,7 +52,7 @@ public class  LootSystem: MonoBehaviour
             }
             else if(randomNum >= itemToSpawn[itemToSpawn.Length -1].minSpawnProb && randomNum <= itemToSpawn[itemToSpawn.Length - 1].maxSpawnProb)
             {
-                Debug.Log(randomNum + " No Gifts this time"  );
+               // Debug.Log(randomNum + " No Gifts this time"  );
                 break;
             }
         }

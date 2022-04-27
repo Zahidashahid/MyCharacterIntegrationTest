@@ -34,7 +34,7 @@ public class EnemyAI : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(this.tag + " hit " + collision.tag);
+        //Debug.Log(this.tag + "  hit " + collision.tag);
         if (!hitByEnemy)
         {
             GameObject collisionGameObject = collision.gameObject;
