@@ -159,6 +159,10 @@ public class PlayerMovement : MonoBehaviour
              PlayerPrefs.SetFloat("LastcheckPointX" , transformObj.position.x);
              PlayerPrefs.SetFloat("LastcheckPointy", transformObj.position.y);
         }
+        if (!isJumpBtnPressed)
+        {
+            animator.SetBool("IsJumping", false);
+        }
         /*------For better jump---------*/
         if (rb.velocity.y < 0)
         {
@@ -199,12 +203,10 @@ public class PlayerMovement : MonoBehaviour
             DisableShield();
         }
    
-
         /*animator.SetFloat("Speed", Mathf.Abs(40));
         transformObj.Translate(m, Space.World);*/
             // MovePlayer();
             // MelleAttack();
-
     }
    void StopMoving()
    {
@@ -273,11 +275,11 @@ public class PlayerMovement : MonoBehaviour
             //grounded = false;
             if (direction == 1)
             {
-                rb.velocity = new Vector2(-1, rb.velocity.y);
+                rb.velocity = new Vector2(-0, rb.velocity.y);
             }
             else if (direction == 2)
             {
-                rb.velocity = new Vector2(1, rb.velocity.y);
+                rb.velocity = new Vector2(0, rb.velocity.y);
             }
             if (jumpCount > 2)
             {

@@ -12071,6 +12071,9 @@ MonoBehaviour:
   animator: {fileID: 750146750}
   transformObj: {fileID: 0}
   bgSound: {fileID: 0}
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  jumpVelocity: 10
   jumpCount: 0
   direction: 2
   currentHealth: 100
@@ -18775,6 +18778,9 @@ MonoBehaviour:
   animator: {fileID: 1434199721}
   transformObj: {fileID: 0}
   bgSound: {fileID: 0}
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  jumpVelocity: 10
   jumpCount: 0
   direction: 2
   currentHealth: 0
@@ -23973,6 +23979,9 @@ MonoBehaviour:
   animator: {fileID: 1940599836}
   transformObj: {fileID: 0}
   bgSound: {fileID: 0}
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  jumpVelocity: 10
   jumpCount: 0
   direction: 2
   currentHealth: 100
@@ -24056,13 +24065,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940599834}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.072707415, y: -0.5633404}
+  m_Offset: {x: 0.24840963, y: -1.5610962}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -24073,7 +24082,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0732722, y: 2.0784192}
+  m_Size: {x: 1.2155864, y: 0.08290768}
   m_EdgeRadius: 0
 --- !u!1 &1955253515
 GameObject:

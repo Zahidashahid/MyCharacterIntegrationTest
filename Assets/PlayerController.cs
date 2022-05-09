@@ -691,7 +691,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4431da22-5c98-4c22-a4d8-29e8f9ad1f0b"",
-                    ""path"": ""<Keyboard>/p"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
