@@ -15,6 +15,7 @@ public class CheckPoint : MonoBehaviour
     {
         if(collision.CompareTag("Player") )
         {
+            Debug.Log("player check point");
             gm.lastCheckPointPos = transform.position;
             PlayerPrefs.SetFloat("LastcheckPointX", gm.lastCheckPointPos.x);
             PlayerPrefs.SetFloat("LastcheckPointy", gm.lastCheckPointPos.y);

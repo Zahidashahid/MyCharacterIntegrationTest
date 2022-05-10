@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
     private GameMaster gm;
     public TMP_Text lifesText;
     GameUIScript gameUIScript;
-   
+    public bool isHurt;
     private void Awake()
     {
         boxCollider2d = GetComponent<BoxCollider2D>();
@@ -91,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         numberOfDamgeTake = 0;
+        isHurt = false;
         CheckForAwatarSelected();
         bgSound = GameObject.FindGameObjectWithTag("BGmusicGameObject").GetComponent<AudioSource>();
         bodyParts = GameObject.FindGameObjectWithTag("BodyParts");
@@ -321,7 +322,6 @@ public class PlayerMovement : MonoBehaviour
         
     }
     
-    
     void SetShield()
     {
         DisableBodyParts();
@@ -449,7 +449,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if(currentHealth > 0 && lifes > 0)
         {
-            
             if (numberOfDamgeTake > 3)
                 StartCoroutine(SheildTimer());
             if (!(animator.GetBool("Sheild")))
@@ -506,11 +505,13 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Hurt()
     {
         DisableBodyParts();
+        isHurt = true;
         animator.SetBool("IsHurt", true);
         rb.bodyType = RigidbodyType2D.Static;
         yield return new WaitForSeconds(0.8f);
         animator.SetBool("IsHurt", false);
         SetActiveBodyParts();
+        isHurt = false;
         rb.bodyType = RigidbodyType2D.Dynamic;
     }
    
@@ -553,9 +554,10 @@ public class PlayerMovement : MonoBehaviour
             transformObj.position = transformObj.position + new Vector3(0,10f,0);
         else
         {
-            transformObj.position = gm.lastCheckPointPos;/*
+            gm.lastCheckPointPos.y = gm.lastCheckPointPos.y +  10f; 
+            transformObj.position = gm.lastCheckPointPos ;
             Debug.Log("lastCheckPointPos pistion ! " + gm.lastCheckPointPos);
-            Debug.Log("Player position transformObj ! " + transformObj.name);*/
+            Debug.Log("Player position transformObj ! " + transformObj.name);
         }
         rb.bodyType = RigidbodyType2D.Dynamic;
         SetActiveBodyParts();

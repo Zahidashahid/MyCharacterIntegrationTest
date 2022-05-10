@@ -41,7 +41,7 @@ public class Bow : MonoBehaviour
     }
     void Update()
     {
-        if (nextAttackTime <= -1)
+        if (nextAttackTime <= -1 && !playerMovement.isHurt)
         {
             canAttack = true;
         }
