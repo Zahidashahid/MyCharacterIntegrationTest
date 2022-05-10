@@ -563,14 +563,7 @@ public class PlayerMovement : MonoBehaviour
         SetActiveBodyParts();
         
     }
-    public int PlayerMovingDirection()
-    {
-        if (direction == 1)
-            return 1;
-        else
-            return 2;
-    }
-
+   
 /*    void CheckGamePaused()
     {
         if (PauseGame.isGamePaused)

@@ -23899,7 +23899,7 @@ MonoBehaviour:
   animator: {fileID: 1940599836}
   transformObj: {fileID: 0}
   bgSound: {fileID: 0}
-  fallMultiplier: 2.5
+  fallMultiplier: 8
   lowJumpMultiplier: 2
   jumpVelocity: 10
   jumpCount: 0
@@ -23970,10 +23970,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
