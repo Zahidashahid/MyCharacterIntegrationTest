@@ -793,6 +793,10 @@
       <Project>{EF8036FC-2491-7337-5E7B-94C10CA6BAEF}</Project>
       <Name>Unity.2D.PixelPerfect</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.2D.Tilemap.Editor.csproj">
+      <Project>{16C71375-E3E5-6F54-7798-5184EA2A1A84}</Project>
+      <Name>Unity.2D.Tilemap.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="PsdPlugin.csproj">
       <Project>{77CBFF64-74B1-4543-7DA2-D7241715BE9C}</Project>
       <Name>PsdPlugin</Name>

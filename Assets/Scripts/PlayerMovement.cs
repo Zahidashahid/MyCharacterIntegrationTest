@@ -49,9 +49,9 @@ public class PlayerMovement : MonoBehaviour
     public float attackRange = 0.5f;
     public float attackRate = 1f; //one attack per second
     public float nextAttackTime = 0f;
-    float runSpeed = 6f;
-    float dashMoveSpeed = 9f;
-    float jumpHight = 10f;
+    float runSpeed = 8f;
+    float dashMoveSpeed = 16f;
+    //float jumpHight = 10f;
 
     public Transform attackPoint;
     public Transform weaponAttackPoint;
@@ -173,6 +173,10 @@ public class PlayerMovement : MonoBehaviour
         {
            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime; ;
         }
+        if(IsGrounded())
+        {
+            jumpCount = 1;
+        }
     }
     private void FixedUpdate()
     {
@@ -222,7 +226,8 @@ public class PlayerMovement : MonoBehaviour
         direction = 2;
         rb.velocity = new Vector2(runSpeed, rb.velocity.y);
         Flip();
-        animator.SetFloat("Speed", Mathf.Abs(40));
+        if (IsGrounded())
+            animator.SetFloat("Speed", Mathf.Abs(40));
         
     }
     void MoveplayerLeft()
@@ -230,7 +235,8 @@ public class PlayerMovement : MonoBehaviour
         direction = 1;
         rb.velocity = new Vector2(-runSpeed, rb.velocity.y);
         Flip();
-        animator.SetFloat("Speed", Mathf.Abs(40));
+        if (IsGrounded())
+            animator.SetFloat("Speed", Mathf.Abs(40));
     }
     private void Flip()
     {
@@ -262,17 +268,19 @@ public class PlayerMovement : MonoBehaviour
     }
     void JumpPlayer()
     {
-        if (jumpCount < 2 || IsGrounded())
+        Debug.Log("IsGrounded() " + IsGrounded());
+        if (jumpCount < 2 )
         {
+            Debug.Log(" jump count is " + jumpCount); 
             jumpCount++;
-            Debug.Log(" jump count is " + jumpCount);
+            
             //grounded = false;
             GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpVelocity;
             // rb.velocity = new Vector2(1f, rb.velocity.y);
             animator.SetBool("IsJumping", true);
            /* Debug.Log(" jump count is " + jumpCount);
             Debug.Log(" IsGrounded() is " + IsGrounded());*/
-            SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.jumpSound);
+            //SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.jumpSound);
             //grounded = false;
             if (direction == 1)
             {
@@ -282,10 +290,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
-            if (jumpCount > 2)
+            Debug.Log("jumpCount > 2  " + (jumpCount > 2));
+           /* if (jumpCount > 2) 
             {
                 jumpCount = 0;
-            }
+                Debug.Log(" Reset jump count is "  );
+            }*/
         }
         else
         {
@@ -358,14 +368,6 @@ public class PlayerMovement : MonoBehaviour
 
               }*/
         }
-    }
-    public void OnLanding()
-    {
-        //rb.velocity = new Vector2(rb.velocity.x, 0f);
-       // Debug.Log("In OnLanding method");
-        animator.SetBool("IsJumping", false);
-        
-        jumpCount = 0;
     }
     
     private bool IsGrounded()
@@ -480,10 +482,10 @@ public class PlayerMovement : MonoBehaviour
                 else if (currentHealth <= 0 && lifes > 1)
                 {
                     StartCoroutine(OnOneDeath());
-                    PlayerPrefs.SetInt("CurrentHealth", 100);
+                 /*   PlayerPrefs.SetInt("CurrentHealth", 100);
                     lifes -= 1;
                     lifesText.text = "X " + lifes;
-                    PlayerPrefs.SetInt("Lifes", lifes);
+                    PlayerPrefs.SetInt("Lifes", lifes);*/
                 }
 
             }
@@ -522,7 +524,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsDied", true);
         Debug.Log("Player died!");
         bgSound.Stop();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
        // animator.SetBool("IsDied", false);
         // Disable the player
         FindObjectOfType<GameUIScript>().GameOver();
@@ -535,8 +537,13 @@ public class PlayerMovement : MonoBehaviour
         DisableBodyParts();
         currentHealth = 100;
         healthBar.SetHealth(currentHealth);
+        lifes = lifes -  1;
+        Debug.Log("lifes left " + lifes);
+       
+        PlayerPrefs.SetInt("Lifes", lifes);
         animator = GetComponent<Animator>(); ;
         rb.bodyType = RigidbodyType2D.Static;
+       
         // Die Animation
         CheckForAwatarSelected();
         animator.SetBool("IsDied", true);
@@ -545,7 +552,7 @@ public class PlayerMovement : MonoBehaviour
        // PlayerPrefs.SetInt("ArrowPlayerHas", 10);
         SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.deathSound);
         // bgSound.Stop();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.8f);
        
         // Set the player on check point position
         animator.SetBool("IsDied", false);
@@ -554,12 +561,13 @@ public class PlayerMovement : MonoBehaviour
             transformObj.position = transformObj.position + new Vector3(0,10f,0);
         else
         {
-            gm.lastCheckPointPos.y = gm.lastCheckPointPos.y +  10f; 
+            gm.lastCheckPointPos.y = gm.lastCheckPointPos.y +  3f; 
             transformObj.position = gm.lastCheckPointPos ;
             Debug.Log("lastCheckPointPos pistion ! " + gm.lastCheckPointPos);
             Debug.Log("Player position transformObj ! " + transformObj.name);
         }
         rb.bodyType = RigidbodyType2D.Dynamic;
+        lifesText.text = "X " + lifes;
         SetActiveBodyParts();
         
     }

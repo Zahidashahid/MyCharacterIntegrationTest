@@ -43,12 +43,9 @@ public class EnemyAI : MonoBehaviour
             {
                 hitByEnemy = true;
                 Debug.Log(this.tag + " hit " + collision.tag);
-                playerMovement.lifes -= 1;
-                Debug.Log("lifes left " + playerMovement.lifes);
-                playerMovement.lifesText.text = "X " + playerMovement.lifes;
-                PlayerPrefs.SetInt("Lifes", playerMovement.lifes);
+               
 
-                if (playerMovement.lifes <= 0)
+                if (playerMovement.lifes <= 1)
                 {
                     // bgSound.Stop();
                     PlayerPrefs.SetInt("CurrentHealth", 100);
@@ -60,6 +57,7 @@ public class EnemyAI : MonoBehaviour
                 }
                 else
                 {
+                    playerMovement.lifes = playerMovement.lifes - 1;
                     StartCoroutine(playerMovement.OnOneDeath());
                 }
                 StartCoroutine(Reset());
