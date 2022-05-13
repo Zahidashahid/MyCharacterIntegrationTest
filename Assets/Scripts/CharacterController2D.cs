@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour
 {
-	[SerializeField] private float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
+	//[SerializeField] private float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
 	//[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
@@ -32,18 +32,18 @@ public class CharacterController2D : MonoBehaviour
 
 	private void Awake()
 	{
-		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+		/*m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
 
 		if (OnCrouchEvent == null)
 			OnCrouchEvent = new BoolEvent();
-	}
+	*/}
 
 	private void FixedUpdate()
 	{
-		bool wasGrounded = m_Grounded;
+		/*bool wasGrounded = m_Grounded;
 		m_Grounded = false;
 
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -57,7 +57,7 @@ public class CharacterController2D : MonoBehaviour
 				if (!wasGrounded)
 					OnLandEvent.Invoke();
 			}
-		}
+		}*/
 	}
 
 
@@ -74,11 +74,11 @@ public class CharacterController2D : MonoBehaviour
 		}*/
 
 		//only control the player if grounded or airControl is turned on
-		if (m_Grounded || m_AirControl)
+		/*if (m_Grounded || m_AirControl)
 		{
 
 			// If crouching
-		/*	if (crouch)
+		*//*	if (crouch)
 			{
 				if (!m_wasCrouching)
 				{
@@ -104,7 +104,7 @@ public class CharacterController2D : MonoBehaviour
 					m_wasCrouching = false;
 					OnCrouchEvent.Invoke(false);
 				}
-			}*/
+			}*//*
 
 			// Move the character by finding the target velocity
 			Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
@@ -128,20 +128,21 @@ public class CharacterController2D : MonoBehaviour
 		if (m_Grounded && jump)
 		{
 			// Add a vertical force to the player.
+			Debug.Log("I am jumping");
 			m_Grounded = false;
-			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-		}
+			//m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+		}*/
 	}
 
 
 	private void Flip()
-	{
+	{/*
 		// Switch the way the player is labelled as facing.
 		m_FacingRight = !m_FacingRight;
 
 		// Rotate the player
 		transform.Rotate(0f,180f,0f);
-
+*/
 		// player flip point of attck also flip is direction
 		//transform.Rotate(0f, 180f, 0f);
 	}

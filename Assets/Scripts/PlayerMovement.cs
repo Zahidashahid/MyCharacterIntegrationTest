@@ -33,8 +33,8 @@ public class PlayerMovement : MonoBehaviour
     
     public  float fallMultiplier = 2.5f;
     public  float lowJumpMultiplier = 2f;
-    [Range(1, 10)]
-    public  float jumpVelocity = 10;
+    //[Range(1, 10)]
+    public float jumpVelocity;
     public  int jumpCount = 0;
     public int direction = 2;
     public int currentHealth;
@@ -90,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
+        jumpVelocity = 15f;
         numberOfDamgeTake = 0;
         isHurt = false;
         CheckForAwatarSelected();
@@ -171,7 +172,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (rb.velocity.y > 0 && !isJumpBtnPressed)
         {
-           rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime; ;
+           rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime; 
+        }
+        else
+        {
+            Debug.Log("Long press");
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (2 - 1) * Time.deltaTime;
         }
         if(IsGrounded())
         {
@@ -273,29 +279,29 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log(" jump count is " + jumpCount); 
             jumpCount++;
-            
+
             //grounded = false;
-            GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpVelocity;
-            // rb.velocity = new Vector2(1f, rb.velocity.y);
+            // rb.AddForce(Vector2.up * 500);
+             rb.velocity = Vector2.up * jumpVelocity;
+           //rb.AddForce((Vector2.up * jumpVelocity));  
             animator.SetBool("IsJumping", true);
            /* Debug.Log(" jump count is " + jumpCount);
             Debug.Log(" IsGrounded() is " + IsGrounded());*/
-            //SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.jumpSound);
+
+            /*
+             * SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.jumpSound);
+            */
             //grounded = false;
-            if (direction == 1)
+           /* if (direction == 1)
             {
                 rb.velocity = new Vector2(-0, rb.velocity.y);
             }
             else if (direction == 2)
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
-            }
-            Debug.Log("jumpCount > 2  " + (jumpCount > 2));
-           /* if (jumpCount > 2) 
-            {
-                jumpCount = 0;
-                Debug.Log(" Reset jump count is "  );
             }*/
+            Debug.Log("jumpCount > 2  " + (jumpCount > 2));
+           
         }
         else
         {
