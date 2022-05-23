@@ -13,7 +13,7 @@ public class SkeletonEnemyMovement : MonoBehaviour
     public AudioSource DeathSound;*/
     public Rigidbody2D rb;
     public Animator animator;
-    public Animator playerAnimator;
+    //public Animator playerAnimator;
     public Transform rayCast;
     public Transform leftLimit;
     public Transform rightLimit;
@@ -53,7 +53,15 @@ public class SkeletonEnemyMovement : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(currentHealth);
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        
+        if ((PlayerPrefs.GetInt("AvatarSelected") == 1))
+        {
+            target = GameObject.Find("Player_Goblin").GetComponent<Transform>();
+        }
+        else
+        {
+            target = GameObject.Find("MushrromPlayer").GetComponent<Transform>();
+        }
         stopDistance = 5;
         retreatDistance = 3;
     }

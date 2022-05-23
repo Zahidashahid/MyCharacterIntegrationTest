@@ -24,14 +24,15 @@ public class SkeletonProjectile : MonoBehaviour
     public float offset;
     void Awake()
     {
-        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        playerObject = GameObject.FindGameObjectWithTag("Player");
+       
         //skeletonObject = GameObject.FindGameObjectWithTag("RangedAttackSkeleton");
        // velocity = new Vector3(speed * Time.deltaTime, 0, 0);
 
     }
     void Start()
     {
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        playerObject = GameObject.FindGameObjectWithTag("Player");
         speed = 0.1f;
         Invoke("DestroyProjectile", lifeTime);
         //Debug.Log(""+playerObject.transform.position.x +"< "+skeletonObject.transform.position.x);

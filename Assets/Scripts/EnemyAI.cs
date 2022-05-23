@@ -14,23 +14,33 @@ public class EnemyAI : MonoBehaviour
     bool hitByEnemy;
     void Awake()
     {
-        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-        rigidbody2D = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
-        gameUIScript = GameObject.Find("GameManager").GetComponent<GameUIScript>();
-        enemies = GetComponentInChildren<Enemies>();
+       
     }
     void Start()
     {
         // animator = GetComponent<Animator>();
         //Debug.Log(playerMovement.lifes + "lifes left");
+        if ((PlayerPrefs.GetInt("AvatarSelected") == 1))
+        {
+            playerMovement = GameObject.Find("Player_Goblin").GetComponent<PlayerMovement>();
+            animator = GameObject.Find("Player_Goblin").GetComponent<Animator>();
+            rigidbody2D = GameObject.Find("Player_Goblin").GetComponent<Rigidbody2D>();
+        }
+        else
+        {
+            playerMovement = GameObject.Find("MushrromPlayer").GetComponent<PlayerMovement>();
+            animator = GameObject.Find("MushrromPlayer").GetComponent<Animator>();
+            rigidbody2D = GameObject.Find("MushrromPlayer").GetComponent<Rigidbody2D>();
+        }
+       
+        gameUIScript = GameObject.Find("GameManager").GetComponent<GameUIScript>();
+        enemies = GetComponentInChildren<Enemies>();
         hitByEnemy = false;
     }
     private void FixedUpdate()
     {
        // isColliding = false;
     }
-
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,8 +53,8 @@ public class EnemyAI : MonoBehaviour
             {
                 hitByEnemy = true;
                 Debug.Log(this.tag + " hit " + collision.tag);
+                Debug.Log( " playerMovement.lifes  "  + playerMovement.lifes);
                
-
                 if (playerMovement.lifes <= 1)
                 {
                     // bgSound.Stop();
@@ -57,7 +67,7 @@ public class EnemyAI : MonoBehaviour
                 }
                 else
                 {
-                    playerMovement.lifes = playerMovement.lifes - 1;
+                    //playerMovement.lifes = playerMovement.lifes - 1;
                     StartCoroutine(playerMovement.OnOneDeath());
                 }
                 StartCoroutine(Reset());

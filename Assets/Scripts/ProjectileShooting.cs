@@ -19,11 +19,12 @@ public class ProjectileShooting : MonoBehaviour
     Vector2 velocity;
     void Awake()
     {
-        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        
        // velocity = new Vector3(speed * Time.deltaTime, 0, 0);
     }
     void Start()
     {
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         speed = 1f;
         Invoke("DestroyProjectile", lifeTime);
         velocity = (Vector3.right * speed);

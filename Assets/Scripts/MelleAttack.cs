@@ -91,7 +91,7 @@ public class MelleAttack : MonoBehaviour
             if (player.tag == "Player")
             {
                 string difficultyLevel = PlayerPrefs.GetString("DifficultyLevel");
-                //Debug.Log("We hit player");
+                Debug.Log("We hit player");
                 if (difficultyLevel == "Easy")
                 {
                     player.GetComponent<PlayerMovement>().TakeDamage(30); 

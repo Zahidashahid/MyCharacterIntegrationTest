@@ -112,21 +112,7 @@ public class PlayerMovement : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
         /*Debug.Log("gm.lastCheckPointPos "+ gm.lastCheckPointPos  + gm.lastCheckPointPos);
         Debug.Log("Num of Level completed " + PlayerPrefs.GetInt("LevelCompleted"));*/
-        if (PlayerPrefs.GetString("DifficultyLevel") == "Hard")
-        {
-            lifes = 1;
-            lifesText.text = "X " + lifes;
-        }
-        else if (PlayerPrefs.GetString("DifficultyLevel")== "Medium")
-        {
-            lifes = 2;
-            lifesText.text = "X " + lifes;
-        }
-        else if (PlayerPrefs.GetString("DifficultyLevel")=="Easy")
-        {
-            lifes = 3;
-            lifesText.text = "X " + lifes;
-        }
+       
         if (MainMenu.isNewGame || GameUIScript.isNewGame || (PlayerPrefs.GetInt("LevelCompleted") == 1)) 
         {
             Debug.Log("New Game Started");
@@ -142,10 +128,32 @@ public class PlayerMovement : MonoBehaviour
             gm.lastCheckPointPos = transformObj.position; 
             PlayerPrefs.SetFloat("LastcheckPointX", transformObj.position.x);
             PlayerPrefs.SetFloat("LastcheckPointy", transformObj.position.y);
+            if (PlayerPrefs.GetString("DifficultyLevel") == "Hard")
+            {
+                lifes = 1;
+                lifesText.text = "X " + lifes;
+                
+            }
+            else if (PlayerPrefs.GetString("DifficultyLevel") == "Medium")
+            {
+                lifes = 2;
+                lifesText.text = "X " + lifes;
+                PlayerPrefs.SetInt("Lifes", lifes);
+            }
+            else if (PlayerPrefs.GetString("DifficultyLevel") == "Easy")
+            {
+                lifes = 3;
+                lifesText.text = "X " + lifes;
+            }
+            PlayerPrefs.SetInt("Lifes", lifes);
         }
         else
         {
             Debug.Log(" Game Continue");
+            lifes = PlayerPrefs.GetInt("Lifes");
+            lifesText.text = "X " + lifes;
+            currentHealth = PlayerPrefs.GetInt("CurrentHealth");
+            
             float x = PlayerPrefs.GetFloat("LastcheckPointX");
             float y = PlayerPrefs.GetFloat("LastcheckPointy");
             gm.lastCheckPointPos = new Vector2( x, y);
@@ -174,11 +182,12 @@ public class PlayerMovement : MonoBehaviour
         {
            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime; 
         }
-        else
-        {
-            Debug.Log("Long press");
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (2 - 1) * Time.deltaTime;
-        }
+        /* else
+         {
+             Debug.Log("Long press");
+             rb.velocity += Vector2.up * Physics2D.gravity.y * (2 - 1) * Time.deltaTime;
+         }*/
+    
         if(IsGrounded())
         {
             jumpCount = 1;
@@ -274,12 +283,10 @@ public class PlayerMovement : MonoBehaviour
     }
     void JumpPlayer()
     {
-        Debug.Log("IsGrounded() " + IsGrounded());
+       // Debug.Log("IsGrounded() " + IsGrounded());
         if (jumpCount < 2 )
         {
-            Debug.Log(" jump count is " + jumpCount); 
             jumpCount++;
-
             //grounded = false;
             // rb.AddForce(Vector2.up * 500);
              rb.velocity = Vector2.up * jumpVelocity;
@@ -300,7 +307,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }*/
-            Debug.Log("jumpCount > 2  " + (jumpCount > 2));
            
         }
         else
@@ -378,7 +384,8 @@ public class PlayerMovement : MonoBehaviour
     
     private bool IsGrounded()
     {   
-        RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, 0.1f, m_WhatIsGround);
+        RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0.1f, Vector2.down, 0.1f, m_WhatIsGround);
+        
         return raycastHit2d.collider != null;
     }
     /* <summary>
@@ -455,7 +462,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        if(currentHealth > 0 && lifes > 0)
+        if(lifes >= 1)
         {
             if (numberOfDamgeTake > 3)
                 StartCoroutine(SheildTimer());
@@ -499,7 +506,10 @@ public class PlayerMovement : MonoBehaviour
                 numberOfDamgeTake += 1;
 
         }
-        
+        else
+        {
+            Debug.Log("Out of lifes");
+        }
     }
     IEnumerator SheildTimer()
     {

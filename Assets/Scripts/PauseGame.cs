@@ -11,7 +11,7 @@ public class PauseGame : MonoBehaviour
     public GameObject QuitGameMenuUI;
     public GameObject MainMenuConformationPopUpUI;
     PlayerController controls;
-    PlayerMovement playerMovement;
+    public PlayerMovement playerMovement;
     bool hitBtnPressed;
     private void Awake()
     {
