@@ -1,9 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
+//using System.Collections.Generic;
+//using UnityEngine.SceneManagement;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.InputSystem;
+//using UnityEngine.UI;
+//using UnityEngine.InputSystem;
 
 using TMPro;
 public class PlayerMovement : MonoBehaviour
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource DeathSound;
     public AudioSource meleeAttackSound;*/
     public AudioSource bgSound;
-    // bool jump ;
+   
     //bool crouch = false;
     //bool grounded;
     
@@ -49,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
     public float attackRange = 0.5f;
     public float attackRate = 1f; //one attack per second
     public float nextAttackTime = 0f;
+    public float distToGroundCapusleCollider = 1.6f;
+
     float runSpeed = 8f;
     float dashMoveSpeed = 16f;
     //float jumpHight = 10f;
@@ -90,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
-        jumpVelocity = 15f;
+        jumpVelocity = 10f;
         numberOfDamgeTake = 0;
         isHurt = false;
         CheckForAwatarSelected();
@@ -176,22 +178,21 @@ public class PlayerMovement : MonoBehaviour
         /*------For better jump---------*/
         if (rb.velocity.y < 0)
         {
+            Debug.Log("fall press");
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime; ;
         }
         else if (rb.velocity.y > 0 && !isJumpBtnPressed)
         {
-           rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime; 
+            Debug.Log("short press");
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime; 
         }
-        /* else
-         {
-             Debug.Log("Long press");
-             rb.velocity += Vector2.up * Physics2D.gravity.y * (2 - 1) * Time.deltaTime;
-         }*/
-    
-        if(IsGrounded())
+       
+
+        if (IsGrounded())
         {
             jumpCount = 1;
         }
+        
     }
     private void FixedUpdate()
     {
@@ -283,14 +284,11 @@ public class PlayerMovement : MonoBehaviour
     }
     void JumpPlayer()
     {
-       // Debug.Log("IsGrounded() " + IsGrounded());
-        if (jumpCount < 2 )
+
+        if (jumpCount < 2 && !isHurt )
         {
             jumpCount++;
-            //grounded = false;
-            // rb.AddForce(Vector2.up * 500);
              rb.velocity = Vector2.up * jumpVelocity;
-           //rb.AddForce((Vector2.up * jumpVelocity));  
             animator.SetBool("IsJumping", true);
            /* Debug.Log(" jump count is " + jumpCount);
             Debug.Log(" IsGrounded() is " + IsGrounded());*/
@@ -311,7 +309,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            //grounded = true;
             animator.SetBool("IsJumping", false);
         }
     }
@@ -384,7 +381,8 @@ public class PlayerMovement : MonoBehaviour
     
     private bool IsGrounded()
     {   
-        RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0.1f, Vector2.down, 0.1f, m_WhatIsGround);
+        //RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0.1f, Vector2.down, 0.1f, m_WhatIsGround);
+        RaycastHit2D raycastHit2d = Physics2D.Raycast(transform.position, Vector2.down, distToGroundCapusleCollider + 0.1f, m_WhatIsGround);
         
         return raycastHit2d.collider != null;
     }
