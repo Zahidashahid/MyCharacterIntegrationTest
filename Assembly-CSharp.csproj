@@ -125,6 +125,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MPPlayer1Bow.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MultiPlayer1.cs" />
+    <Compile Include="Assets\Scripts\DestroyCloneObject.cs" />
     <Compile Include="Assets\Scripts\SkeletonEnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Range Attack Scipts\RangeAttackSpwaner.cs" />
     <Compile Include="Assets\Scripts\Range Attack Scipts\SkeletonBow.cs" />

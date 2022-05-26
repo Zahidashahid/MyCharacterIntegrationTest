@@ -243,8 +243,12 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(runSpeed, rb.velocity.y);
         Flip();
         if (IsGrounded())
+        {
             animator.SetFloat("Speed", Mathf.Abs(40));
-        
+            animator.SetBool("IsJumping", false);
+        }
+        else
+            animator.SetFloat("Speed", Mathf.Abs(0));
     }
     void MoveplayerLeft()
     {
@@ -252,7 +256,12 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(-runSpeed, rb.velocity.y);
         Flip();
         if (IsGrounded())
+        {
             animator.SetFloat("Speed", Mathf.Abs(40));
+            animator.SetBool("IsJumping", false);
+        }
+        else
+            animator.SetFloat("Speed", Mathf.Abs(0));
     }
     private void Flip()
     {
