@@ -102,7 +102,7 @@ public class SkeletonEnemyMovement : MonoBehaviour
         /*
            -----------enemy moving away from player if it is very near to player----------
         */
-        else if (Vector2.Distance(transform.position, target.position) <  retreatDistance)
+       else if (Vector2.Distance(transform.position, target.position) <  retreatDistance)
         {
             if(direction == 1)
             {

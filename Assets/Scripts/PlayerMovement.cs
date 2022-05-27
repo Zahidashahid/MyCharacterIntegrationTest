@@ -178,12 +178,10 @@ public class PlayerMovement : MonoBehaviour
         /*------For better jump---------*/
         if (rb.velocity.y < 0)
         {
-            Debug.Log("fall press");
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime; ;
         }
         else if (rb.velocity.y > 0 && !isJumpBtnPressed)
         {
-            Debug.Log("short press");
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime; 
         }
        
@@ -369,7 +367,7 @@ public class PlayerMovement : MonoBehaviour
         {
             DisableBodyParts();
             StartCoroutine(Attack());
-           
+            SetActiveBodyParts();
             //Attack();
             nextAttackTime = Time.time + 1f / attackRate;
             /*
@@ -402,7 +400,7 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetBool("Attack 2", true);
         Debug.Log("Attacking ");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
        
         SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.meleeAttackSound);
         animator.SetBool("Attack 2", false);

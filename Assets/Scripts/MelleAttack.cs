@@ -8,7 +8,7 @@ public class MelleAttack : MonoBehaviour
     public Animator animator;
     public Transform attackPoint;
     public LayerMask playerLayers;
-    public float attackRange = 2f;
+    public float attackRange = 1.5f;
     public float damage;
     public float attackDistance; 
     public float nextAttackTime; // after every 2 sec
