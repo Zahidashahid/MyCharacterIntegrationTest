@@ -10,7 +10,8 @@ public class LeftHandMovement : MonoBehaviour
     Vector3 rotateBow;
 
      PlayerMovement playerMovement;
-  
+    PauseGame pauseGameScript;
+
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class LeftHandMovement : MonoBehaviour
     private void Start()
     {
         playerMovement = GetComponentInParent<PlayerMovement>();
+        pauseGameScript = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<PauseGame>();
 
     }
     void Update()
@@ -39,7 +41,7 @@ public class LeftHandMovement : MonoBehaviour
         /*-----------Left hand i.e spreat object rotation with mouse position --------*/
         Vector2 mousePoint = Camera.main.ScreenToWorldPoint(vector) - transform.position;
 
-        if (PauseGame.isGamePaused == false)
+        if (!pauseGameScript.isGamePaused)
         {
             float rotZ = Mathf.Atan2(mousePoint.y, mousePoint.x) * Mathf.Rad2Deg;
             if (playerMovement.direction == 2)

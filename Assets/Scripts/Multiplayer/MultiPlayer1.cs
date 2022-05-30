@@ -39,6 +39,7 @@ public class MultiPlayer1 : MonoBehaviour
     private GameMaster gm;
     public TMP_Text lifesText;
     GameUIScript gameUIScript;
+    PauseGame pauseGameScript;
     public LootSystem lootSystem;
    public MPCameraController mPCameraController;
     private void Awake()
@@ -66,6 +67,7 @@ public class MultiPlayer1 : MonoBehaviour
         transformObj = GetComponent<Transform>();
         lootSystem = GetComponent<LootSystem>();
         bgSound = GameObject.FindGameObjectWithTag("BGmusicGameObject").GetComponent<AudioSource>();
+        pauseGameScript = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<PauseGame>();
         currentHealth = maxHealth;
       /*  lifes = PlayerPrefs.GetInt("Lifes");
         currentHealth = PlayerPrefs.GetInt("CurrentHealth");*/
@@ -404,7 +406,7 @@ public class MultiPlayer1 : MonoBehaviour
     }
     void CheckGamePaused()
     {
-        if (PauseGame.isGamePaused)
+        if (pauseGameScript.isGamePaused)
         {
             //bgSound.pitch *= .5f;
         }

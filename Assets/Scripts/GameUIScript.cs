@@ -99,7 +99,7 @@ public class GameUIScript : MonoBehaviour
         pauseGameScript.Resume();
         restartBtnSound.Play();
         isNewGame = false;
-        PauseGame.isGamePaused = false;
+        pauseGameScript.isGamePaused = false;
         /*
         PlayerPrefs.SetInt("RecentGemCollected", 0);
         PlayerPrefs.SetInt("RecentCherryCollected", 0);

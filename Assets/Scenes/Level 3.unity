@@ -13201,7 +13201,6 @@ MonoBehaviour:
   playerLayers:
     serializedVersion: 2
     m_Bits: 128
-  attackRange: 2.5
   damage: 30
   attackDistance: 4
   nextAttackTime: 3
@@ -25579,7 +25578,7 @@ GameObject:
   - component: {fileID: 1981745869}
   m_Layer: 5
   m_Name: PauseGameCanvas
-  m_TagString: Untagged
+  m_TagString: PauseCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

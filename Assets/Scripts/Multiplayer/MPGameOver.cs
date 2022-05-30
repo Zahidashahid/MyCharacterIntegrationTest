@@ -24,7 +24,7 @@ public class MPGameOver : MonoBehaviour
     string difficultyLevel;
 
     public static bool isNewGame;
-
+    PauseGame pauseGameScript;
     public void Start()
     {
         /*gameOverPanel.SetActive(false);
@@ -33,6 +33,7 @@ public class MPGameOver : MonoBehaviour
         isNewGame = false;
 
         bgSound = GameObject.FindGameObjectWithTag("BGmusicGameObject").GetComponent<AudioSource>();
+        pauseGameScript = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<PauseGame>();
         scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
         mainMenu = GameObject.FindGameObjectWithTag("GM").GetComponent<MainMenu>();
 
@@ -54,7 +55,7 @@ public class MPGameOver : MonoBehaviour
         //SceneManager.LoadScene("Level 1");
         restartBtnSound.Play();
         isNewGame = false;
-        PauseGame.isGamePaused = false;
+        pauseGameScript.isGamePaused = false;
         /*
         PlayerPrefs.SetInt("RecentGemCollected", 0);
         PlayerPrefs.SetInt("RecentCherryCollected", 0);

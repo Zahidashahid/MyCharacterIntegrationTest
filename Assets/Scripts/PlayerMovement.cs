@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     bool isShieldBtnPressed;
     bool isJumpBtnPressed;
    // Vector3 m;
-    public HealthBar healthBar;
+    
     public CharacterController2D controller;
     [SerializeField] public LayerMask m_WhatIsGround;
     public Rigidbody2D rb;
@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     public int lifes ;
     public int numberOfDamgeTake ;
 
+    public bool isHurt;
     public bool activeShield;
     public bool isWalking;
 
@@ -64,8 +65,11 @@ public class PlayerMovement : MonoBehaviour
     private GameObject weapon;
     private GameMaster gm;
     public TMP_Text lifesText;
-    GameUIScript gameUIScript;
-    public bool isHurt;
+
+    /*Scripts Refrences*/
+    public HealthBar healthBar;
+    PauseGame pauseGameScript;
+    //GameUIScript gameUIScript;
     private void Awake()
     {
         boxCollider2d = GetComponent<BoxCollider2D>();
@@ -91,12 +95,13 @@ public class PlayerMovement : MonoBehaviour
         //bgSound.Play();
     }
     private void Start()
-    {
+    {pauseGameScript = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<PauseGame>();
         jumpVelocity = 10f;
         numberOfDamgeTake = 0;
         isHurt = false;
         CheckForAwatarSelected();
         bgSound = GameObject.FindGameObjectWithTag("BGmusicGameObject").GetComponent<AudioSource>();
+        pauseGameScript = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<PauseGame>();
         bodyParts = GameObject.FindGameObjectWithTag("BodyParts");
         weapon = GameObject.FindGameObjectWithTag("WeaponSprite");
         //Eagle_animator = GameObject.FindGameObjectWithTag("Enemy").transform<Animator>();
@@ -264,12 +269,15 @@ public class PlayerMovement : MonoBehaviour
     private void Flip()
     {
         // Rotate the player
-        if (transform.localEulerAngles.y != 180 && direction == 1)
-            transform.Rotate(0f, 180f, 0f);
-        else if(transform.localEulerAngles.y != 0 && direction == 2)
+        Debug.Log("pauseGameScript.isGamePaused " + pauseGameScript.isGamePaused);
+        if ( !pauseGameScript.isGamePaused)
+       {
+            Debug.Log("Flip");
+            if (transform.localEulerAngles.y != 180 && direction == 1)
+                transform.Rotate(0f, 180f, 0f);
+            else if (transform.localEulerAngles.y != 0 && direction == 2)
                 transform.Rotate(0f, -180f, 0f);
-
-
+       }
         // player flip point of attck also flip is direction
         //transform.Rotate(0f, 180f, 0f);
     }
@@ -398,60 +406,64 @@ public class PlayerMovement : MonoBehaviour
     </summary> */
     IEnumerator Attack() //Melle Attack by player
     {
-        animator.SetBool("Attack 2", true);
-        Debug.Log("Attacking ");
-        yield return new WaitForSeconds(0.7f);
-       
-        SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.meleeAttackSound);
-        animator.SetBool("Attack 2", false);
-        string difficultyLevel = PlayerPrefs.GetString("DifficultyLevel");
-        //Deteck enemies in range
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponAttackPoint.position, attackRange, enemyLayers);
-        //damage Them
-        foreach (Collider2D enemy in hitEnemies)
+        if(!pauseGameScript.isGamePaused)
         {
-            Debug.Log("We hit " + enemy.name);
-            if (enemy.name == "Skeleton" || enemy.tag == "Skeleton")
-            {
-                
-                if (difficultyLevel == "Easy")
-                {
-                    enemy.GetComponent<SkeletonEnemyMovement>().TakeDamage(40);
-                }
-                else if (difficultyLevel == "Medium")
-                {
-                    enemy.GetComponent<SkeletonEnemyMovement>().TakeDamage(30);
-                }
-                else if (difficultyLevel == "Hard")
-                {
-                    enemy.GetComponent<SkeletonEnemyMovement>().TakeDamage(10);
-                }
-              /*  enemy.GetComponent<SkeletonEnemyMovement>().StartCoroutine(SkeletonHurtAnimation());*/
+            animator.SetBool("Attack 2", true);
+            Debug.Log("Attacking ");
+            yield return new WaitForSeconds(0.7f);
 
-            }
-            //eagle_animator.SetTrigger("Death");
-            // yield return new WaitForSeconds(1);
-            else if (enemy.name == "Range Attack Skeleton" || enemy.tag == "RangedAttackSkeleton")
+            SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.meleeAttackSound);
+            animator.SetBool("Attack 2", false);
+            string difficultyLevel = PlayerPrefs.GetString("DifficultyLevel");
+            //Deteck enemies in range
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponAttackPoint.position, attackRange, enemyLayers);
+            //damage Them
+            foreach (Collider2D enemy in hitEnemies)
             {
+                Debug.Log("We hit " + enemy.name);
+                if (enemy.name == "Skeleton" || enemy.tag == "Skeleton")
+                {
 
-                if (difficultyLevel == "Easy")
-                {
-                    enemy.GetComponent<SkeletonRangeAttackMovement>().TakeDamage(40);
+                    if (difficultyLevel == "Easy")
+                    {
+                        enemy.GetComponent<SkeletonEnemyMovement>().TakeDamage(40);
+                    }
+                    else if (difficultyLevel == "Medium")
+                    {
+                        enemy.GetComponent<SkeletonEnemyMovement>().TakeDamage(30);
+                    }
+                    else if (difficultyLevel == "Hard")
+                    {
+                        enemy.GetComponent<SkeletonEnemyMovement>().TakeDamage(10);
+                    }
+                    /*  enemy.GetComponent<SkeletonEnemyMovement>().StartCoroutine(SkeletonHurtAnimation());*/
+
                 }
-                else if (difficultyLevel == "Medium")
+                //eagle_animator.SetTrigger("Death");
+                // yield return new WaitForSeconds(1);
+                else if (enemy.name == "Range Attack Skeleton" || enemy.tag == "RangedAttackSkeleton")
                 {
-                    enemy.GetComponent<SkeletonRangeAttackMovement>().TakeDamage(30);
+
+                    if (difficultyLevel == "Easy")
+                    {
+                        enemy.GetComponent<SkeletonRangeAttackMovement>().TakeDamage(40);
+                    }
+                    else if (difficultyLevel == "Medium")
+                    {
+                        enemy.GetComponent<SkeletonRangeAttackMovement>().TakeDamage(30);
+                    }
+                    else if (difficultyLevel == "Hard")
+                    {
+                        enemy.GetComponent<SkeletonRangeAttackMovement>().TakeDamage(10);
+                    }
+                    /* enemy.GetComponent<SkeletonRangeAttackMovement>().StartCoroutine(SkeletonSheildtAnimation());
+                     enemy.GetComponent<SkeletonRangeAttackMovement>().StartCoroutine(RangeAttackSkeletonHurtAnimation());*/
                 }
-                else if (difficultyLevel == "Hard")
-                {
-                    enemy.GetComponent<SkeletonRangeAttackMovement>().TakeDamage(10);
-                }
-               /* enemy.GetComponent<SkeletonRangeAttackMovement>().StartCoroutine(SkeletonSheildtAnimation());
-                enemy.GetComponent<SkeletonRangeAttackMovement>().StartCoroutine(RangeAttackSkeletonHurtAnimation());*/
+                else
+                    break;
             }
-            else   
-                break;
         }
+        
     }
     /*-------------Show Attack point oject in scene for better Visibility--------------------*/
     public void SetActiveBodyParts()
