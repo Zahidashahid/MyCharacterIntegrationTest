@@ -10,7 +10,15 @@ public class TakeLoot : MonoBehaviour
     int valueOfThisLoot;
     private void Start()
     {
-        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+      
+        if ((PlayerPrefs.GetInt("AvatarSelected") == 1))
+        {
+            playerMovement = GameObject.Find("Player_Goblin").GetComponent<PlayerMovement>();
+        }
+        else
+        {
+            playerMovement = GameObject.Find("MushrromPlayer").GetComponent<PlayerMovement>();
+        }
         healthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<HealthBar>();
         arrowStore = GameObject.FindGameObjectWithTag("ArrowStore").GetComponent<ArrowStore>();
         if (this.tag == "HealthLoot")

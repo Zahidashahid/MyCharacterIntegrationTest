@@ -50,6 +50,7 @@ public class SkeletonEnemyMovement : MonoBehaviour
         numberOfDamgeTake = 0;
         shield = GetComponent<EnemyShield>();
         lootSystem = GetComponent<LootSystem>();
+        animator.SetFloat("Speed", Mathf.Abs(40));
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(currentHealth);

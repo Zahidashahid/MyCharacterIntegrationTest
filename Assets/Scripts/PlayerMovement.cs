@@ -400,7 +400,7 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetBool("Attack 2", true);
         Debug.Log("Attacking ");
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.7f);
        
         SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.meleeAttackSound);
         animator.SetBool("Attack 2", false);

@@ -8,7 +8,7 @@ public class MelleAttack : MonoBehaviour
     public Animator animator;
     public Transform attackPoint;
     public LayerMask playerLayers;
-    public float attackRange = 1.5f;
+     float attackRange = 1f;
     public float damage;
     public float attackDistance; 
     public float nextAttackTime; // after every 2 sec
@@ -83,8 +83,9 @@ public class MelleAttack : MonoBehaviour
         //Debug.Log("In Attack function ");
         //deteck enemies in range of attack
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
+        
         // demage them
-        foreach(Collider2D player in hitEnemies)
+        foreach (Collider2D player in hitEnemies)
         {
             // Destroy();
             //Debug.Log("InAttack Skelton hit " + player.name);
@@ -115,6 +116,7 @@ public class MelleAttack : MonoBehaviour
             return;
         }
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision) 
