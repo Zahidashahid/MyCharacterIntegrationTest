@@ -46,6 +46,7 @@ public class TakeLoot : MonoBehaviour
                 {
                     Debug.Log(this.tag);
                     int healthValuePlayerHas = PlayerPrefs.GetInt("CurrentHealth");
+                    Debug.Log(healthValuePlayerHas);
                     /*
                        ---------------------- Logic if player has full health  
                     */

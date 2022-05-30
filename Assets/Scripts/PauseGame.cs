@@ -43,11 +43,10 @@ public class PauseGame : MonoBehaviour
     }
     void OnApplicationFocus(bool hasFocus)
     {
-        isGamePaused = !hasFocus;
+        //isGamePaused = !hasFocus;
         if (hasFocus == false)
             Pause();
-        else
-            Resume();
+       
     }
 
     void OnApplicationPause()
@@ -63,12 +62,12 @@ public class PauseGame : MonoBehaviour
     }
     public void Resume()
     {
-        isGamePaused = false;
         pauseMenuUI.SetActive(false);
         MainMenuConformationPopUpUI.SetActive(false);
         QuitGameMenuUI.SetActive(false);
         gameModeUI.SetActive(true);
         Time.timeScale = 1f;
+        isGamePaused = false;
     }   
     void Pause()
     {

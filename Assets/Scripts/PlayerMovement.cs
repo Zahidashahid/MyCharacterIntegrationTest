@@ -269,10 +269,8 @@ public class PlayerMovement : MonoBehaviour
     private void Flip()
     {
         // Rotate the player
-        Debug.Log("pauseGameScript.isGamePaused " + pauseGameScript.isGamePaused);
         if ( !pauseGameScript.isGamePaused)
        {
-            Debug.Log("Flip");
             if (transform.localEulerAngles.y != 180 && direction == 1)
                 transform.Rotate(0f, 180f, 0f);
             else if (transform.localEulerAngles.y != 0 && direction == 2)
@@ -572,7 +570,7 @@ public class PlayerMovement : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         lifes = lifes -  1;
         Debug.Log("lifes left " + lifes);
-       
+        PlayerPrefs.SetInt("CurrentHealth", currentHealth);
         PlayerPrefs.SetInt("Lifes", lifes);
         animator = GetComponent<Animator>(); ;
         rb.bodyType = RigidbodyType2D.Static;
