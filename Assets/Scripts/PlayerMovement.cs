@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         //bgSound.Play();
     }
     private void Start()
-    {pauseGameScript = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<PauseGame>();
+    {
         jumpVelocity = 10f;
         numberOfDamgeTake = 0;
         isHurt = false;
