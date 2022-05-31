@@ -231,7 +231,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log(" NewGameStrat()");
         PlayerPrefs.SetInt("CurrentHealth", 100);
         PlayerPrefs.SetInt("Lifes", 3);
-        PlayerPrefs.SetInt("ArrowPlayerHas", 10);
+        //PlayerPrefs.SetInt("ArrowPlayerHas", 10);
         PlayerPrefs.SetInt("RecentGemCollected", 0);
         PlayerPrefs.SetInt("RecentCherryCollected", 0);
         PlayerPrefs.SetInt("GemCollectedTillLastCheckPoint", 0);

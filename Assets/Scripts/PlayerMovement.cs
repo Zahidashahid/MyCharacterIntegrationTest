@@ -12,8 +12,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 move;
     bool isShieldBtnPressed;
     bool isJumpBtnPressed;
-   // Vector3 m;
-    
+    // Vector3 m;
+
     public CharacterController2D controller;
     [SerializeField] public LayerMask m_WhatIsGround;
     public Rigidbody2D rb;
@@ -27,16 +27,17 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource DeathSound;
     public AudioSource meleeAttackSound;*/
     public AudioSource bgSound;
-   
+
     //bool crouch = false;
     //bool grounded;
-    
-    public  float fallMultiplier = 2.5f;
-    public  float lowJumpMultiplier = 2f;
-    //[Range(1, 10)]
+
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+    [Range(1, 10)]
     public float jumpVelocity;
-    public  int jumpCount = 0;
+    public int jumpCount = 0;
     public int direction = 2;
+    [Range(1, 100)]
     public int currentHealth;
     public int maxHealth = 100;
     public int lifes ;
@@ -69,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
     /*Scripts Refrences*/
     public HealthBar healthBar;
     PauseGame pauseGameScript;
+    ArrowStore arrowStoreScript;
     //GameUIScript gameUIScript;
     private void Awake()
     {
@@ -102,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
         CheckForAwatarSelected();
         bgSound = GameObject.FindGameObjectWithTag("BGmusicGameObject").GetComponent<AudioSource>();
         pauseGameScript = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<PauseGame>();
+        arrowStoreScript = GameObject.FindGameObjectWithTag("ArrowStore").GetComponent<ArrowStore>();
         bodyParts = GameObject.FindGameObjectWithTag("BodyParts");
         weapon = GameObject.FindGameObjectWithTag("WeaponSprite");
         //Eagle_animator = GameObject.FindGameObjectWithTag("Enemy").transform<Animator>();
@@ -129,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
             PlayerPrefs.SetInt("GemCollectedTillLastCheckPoint", 0);
             PlayerPrefs.SetInt("CherryCollectedTillLastCheckPoint", 0);
             /*-------------Reset arrow Store----------------------*/
-            PlayerPrefs.SetInt("ArrowPlayerHas", 10);
+            PlayerPrefs.SetInt("ArrowPlayerHas", arrowStoreScript.maxNumOfArrow);
             PlayerPrefs.SetInt("CurrentHealth", 100);
             /* -------- Set last check point zero when game restarted-----------*/
             gm.lastCheckPointPos = transformObj.position; 
@@ -580,7 +583,8 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsDied", true);
         Debug.Log("Player died!"); 
         Debug.Log(" died!" + animator.GetBool("IsDied"));
-       // PlayerPrefs.SetInt("ArrowPlayerHas", 10);
+
+        // PlayerPrefs.SetInt("ArrowPlayerHas",  arrowStoreScript.maxNumOfArrow);
         SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.deathSound);
         // bgSound.Stop();
         yield return new WaitForSeconds(0.8f);
@@ -621,7 +625,7 @@ public class PlayerMovement : MonoBehaviour
         Time.timeScale = 1f;
         PlayerPrefs.SetInt("CurrentHealth", 100);
         PlayerPrefs.SetInt("Lifes", 3);
-        PlayerPrefs.SetInt("ArrowPlayerHas", 10);
+        PlayerPrefs.SetInt("ArrowPlayerHas", arrowStoreScript.maxNumOfArrow);
     }
 
     void CheckForAwatarSelected()

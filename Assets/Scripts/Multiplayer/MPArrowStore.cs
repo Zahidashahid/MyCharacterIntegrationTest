@@ -5,21 +5,21 @@ using UnityEngine.UI;
 using TMPro;
 public class MPArrowStore : MonoBehaviour
 {
-    public int arrowPlayer1Has;
+    int maxNumArrow = 100;
+    public int arrowPlayer1Has ;
     public int arrowPlayer2Has;
     public TMP_Text arrowStoreP1Text;
     public TMP_Text arrowStoreP2Text;
     private void Awake()
     {
-        arrowPlayer1Has = 10;
-        arrowPlayer2Has = 10;
+        
     }
     void Start()
     {
 
-        arrowPlayer1Has = 10;
-        arrowPlayer2Has = 10;
-        /*PlayerPrefs.SetInt("ArrowPlayerHas", 10);
+        arrowPlayer1Has = maxNumArrow;
+        arrowPlayer2Has = maxNumArrow;
+        /*PlayerPrefs.SetInt("ArrowPlayerHas", maxNumArrow );
         arrowPlayerHas = PlayerPrefs.GetInt("ArrowPlayerHas");*/
         arrowStoreP1Text.text = "X " + arrowPlayer1Has;
         arrowStoreP2Text.text = "X " + arrowPlayer2Has;

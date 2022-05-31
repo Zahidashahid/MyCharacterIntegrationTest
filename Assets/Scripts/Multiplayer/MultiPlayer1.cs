@@ -387,6 +387,7 @@ public class MultiPlayer1 : MonoBehaviour
         Debug.Log("Player died!");
         Debug.Log(" died!" + animator.GetBool("IsDied"));
         // PlayerPrefs.SetInt("ArrowPlayerHas", 10);
+        
         SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.deathSound);
         Debug.Log("Sound played!");
         // bgSound.Stop();

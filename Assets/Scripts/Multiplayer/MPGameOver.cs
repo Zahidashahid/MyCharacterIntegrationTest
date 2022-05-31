@@ -25,6 +25,7 @@ public class MPGameOver : MonoBehaviour
 
     public static bool isNewGame;
     PauseGame pauseGameScript;
+    public ArrowStore arrowStoreScript;
     public void Start()
     {
         /*gameOverPanel.SetActive(false);
@@ -36,6 +37,7 @@ public class MPGameOver : MonoBehaviour
         pauseGameScript = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<PauseGame>();
         scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
         mainMenu = GameObject.FindGameObjectWithTag("GM").GetComponent<MainMenu>();
+        arrowStoreScript = GameObject.FindGameObjectWithTag("ArrowStore").GetComponent<ArrowStore>();
 
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
 
@@ -59,7 +61,8 @@ public class MPGameOver : MonoBehaviour
         /*
         PlayerPrefs.SetInt("RecentGemCollected", 0);
         PlayerPrefs.SetInt("RecentCherryCollected", 0);
-        PlayerPrefs.SetInt("ArrowPlayerHas", 10);*/
+        PlayerPrefs.SetInt("ArrowPlayerHas", arrowStoreScript.maxNumOfArrow);*/
+
         //Reset the last check point
         bgSound.Play();
         Time.timeScale = 1f;
@@ -104,7 +107,7 @@ public class MPGameOver : MonoBehaviour
         //SceneManager.LoadScene("Level 1");
         restartBtnSound.Play();
         isNewGame = true;
-        PlayerPrefs.SetInt("ArrowPlayerHas", 10);
+        PlayerPrefs.SetInt("ArrowPlayerHas", arrowStoreScript.maxNumOfArrow);
 
         PlayerPrefs.SetInt("RecentGemCollected", 0);
         PlayerPrefs.SetInt("RecentCherryCollected", 0);
@@ -130,7 +133,7 @@ public class MPGameOver : MonoBehaviour
         PlayerPrefs.SetInt("GemCollectedTillLastCheckPoint", 0);
         PlayerPrefs.SetInt("CherryCollectedTillLastCheckPoint", 0);
         //Reset arrow Store
-        PlayerPrefs.SetInt("ArrowPlayerHas", 10);
+        PlayerPrefs.SetInt("ArrowPlayerHas", arrowStoreScript.maxNumOfArrow);
         //Reset Last check point
         string currentLevel = PlayerPrefs.GetString("CurrentLevel");
         SceneManager.LoadScene(currentLevel);

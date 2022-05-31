@@ -22,6 +22,7 @@ public class GameUIScript : MonoBehaviour
     MainMenu mainMenu;
     GameMaster gm;
     PlayerMovement playerMovement;
+    ArrowStore arrowStoreScript; 
     public ScoreManager scoreManager;
     PauseGame pauseGameScript;
     string difficultyLevel;
@@ -33,7 +34,7 @@ public class GameUIScript : MonoBehaviour
         /* gameOverPanel.SetActive(false);
          restartButton.SetActive(false);
         gameOverText.enabled = false;*/
-        
+      
         
     }
 
@@ -47,6 +48,7 @@ public class GameUIScript : MonoBehaviour
         avatar1 = GameObject.Find("Player_Goblin");
         avatar2 = GameObject.Find("MushrromPlayer");
         pauseGameScript = GameObject.Find("PauseGameCanvas").GetComponent<PauseGame>();
+        arrowStoreScript = GameObject.FindGameObjectWithTag("ArrowStore").GetComponent<ArrowStore>();
         Debug.Log("Avatar " + PlayerPrefs.GetInt("AvatarSelected"));
         if ((PlayerPrefs.GetInt("AvatarSelected") == 2))
         {
@@ -103,7 +105,8 @@ public class GameUIScript : MonoBehaviour
         /*
         PlayerPrefs.SetInt("RecentGemCollected", 0);
         PlayerPrefs.SetInt("RecentCherryCollected", 0);
-        PlayerPrefs.SetInt("ArrowPlayerHas", 10);*/
+        PlayerPrefs.SetInt("ArrowPlayerHas",  arrowStoreScript.maxNumOfArrow);*/
+
         //Reset the last check point
         bgSound.Play();
         Time.timeScale = 1f;
@@ -161,7 +164,7 @@ public class GameUIScript : MonoBehaviour
     {
         MainMenu.isNewGame = true;
         isNewGame = true;
-        PlayerPrefs.SetInt("ArrowPlayerHas", 10);
+        PlayerPrefs.SetInt("ArrowPlayerHas", arrowStoreScript.maxNumOfArrow );
 
         PlayerPrefs.SetInt("RecentGemCollected", 0);
         PlayerPrefs.SetInt("RecentCherryCollected", 0);

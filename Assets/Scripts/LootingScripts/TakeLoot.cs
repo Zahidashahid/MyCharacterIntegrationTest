@@ -5,7 +5,7 @@ using UnityEngine;
 public class TakeLoot : MonoBehaviour
 {
     public PlayerMovement playerMovement;
-    public ArrowStore arrowStore;
+    public  ArrowStore  arrowStoreScript;
     public HealthBar healthBar;
     int valueOfThisLoot;
     private void Start()
@@ -20,7 +20,7 @@ public class TakeLoot : MonoBehaviour
             playerMovement = GameObject.Find("MushrromPlayer").GetComponent<PlayerMovement>();
         }
         healthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<HealthBar>();
-        arrowStore = GameObject.FindGameObjectWithTag("ArrowStore").GetComponent<ArrowStore>();
+         arrowStoreScript = GameObject.FindGameObjectWithTag("ArrowStore").GetComponent< ArrowStore>();
         if (this.tag == "HealthLoot")
         {
             valueOfThisLoot = 50;
@@ -65,7 +65,7 @@ public class TakeLoot : MonoBehaviour
 
                         playerMovement.currentHealth = 100;
                         PlayerPrefs.SetInt("CurrentHealth", 100);
-                        Debug.Log("numOfArrowsPlayerHas  " + healthValuePlayerHas);
+                        Debug.Log("numOfhealth PlayerHas  " + healthValuePlayerHas);
                             Debug.Log("healthToAddInStore " + healthToAddInStore);
                             Debug.Log("valueOfThisLoot  left " + valueOfThisLoot);
                             Debug.Log(" new CurrentHealth" + healthCount);
@@ -98,13 +98,13 @@ public class TakeLoot : MonoBehaviour
                         ---------------------- Logic if player has 10 arrow i.e store is full
                      */
                     Debug.Log(this.tag);
-                    if (numOfArrowsPlayerHas >= 10)
+                    if (numOfArrowsPlayerHas >=  arrowStoreScript.maxNumOfArrow)
                     {
                         return;
                     }
                     else
                     {
-                        int arrowsToAddInStore = 10 - numOfArrowsPlayerHas;
+                        int arrowsToAddInStore = arrowStoreScript.maxNumOfArrow - numOfArrowsPlayerHas;
                         if(arrowsToAddInStore <= valueOfThisLoot)
                         {
                             valueOfThisLoot = valueOfThisLoot - arrowsToAddInStore;
@@ -114,18 +114,18 @@ public class TakeLoot : MonoBehaviour
                             Debug.Log("valueOfThisLoot  left" + valueOfThisLoot);
                             Debug.Log(" new arrowCount" + arrowCount);
                             PlayerPrefs.SetInt("ArrowPlayerHas", arrowCount);
-                            arrowStore.arrowPlayerHas = arrowCount;
-                            arrowStore.UpdateArrowText();
+                             arrowStoreScript.arrowPlayerHas = arrowCount;
+                             arrowStoreScript.UpdateArrowText();
                         }
                         else
                         {
                             int arrowCount = numOfArrowsPlayerHas + valueOfThisLoot;
                             PlayerPrefs.SetInt("ArrowPlayerHas", arrowCount);
                             valueOfThisLoot = valueOfThisLoot - valueOfThisLoot;
-                            arrowStore.arrowPlayerHas = arrowCount;
-                            arrowStore.UpdateArrowText();
+                             arrowStoreScript.arrowPlayerHas = arrowCount;
+                             arrowStoreScript.UpdateArrowText();
                         }
-                        if (arrowsToAddInStore == 5)
+                        if (arrowsToAddInStore == valueOfThisLoot)
                         {
                             Destroy(gameObject);
                         }
