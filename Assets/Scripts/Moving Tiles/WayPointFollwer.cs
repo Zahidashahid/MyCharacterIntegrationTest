@@ -6,7 +6,7 @@ public class WayPointFollwer : MonoBehaviour
 {
     public GameObject[] wayPoints;
     int CurrentWayPointIndex = 0;
-    public float speed = 1.5f;
+    public float speed = 2f;
     void Update()
     {
         if(Vector2.Distance(wayPoints[CurrentWayPointIndex].transform.position, transform.position) < .1f)

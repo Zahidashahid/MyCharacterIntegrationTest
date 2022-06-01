@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7071864492116698057}
   - component: {fileID: 7071864492116698056}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tiles_Desert_Size_500_Percent_17 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7071864492335949061}
   - component: {fileID: 7071864492335949060}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tiles_Desert_Size_500_Percent_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7071864492433229075}
   - component: {fileID: 7071864492433229074}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tiles_Desert_Size_500_Percent_22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7071864492452169462}
   - component: {fileID: 7071864492452169463}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tiles_Desert_Size_500_Percent_17 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7071864492874329092}
   - component: {fileID: 7071864492874329095}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tiles_Desert_Size_500_Percent_21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: -3269278348901430297}
   - component: {fileID: 4335033794109755273}
   - component: {fileID: -4168424700172833718}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moving Tile 1
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7071864493488234059}
   - component: {fileID: 7071864493488234056}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tiles_Desert_Size_500_Percent_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,7 +623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7071864493640015799}
   - component: {fileID: 7071864493640015798}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tiles_Desert_Size_500_Percent_17 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -706,7 +706,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7071864494053899781}
   - component: {fileID: 7071864494053899780}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tiles_Desert_Size_500_Percent_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

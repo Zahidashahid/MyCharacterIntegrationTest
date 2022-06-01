@@ -16,8 +16,9 @@ public class RangeAttackSpwaner : MonoBehaviour
         if (Time.time > nextSpwan)
         {
             nextSpwan = Time.time + spwanRate;
-            randX = Random.Range(transform.position.x -10, transform.position.x);
-            whereToSpwan = new Vector2(randX, transform.position.y);
+            /*randX = Random.Range(transform.position.x -10, transform.position.x);
+            whereToSpwan = new Vector2(randX, transform.position.y);*/
+            whereToSpwan = new Vector2(transform.position.x, transform.position.y);
             Instantiate(skeletonRangeAttackSpwan, whereToSpwan, Quaternion.identity);
         }
     }
