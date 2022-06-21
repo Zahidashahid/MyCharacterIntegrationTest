@@ -24,7 +24,7 @@ public class MultiPlayer2 : MonoBehaviour
     public int direction = 2;
     public int currentHealth;
     public int maxHealth = 100;
-    public int lifes;
+    public int lives;
     public int numberOfDamgeTake;
 
     public float attackRange =3f;
@@ -38,8 +38,8 @@ public class MultiPlayer2 : MonoBehaviour
     public LayerMask enemyLayers;
 
     private Shield shield; //Player Shield
-    private GameMaster gm;
-    public TMP_Text lifesText;
+    //private GameMaster gm;
+    public TMP_Text livesText;
     GameUIScript gameUIScript;
     PauseGame pauseGameScript;
     public LootSystem lootSystem;
@@ -49,7 +49,7 @@ public class MultiPlayer2 : MonoBehaviour
         boxCollider2d = GetComponent<BoxCollider2D>();
 
         mPCameraController = GameObject.Find("Camera").GetComponent<MPCameraController>();
-        lifes = 3;
+        lives = 3;
         controls = new PlayerController();
         controls.Gameplay.Multiplayer2Movement.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.Gameplay.Multiplayer2Movement.canceled += ctx => move = Vector2.zero;
@@ -74,15 +74,15 @@ public class MultiPlayer2 : MonoBehaviour
         pauseGameScript = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<PauseGame>();
         Debug.Log("Animator is assign " + animator.name);
         currentHealth = maxHealth;
-      /*  lifes = PlayerPrefs.GetInt("Lifes");
+      /*  lives = PlayerPrefs.GetInt("lives");
         currentHealth = PlayerPrefs.GetInt("CurrentHealth");*/
-        lifesText.text = "X " + lifes;
+        livesText.text = "X " + lives;
         /*Debug.Log("current health of player is " + currentHealth);
         Debug.Log("Max health of player is " + maxHealth);*/
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(currentHealth);
         // bgSound.Play();
-        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+        //gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
     }
     private void FixedUpdate()
     {
@@ -250,7 +250,7 @@ public class MultiPlayer2 : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        if (currentHealth > 0 && lifes > 0)
+        if (currentHealth > 0 && lives > 0)
         {
 
             if (numberOfDamgeTake > 3)
@@ -265,15 +265,15 @@ public class MultiPlayer2 : MonoBehaviour
                 if (currentHealth <= 0)
                 {
              /*       PlayerPrefs.SetInt("CurrentHealth", 100);*/
-                    lifes -= 1;
-                    lifesText.text = "X " + lifes;
-               /*     PlayerPrefs.SetInt("Lifes", lifes);*/
+                    lives -= 1;
+                    livesText.text = "X " + lives;
+               /*     PlayerPrefs.SetInt("lives", lives);*/
                 }
-                if (currentHealth <= 0 && lifes <= 0)
+                if (currentHealth <= 0 && lives <= 0)
                 {
                     // bgSound.Stop();
           /*          PlayerPrefs.SetInt("CurrentHealth", 100);
-                    PlayerPrefs.SetInt("Lifes", 3);*/
+                    PlayerPrefs.SetInt("lives", 3);*/
                     SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.deathSound);
                     StartCoroutine(Die());
                     this.enabled = false;
@@ -343,7 +343,7 @@ public class MultiPlayer2 : MonoBehaviour
          /*----------Set the player on check point position--------------*/
         animator.SetBool("IsDied", false);
         Debug.Log("Player Reactive!");
-        transformObj.position = gm.lastCheckPointPos;
+        transformObj.position = GameMaster.lastCheckPointPos;
     }
     public int PlayerMovingDirection()
     {
@@ -422,11 +422,11 @@ public class MultiPlayer2 : MonoBehaviour
     }
     public void Reset()
     {
-        lifes = 0;
+        lives = 0;
         currentHealth = 100;
         Time.timeScale = 1f;
        /* PlayerPrefs.SetInt("CurrentHealth", 100);
-        PlayerPrefs.SetInt("Lifes", 3);
+        PlayerPrefs.SetInt("lives", 3);
         PlayerPrefs.SetInt("ArrowPlayerHas", 10);*/
     }
 

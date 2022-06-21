@@ -125,7 +125,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.272, y: 0.144}
+    oldSize: {x: 1.136, y: 0.072}
     newSize: {x: 5.68, y: 0.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -146,15 +146,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24645e93680d2584ca4b0b403f7abfc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  lifeTime: 3
+  speed: 0
+  lifeTime: 10
   distance: 7
   enemy:
     serializedVersion: 2
     m_Bits: 128
   arrowTransform: {fileID: 5905011712116011312}
   spriteRenderer: {fileID: 5905011712116011309}
-  arrowHitSound: {fileID: 1375588968495565106}
   offset: 0
 --- !u!82 &1375588968495565106
 AudioSource:
@@ -269,7 +268,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.272, y: 0.144}
+    oldSize: {x: 1.136, y: 0.072}
     newSize: {x: 5.68, y: 0.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

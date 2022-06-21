@@ -33,7 +33,7 @@ public class SkeletonProjectile : MonoBehaviour
     {
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         playerObject = GameObject.FindGameObjectWithTag("Player");
-        speed = 0.1f;
+        speed = 20f;
         Invoke("DestroyProjectile", lifeTime);
         //Debug.Log(""+playerObject.transform.position.x +"< "+skeletonObject.transform.position.x);
         distance = Vector2.Distance(transform.position, playerObject.transform.position);
@@ -55,7 +55,7 @@ public class SkeletonProjectile : MonoBehaviour
             spriteRenderer.flipX = false;
             velocity = (Vector3.right * speed * Time.deltaTime);
         }*/
-        velocity = (Vector3.right * speed );
+        velocity = (Vector3.right * Time.deltaTime * speed );
     }
     void Update()
     {
@@ -70,7 +70,7 @@ public class SkeletonProjectile : MonoBehaviour
         {
             SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.arrowHitSound);
             //Debug.Log("Arrow hit Player");
-            string difficultyLevel = PlayerPrefs.GetString("DifficultyLevel");
+            string difficultyLevel = SaveSystem.instance.playerData.difficultyLevel;
             if (difficultyLevel == "Easy")
             {
                 collision.GetComponent<PlayerMovement>().TakeDamage(30);

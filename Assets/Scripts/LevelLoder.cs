@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+/*using System.Collections;
+using System.Collections.Generic;*/
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class LevelLoder : MonoBehaviour
@@ -35,7 +35,8 @@ public class LevelLoder : MonoBehaviour
         else
         {
             SceneManager.LoadScene(sLevelToLoad);
-            PlayerPrefs.SetString("CurrentLevel", sLevelToLoad);
+            SaveSystem.instance.playerData.level = sLevelToLoad;
+           SaveSystem.instance.SavePlayer();
             audioSrc.mute = true;
             SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.missionCompletetSound);
             PlayerPrefs.SetString("LevelReached", sLevelToLoad);

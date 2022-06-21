@@ -19,7 +19,7 @@ public class MPGameOver : MonoBehaviour
     public AudioSource restartBtnSound;
     public AudioSource bgSound;
     MainMenu mainMenu;
-    GameMaster gm;
+    //GameMaster gm;
     public ScoreManager scoreManager;
     string difficultyLevel;
 
@@ -39,7 +39,7 @@ public class MPGameOver : MonoBehaviour
         mainMenu = GameObject.FindGameObjectWithTag("GM").GetComponent<MainMenu>();
         arrowStoreScript = GameObject.FindGameObjectWithTag("ArrowStore").GetComponent<ArrowStore>();
 
-        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+       // gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
 
 
     }
@@ -68,7 +68,7 @@ public class MPGameOver : MonoBehaviour
         Time.timeScale = 1f;
         float x = PlayerPrefs.GetFloat("LastcheckPointX");
         float y = PlayerPrefs.GetFloat("LastcheckPointy");
-        gm.lastCheckPointPos = new Vector2(x, y);
+       GameMaster.lastCheckPointPos = new Vector2(x, y);
         //playerMovement.transform.position = gm.lastCheckPointPos;
         Debug.Log(difficultyLevel);
         if (difficultyLevel == "Easy")
@@ -99,7 +99,7 @@ public class MPGameOver : MonoBehaviour
         pauseMenuPanel.SetActive(false);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void RestartGame() //When Game is over after complete death i.e zero lifes left
+    public void RestartGame() //When Game is over after complete death i.e zero lives left
     {
         /*        gameOverPanel.SetActive(false);
                 restartButton.SetActive(false);
@@ -117,8 +117,8 @@ public class MPGameOver : MonoBehaviour
         bgSound.Play();
         Time.timeScale = 1f;
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        gm.lastCheckPointPos = new Vector2(0, 0);
-        string currentLevel = PlayerPrefs.GetString("CurrentLevel");
+        GameMaster.lastCheckPointPos = new Vector2(0,0);
+        string currentLevel = SaveSystem.instance.playerData.level;
         SceneManager.LoadScene(currentLevel);
     }
 
@@ -135,7 +135,7 @@ public class MPGameOver : MonoBehaviour
         //Reset arrow Store
         PlayerPrefs.SetInt("ArrowPlayerHas", arrowStoreScript.maxNumOfArrow);
         //Reset Last check point
-        string currentLevel = PlayerPrefs.GetString("CurrentLevel");
+        string currentLevel = SaveSystem.instance.playerData.level;
         SceneManager.LoadScene(currentLevel);
         Debug.Log(" RestartLevel() Called");
     }

@@ -6488,6 +6488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPlayerHas: 0
+  maxNumOfArrow: 100
   arrowStoreText: {fileID: 397495563}
 --- !u!1 &870383513
 GameObject:
@@ -7925,7 +7926,7 @@ GameObject:
   - component: {fileID: 1143185768}
   m_Layer: 5
   m_Name: PauseGameCanvas
-  m_TagString: Untagged
+  m_TagString: PauseCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7964,10 +7965,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8791a9a151bd84fbe38268613d79c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGamePaused: 0
   pauseMenuUI: {fileID: 1714717491}
   gameModeUI: {fileID: 642082958}
   QuitGameMenuUI: {fileID: 1771764711}
   MainMenuConformationPopUpUI: {fileID: 1206850349}
+  playerMovement: {fileID: 0}
 --- !u!114 &1143185769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8666,6 +8669,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1246414003}
+  - component: {fileID: 1246414004}
   m_Layer: 13
   m_Name: ArrowStore
   m_TagString: ArrowStore
@@ -8693,6 +8697,21 @@ RectTransform:
   m_AnchoredPosition: {x: 31.03, y: 5.07}
   m_SizeDelta: {x: 7.358, y: 1.157}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1246414004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246414002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421592c6b4e77374590678b19bcff7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPlayerHas: 0
+  maxNumOfArrow: 100
+  arrowStoreText: {fileID: 397495563}
 --- !u!1 &1258866992
 GameObject:
   m_ObjectHideFlags: 0
@@ -10108,7 +10127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b260cec009a43f438e3dc4ad7f4bab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
   controller: {fileID: 1434199717}
   m_WhatIsGround:
     serializedVersion: 2
@@ -10117,20 +10135,30 @@ MonoBehaviour:
   animator: {fileID: 1434199721}
   transformObj: {fileID: 0}
   bgSound: {fileID: 0}
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  jumpVelocity: 0
+  jumpCount: 0
   direction: 2
   currentHealth: 0
   maxHealth: 100
-  lifes: 0
+  lives: 0
   numberOfDamgeTake: 0
+  isHurt: 0
+  activeShield: 0
+  isWalking: 0
   attackRange: 1
   attackRate: 1
   nextAttackTime: 0
+  distToGroundCapusleCollider: 1.6
   attackPoint: {fileID: 976977300}
   weaponAttackPoint: {fileID: 0}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1024
-  lifesText: {fileID: 0}
+  livesText: {fileID: 0}
+  healthBar: {fileID: 0}
+  arrowStoreScript: {fileID: 0}
 --- !u!114 &1434199717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10143,7 +10171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c22cc2ee6519f40a8f1728dbc46ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 400
   m_MovementSmoothing: 0.05
   m_AirControl: 1
   m_WhatIsGround:
@@ -10379,13 +10406,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cddcd3b18dc864141b71d191d8aa0b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotPoint: {fileID: 779367640}
+  shootPoint: {fileID: 0}
   projectile: {fileID: 3834169631787135528, guid: 476d68b852c24ae43b7faf05067e41ed, type: 3}
-  offset: 0
+  animator: {fileID: 0}
   timeBtwShots: 3
-  startTimeBtwShots: 0
   nextAttackTime: 0
+  rotZ: 0
   arrowStore: {fileID: 868644120}
+  playerMovement: {fileID: 0}
 --- !u!61 &1474549245
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10608,13 +10636,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cddcd3b18dc864141b71d191d8aa0b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotPoint: {fileID: 1242385264}
+  shootPoint: {fileID: 0}
   projectile: {fileID: 3834169631787135528, guid: 476d68b852c24ae43b7faf05067e41ed, type: 3}
-  offset: 0
+  animator: {fileID: 0}
   timeBtwShots: 3
-  startTimeBtwShots: 0
   nextAttackTime: 0
+  rotZ: 0
   arrowStore: {fileID: 1582795456}
+  playerMovement: {fileID: 0}
 --- !u!61 &1573103553
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10689,7 +10718,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.5, y: 7.5}
+    oldSize: {x: 1.5, y: 1.5}
     newSize: {x: 7.5, y: 7.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -11192,6 +11221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldGO: {fileID: 1632233151}
   activeShield: 0
+  animator: {fileID: 0}
 --- !u!114 &1579219071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11231,7 +11261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b260cec009a43f438e3dc4ad7f4bab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 893408286}
   controller: {fileID: 1579219074}
   m_WhatIsGround:
     serializedVersion: 2
@@ -11240,20 +11269,30 @@ MonoBehaviour:
   animator: {fileID: 1579219077}
   transformObj: {fileID: 0}
   bgSound: {fileID: 0}
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  jumpVelocity: 0
+  jumpCount: 0
   direction: 2
   currentHealth: 100
   maxHealth: 100
-  lifes: 3
+  lives: 0
   numberOfDamgeTake: 0
+  isHurt: 0
+  activeShield: 0
+  isWalking: 0
   attackRange: 3
   attackRate: 3
   nextAttackTime: 2
+  distToGroundCapusleCollider: 1.6
   attackPoint: {fileID: 285543754}
   weaponAttackPoint: {fileID: 487534991}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1024
-  lifesText: {fileID: 1761076522}
+  livesText: {fileID: 1761076522}
+  healthBar: {fileID: 893408286}
+  arrowStoreScript: {fileID: 0}
 --- !u!114 &1579219074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11266,7 +11305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c22cc2ee6519f40a8f1728dbc46ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 400
   m_MovementSmoothing: 0.098
   m_AirControl: 1
   m_WhatIsGround:
@@ -11330,7 +11368,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.5, y: 7.5}
+    oldSize: {x: 1.5, y: 1.5}
     newSize: {x: 7.5, y: 7.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -11551,6 +11589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPlayerHas: 0
+  maxNumOfArrow: 100
   arrowStoreText: {fileID: 397495563}
 --- !u!1 &1587221112
 GameObject:
@@ -11826,6 +11865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldGO: {fileID: 1993622794}
   activeShield: 0
+  animator: {fileID: 0}
 --- !u!82 &1623782810
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12345,7 +12385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b260cec009a43f438e3dc4ad7f4bab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 893408286}
   controller: {fileID: 1623782818}
   m_WhatIsGround:
     serializedVersion: 2
@@ -12354,20 +12393,30 @@ MonoBehaviour:
   animator: {fileID: 1623782824}
   transformObj: {fileID: 0}
   bgSound: {fileID: 0}
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  jumpVelocity: 0
+  jumpCount: 0
   direction: 2
   currentHealth: 100
   maxHealth: 100
-  lifes: 3
+  lives: 0
   numberOfDamgeTake: 0
+  isHurt: 0
+  activeShield: 0
+  isWalking: 0
   attackRange: 3
   attackRate: 3
   nextAttackTime: 2
+  distToGroundCapusleCollider: 1.6
   attackPoint: {fileID: 1242907447}
   weaponAttackPoint: {fileID: 2009297458}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1024
-  lifesText: {fileID: 1761076522}
+  livesText: {fileID: 1761076522}
+  healthBar: {fileID: 893408286}
+  arrowStoreScript: {fileID: 0}
 --- !u!114 &1623782818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12380,7 +12429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c22cc2ee6519f40a8f1728dbc46ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 400
   m_MovementSmoothing: 0.098
   m_AirControl: 1
   m_WhatIsGround:
@@ -12423,7 +12471,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.375, y: 9.375}
+    oldSize: {x: 10, y: 10}
     newSize: {x: 1.5, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -12520,7 +12568,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.375, y: 9.375}
+    oldSize: {x: 10, y: 10}
     newSize: {x: 1.5, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -15104,7 +15152,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -132.99991, y: -935}
+  m_AnchoredPosition: {x: -132.99994, y: -935}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1921160591

@@ -66,7 +66,7 @@ public class SkeletonEnemyMovement : MonoBehaviour
         stopDistance = 5;
         retreatDistance = 3;
     }
-
+    
     void Update()
     {
         if (!InsideOfLimit())

@@ -23,14 +23,13 @@ public class MainMenu : MonoBehaviour
     private void Awake()
     {
         isNewGame = true;
-
+        
     }
     private void Start()
     {
-
-       //PlayerPrefs.SetString("CurrentLevel", "");
-        currentLevel = PlayerPrefs.GetString("CurrentLevel", ""); //If non of any levels played yet current level will be null i.e "" due to string
-        difficultyLevel = PlayerPrefs.GetString("DifficultyLevel");
+       
+        currentLevel = SaveSystem.instance.playerData.level; //If non of any levels played yet current level will be null i.e "" due to string
+        difficultyLevel = SaveSystem.instance.playerData.difficultyLevel;
         onClickBtnSound = GameObject.FindGameObjectWithTag("SoundEffectGameObject").GetComponent<AudioSource>();
         bgSound = GameObject.FindGameObjectWithTag("BGmusicGameObject").GetComponent<AudioSource>();
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
@@ -40,6 +39,7 @@ public class MainMenu : MonoBehaviour
         if (currentLevel == null || currentLevel == "")
         {
             continueBtn.SetActive(false);
+            
             newGameBtn.transform.position = new Vector3(newGameBtn.transform.position.x + 0, newGameBtn.transform.position.y + 80);
             levelInOnPlayBtn.transform.position = new Vector3(levelInOnPlayBtn.transform.position.x + 0, levelInOnPlayBtn.transform.position.y + 80);
         }
@@ -47,10 +47,16 @@ public class MainMenu : MonoBehaviour
          -----------------Level Lock Logic Start here -----------------------------------
          */
 
-        levelReachedName = PlayerPrefs.GetString("LevelReached", "Level 1");
-        
-        PlayerPrefs.SetString("LevelReached", "Level 3"); // to unlock all level , last level must be reached
-        int levelReached = 0;
+
+        /*
+         -------------- Get Level Reached from data file of player  ---------------------------------
+        */
+
+
+        // levelReachedName = SaveSystem.instance.playerData.level;
+
+        levelReachedName = "Level 3"; // to unlock all level , last level must be reached
+        int levelReached = 3;
        
         switch (levelReachedName)
         {
@@ -68,7 +74,7 @@ public class MainMenu : MonoBehaviour
 
                 break;
         }
-        //Debug.Log("Level reached" + levelReachedName);
+        Debug.Log("Level reached" + levelReachedName);
         for (int i = 0; i < levelBtns.Length; i++)
         {
             if (i + 1 > levelReached)
@@ -88,8 +94,8 @@ public class MainMenu : MonoBehaviour
     {
         OnBtnClickSound();
 
-        difficultyLevel = PlayerPrefs.GetString("DifficultyLevel");
-
+        difficultyLevel = SaveSystem.instance.playerData.difficultyLevel;
+        isNewGame = false;
         if (currentLevel == null || currentLevel == "")
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         else
@@ -99,8 +105,8 @@ public class MainMenu : MonoBehaviour
     {
         OnBtnClickSound();
         isNewGame = false;
-        difficultyLevel = PlayerPrefs.GetString("DifficultyLevel");
-        
+        difficultyLevel = SaveSystem.instance.playerData.difficultyLevel;
+        Debug.Log("current level you will continue is : " + currentLevel);
         if (currentLevel == null || currentLevel == "")
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         else
@@ -111,12 +117,16 @@ public class MainMenu : MonoBehaviour
     {
         OnBtnClickSound();
         isNewGame = true;
-        difficultyLevel = PlayerPrefs.GetString("DifficultyLevel");
-        
+        difficultyLevel = SaveSystem.instance.playerData.difficultyLevel;
+
+
         if (currentLevel == null || currentLevel == "")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            PlayerPrefs.SetString("CurrentLevel", "Level 1");
+            SaveSystem.instance.playerData.level = currentLevel = "Level 1";
+         
+            SaveSystem.instance.playerData.difficultyLevel= "Easy";
+            SaveSystem.instance.SavePlayer();
         }
            
         else
@@ -131,22 +141,28 @@ public class MainMenu : MonoBehaviour
     {
         PlayerPrefs.SetString("MultiplayerGame", "False");
         OnBtnClickSound();
-        PlayerPrefs.SetString("CurrentLevel", "Level 1");
-       // SceneManager.LoadScene("Level 1");
+        SaveSystem.instance.playerData.level = "Level 1";
+        SaveSystem.instance.SavePlayer();
+        isNewGame = false;
+        // SceneManager.LoadScene("Level 1");
     }
     public void Level2()
     {
         PlayerPrefs.SetString("MultiplayerGame", "False");
-        OnBtnClickSound(); 
-        PlayerPrefs.SetString("CurrentLevel", "Level 2");
-       // SceneManager.LoadScene("Level 2");
+        OnBtnClickSound();
+        SaveSystem.instance.playerData.level = "Level 2";
+       SaveSystem.instance.SavePlayer();
+        isNewGame = false;
+        // SceneManager.LoadScene("Level 2");
     }
     public void Level3()
     {
         PlayerPrefs.SetString("MultiplayerGame", "False");
         OnBtnClickSound();
-        PlayerPrefs.SetString("CurrentLevel", "Level 3");
-       // SceneManager.LoadScene("Level 3");
+        SaveSystem.instance.playerData.level =  "Level 3";
+        SaveSystem.instance.SavePlayer();
+        isNewGame = false;
+        /// SceneManager.LoadScene("Level 3");
     }
     
     public void QuitGameMenu()
@@ -179,7 +195,7 @@ public class MainMenu : MonoBehaviour
     public void CheckLevel()
     {
         isNewGame = true;
-        currentLevel = PlayerPrefs.GetString("CurrentLevel", "Level 1");
+        currentLevel = SaveSystem.instance.playerData.level;
         switch (currentLevel)
         {
             case "Level 1":
@@ -206,35 +222,44 @@ public class MainMenu : MonoBehaviour
     }
     public void Easy()
     {
-        difficultyLevel = "easy";
-        PlayerPrefs.SetString("DifficultyLevel", "Easy");
+        difficultyLevel = "Easy";
+        SaveSystem.instance.playerData.difficultyLevel = "Easy";
+       SaveSystem.instance.SavePlayer();
         NewGameStrat();
         CheckLevel();
     }
     public void Medium()
     {
-        difficultyLevel = "medium";
+        difficultyLevel = "Medium";
         NewGameStrat();
-        PlayerPrefs.SetString("DifficultyLevel", "Medium");
+        SaveSystem.instance.playerData.difficultyLevel = "Medium";
+       SaveSystem.instance.SavePlayer();
         CheckLevel();
     }
     public void Hard()
     {
-        difficultyLevel = "hard";
+        difficultyLevel = "Hard";
         NewGameStrat();
-        PlayerPrefs.SetString("DifficultyLevel", "Hard");
+        SaveSystem.instance.playerData.difficultyLevel ="Hard";
+        SaveSystem.instance.SavePlayer();
         //gm.lastCheckPointPos = null;
         CheckLevel();
     }
      void NewGameStrat()
      {
         Debug.Log(" NewGameStrat()");
-        PlayerPrefs.SetInt("CurrentHealth", 100);
-        PlayerPrefs.SetInt("Lifes", 3);
+        SaveSystem.instance.playerData.gemPlayerHas = 0; 
+       SaveSystem.instance.playerData.cherryPlayerHas = 0;
+       SaveSystem.instance.playerData.health = 100;
+       SaveSystem.instance.playerData.lives = 3;
+       SaveSystem.instance.SavePlayer();
+
+       
         //PlayerPrefs.SetInt("ArrowPlayerHas", 10);
         PlayerPrefs.SetInt("RecentGemCollected", 0);
         PlayerPrefs.SetInt("RecentCherryCollected", 0);
         PlayerPrefs.SetInt("GemCollectedTillLastCheckPoint", 0);
         PlayerPrefs.SetInt("CherryCollectedTillLastCheckPoint",0);
+        isNewGame = false;
     }
 }

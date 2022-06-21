@@ -5,10 +5,11 @@ using UnityEngine;
 public class GameMaster : MonoBehaviour
 {
     private static GameMaster instance;
-    public Vector2 lastCheckPointPos;
+    public static Vector2 lastCheckPointPos;
    
     private void Awake()
     {
+       
         if (instance == null)
         {
             instance = this;
@@ -18,8 +19,9 @@ public class GameMaster : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-       
     }
-  
+    private void Start()
+    {
+    }
+
 }

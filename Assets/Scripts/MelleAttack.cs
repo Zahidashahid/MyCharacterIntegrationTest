@@ -91,7 +91,7 @@ public class MelleAttack : MonoBehaviour
             //Debug.Log("InAttack Skelton hit " + player.name);
             if (player.tag == "Player")
             {
-                string difficultyLevel = PlayerPrefs.GetString("DifficultyLevel");
+                string difficultyLevel = SaveSystem.instance.playerData.difficultyLevel;
                 Debug.Log("We hit player");
                 if (difficultyLevel == "Easy")
                 {

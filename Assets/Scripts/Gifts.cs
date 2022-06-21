@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+/*using System.Collections;
+using System.Collections.Generic;*/
 using UnityEngine;
 
 public class Gifts : MonoBehaviour
@@ -13,25 +13,26 @@ public class Gifts : MonoBehaviour
     //public AudioSource giftSound;
     private void Start()
     {
-        gemCount = PlayerPrefs.GetInt("CherryCollected");
-        cherryCount = PlayerPrefs.GetInt("GemCollected");
-        PlayerPrefs.SetInt("RecentGemCollected", PlayerPrefs.GetInt("GemCollectedTillLastCheckPoint"));
-        PlayerPrefs.SetInt("RecentCherryCollected", PlayerPrefs.GetInt("CherryCollectedTillLastCheckPoint"));
+        
+       /* SaveSystem.instance.playerData.gemPlayerHas = PlayerPrefs.GetInt("GemCollectedTillLastCheckPoint");
+        SaveSystem.instance.playerData.cherryPlayerHas = PlayerPrefs.GetInt("CherryCollectedTillLastCheckPoint");*/
+
         //collider = GetComponent<Collider>();
-        cherryAmount =  PlayerPrefs.GetInt("RecentCherryCollected");
-        gemAmount = PlayerPrefs.GetInt("RecentGemCollected");
-     /*   Debug.Log("gemAmount =" + PlayerPrefs.GetInt("RecentGemCollected"));
-        Debug.Log("cherryAmount =" + PlayerPrefs.GetInt("RecentCherryCollected"));
-        Debug.Log("gift data fatched");*/
+        cherryAmount = SaveSystem.instance.playerData.gemPlayerHas;
+        gemAmount = SaveSystem.instance.playerData.cherryPlayerHas;
+        /*   Debug.Log("gemAmount =" + SaveSystem.instance.playerData.gemPlayerHas);
+           Debug.Log("cherryAmount =" + = SaveSystem.instance.playerData.cherry);
+           Debug.Log("gift data fatched");*/
 
     }
     private void Update()
     {
-        string currentLevel = PlayerPrefs.GetString("CurrentLevel");
+        string currentLevel  = SaveSystem.instance.playerData.level;
+     
         if (currentLevel == "Level 1" || currentLevel == "Level 2")
         {
-            PlayerPrefs.SetInt("GemCollectedTillLastCheckPoint", PlayerPrefs.GetInt("RecentGemCollected"));
-            PlayerPrefs.SetInt("CherryCollectedTillLastCheckPoint", PlayerPrefs.GetInt("RecentCherryCollected"));
+            PlayerPrefs.SetInt("GemCollectedTillLastCheckPoint", SaveSystem.instance.playerData.gemPlayerHas);
+            PlayerPrefs.SetInt("CherryCollectedTillLastCheckPoint", SaveSystem.instance.playerData.cherryPlayerHas);
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
@@ -45,8 +46,8 @@ public class Gifts : MonoBehaviour
             cherryCount += 1;
             cherryAmount += 1;
             Debug.Log("Amount Cherry " + cherryAmount);
-            PlayerPrefs.SetInt("CherryCollected", cherryCount);
-            PlayerPrefs.SetInt("RecentCherryCollected", cherryAmount);
+            
+            //PlayerPrefs.SetInt("RecentCherryCollected", cherryAmount);
             scoreManager.CherryCollect();
             SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.giftSound);
             
@@ -58,8 +59,8 @@ public class Gifts : MonoBehaviour
             gemAmount += 1;
             gemCount += 1;
             Debug.Log("gem Amount " + gemAmount);
-            PlayerPrefs.SetInt("GemCollected", gemCount);
-            PlayerPrefs.SetInt("RecentGemCollected", gemAmount);
+            
+            //PlayerPrefs.SetInt("RecentGemCollected", gemAmount);
             scoreManager.GemCollect();
             SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.giftSound);
             

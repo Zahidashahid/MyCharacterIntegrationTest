@@ -1,5 +1,5 @@
-  using System.Collections;
-using System.Collections.Generic;
+using System.Collections;
+//using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -19,8 +19,8 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         // animator = GetComponent<Animator>();
-        //Debug.Log(playerMovement.lifes + "lifes left");
-        if ((PlayerPrefs.GetInt("AvatarSelected") == 1))
+        //Debug.Log(playerMovement.lives + "lives left");
+        if ((SaveSystem.instance.playerData.avatarSelected) == 1)
         {
             playerMovement = GameObject.Find("Player_Goblin").GetComponent<PlayerMovement>();
             animator = GameObject.Find("Player_Goblin").GetComponent<Animator>();
@@ -53,13 +53,14 @@ public class EnemyAI : MonoBehaviour
             {
                 hitByEnemy = true;
                 Debug.Log(this.tag + " hit " + collision.tag);
-                Debug.Log( " playerMovement.lifes  "  + playerMovement.lifes);
+                Debug.Log( " playerMovement.lives  "  + PlayerMovement.lives);
                
-                if (playerMovement.lifes <= 1)
+                if (PlayerMovement.lives <= 1)
                 {
                     // bgSound.Stop();
-                    PlayerPrefs.SetInt("CurrentHealth", 100);
-                    PlayerPrefs.SetInt("Lifes", 3);
+                    SaveSystem.instance.playerData.health = playerMovement.maxHealth;
+                    SaveSystem.instance.playerData.lives = 3;
+                    SaveSystem.instance.SavePlayer();
                     SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.deathSound);
                     
                     StartCoroutine(playerMovement.Die());
@@ -67,7 +68,7 @@ public class EnemyAI : MonoBehaviour
                 }
                 else
                 {
-                    //playerMovement.lifes = playerMovement.lifes - 1;
+                    //playerMovement.lives = playerMovement.lives - 1;
                     StartCoroutine(playerMovement.OnOneDeath());
                 }
                 StartCoroutine(Reset());

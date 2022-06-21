@@ -16,7 +16,7 @@ public class Bow : MonoBehaviour
     public float nextAttackTime;
    public float rotZ;
     bool canAttack;
-    int arrowLeft;
+    //int arrowLeft;
     public ArrowStore arrowStore;
     public PlayerMovement playerMovement;
     PauseGame pauseGameScript;
@@ -41,6 +41,7 @@ public class Bow : MonoBehaviour
         playerMovement = GetComponentInParent<PlayerMovement>();
         pauseGameScript = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<PauseGame>();
         animator = GetComponentInParent<Animator>();
+        Debug.Log("arrow player has " + ArrowStore.arrowPlayerHas);
     }
     void Update()
     {
@@ -100,9 +101,7 @@ public class Bow : MonoBehaviour
                 else
                     playerMovement.PlayerChangeDirection();
             }
-            
-            
-            arrowLeft = PlayerPrefs.GetInt("ArrowPlayerHas");
+           
         }
     }
     void ArrowShoot()
@@ -110,13 +109,15 @@ public class Bow : MonoBehaviour
         if (pauseGameScript.isGamePaused == false)
         {
             Debug.Log("Shooting");
-            arrowLeft = PlayerPrefs.GetInt("ArrowPlayerHas");
-            if (arrowLeft > 0 && canAttack)
+            
+            Debug.Log("arrowLeft  " + ArrowStore.arrowPlayerHas + " >  0 || canAttack" + canAttack);
+            if (ArrowStore.arrowPlayerHas > 0 && canAttack)
             {
                 arrowStore.ArrowUsed();
                 animator.SetBool("Attack1", true);
                 Instantiate(projectile, shootPoint.position, transform.rotation);
                 nextAttackTime = 0.01f;
+
             }
         }
     }

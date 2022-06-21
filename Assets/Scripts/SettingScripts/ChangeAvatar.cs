@@ -1,33 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class ChangeAvatar : MonoBehaviour
 {
-  
+   public static int avatarSelected;
     private void Start()
     {
-        CheckAvatar();
+        //CheckAvatar();
+        avatarSelected = SaveSystem.instance.playerData.avatarSelected;
     }
     void CheckAvatar()
     {
-        if (PlayerPrefs.GetInt("AvatarSelected", 1) == 1)
+        if ( SaveSystem.instance.playerData.avatarSelected == 1)
         {
-            PlayerPrefs.SetInt("AvatarSelected", 1);
+            SaveSystem.instance.playerData.avatarSelected = 1;
         }
 
         else
         {
-            PlayerPrefs.SetInt("AvatarSelected", 2);
+            SaveSystem.instance.playerData.avatarSelected = 2;
         }
+       SaveSystem.instance.SavePlayer();
     }
     public void SelectAvatarOne()
     {
-        PlayerPrefs.SetInt("AvatarSelected", 1);
+        SaveSystem.instance.playerData.avatarSelected = avatarSelected = 1;
+        SaveSystem.instance.SavePlayer();
     }
     public void SelectAvatarTwo()
     {
-        PlayerPrefs.SetInt("AvatarSelected", 2);
+        SaveSystem.instance.playerData.avatarSelected = avatarSelected = 2;
+       SaveSystem.instance.SavePlayer();
     }
    
 

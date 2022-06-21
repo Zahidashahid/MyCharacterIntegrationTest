@@ -15,19 +15,25 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
 
-        gemCollected =  PlayerPrefs.GetInt("RecentGemCollected");
-        cherryCollected =  PlayerPrefs.GetInt("RecentCherryCollected");
+        gemCollected = SaveSystem.instance.playerData.gemPlayerHas;
+        cherryCollected = SaveSystem.instance.playerData.cherryPlayerHas;
         gemText.text = "X" + gemCollected;
         cherryText.text = "X" + cherryCollected;
     }
     public void GemCollect()
     {
         gemCollected += 1;
+        SaveSystem.instance.playerData.gemPlayerHas = gemCollected;
+        SaveSystem.instance.SavePlayer();
+        Debug.Log("----------Gem saved in file ------------ "  );
         UpdateGemText(gemCollected);
     }
     public void CherryCollect()
     {
         cherryCollected += 1;
+        SaveSystem.instance.playerData.cherryPlayerHas = cherryCollected;
+        SaveSystem.instance.SavePlayer();
+        Debug.Log("----------Gcherry saved in file ------------ ");
         UpdateCherryText(cherryCollected);
     }
     public void UpdateGemText(int count)

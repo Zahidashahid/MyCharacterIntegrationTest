@@ -2411,7 +2411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -132.99982, y: -935}
+  m_AnchoredPosition: {x: -132.99979, y: -935}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &490540004
@@ -30736,9 +30736,7 @@ MonoBehaviour:
   jumpVelocity: 10
   jumpCount: 0
   direction: 2
-  currentHealth: 100
   maxHealth: 100
-  lifes: 3
   numberOfDamgeTake: 0
   isHurt: 0
   activeShield: 0
@@ -30752,8 +30750,9 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1024
-  lifesText: {fileID: 913315562}
+  livesText: {fileID: 913315562}
   healthBar: {fileID: 1496959981}
+  arrowStoreScript: {fileID: 0}
 --- !u!114 &750146756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32702,6 +32701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
@@ -36192,6 +36192,60 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1354509436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1354509438}
+  - component: {fileID: 1354509437}
+  m_Layer: 0
+  m_Name: Save System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1354509437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354509436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921c3cf096c403949b9a06cfc6041822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasLoaded: 0
+  playerData:
+    level: 
+    difficultyLevel: 
+    gemPlayerHas: 0
+    cherryPlayerHas: 0
+    health: 0
+    lives: 0
+    numOfArrows: 0
+    avatarSelected: 0
+    lastCheckPointPos: []
+--- !u!4 &1354509438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354509436}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.0155766, y: -5.1711736, z: -0.9197864}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1371645075
 GameObject:
   m_ObjectHideFlags: 0
@@ -38323,9 +38377,7 @@ MonoBehaviour:
   jumpVelocity: 10
   jumpCount: 0
   direction: 2
-  currentHealth: 0
   maxHealth: 100
-  lifes: 0
   numberOfDamgeTake: 0
   isHurt: 0
   activeShield: 0
@@ -38339,8 +38391,9 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1024
-  lifesText: {fileID: 0}
+  livesText: {fileID: 0}
   healthBar: {fileID: 1496959981}
+  arrowStoreScript: {fileID: 0}
 --- !u!114 &1434199717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43500,9 +43553,7 @@ MonoBehaviour:
   jumpVelocity: 0
   jumpCount: 0
   direction: 2
-  currentHealth: 100
   maxHealth: 100
-  lifes: 3
   numberOfDamgeTake: 0
   isHurt: 0
   activeShield: 0
@@ -43516,8 +43567,9 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1024
-  lifesText: {fileID: 913315562}
+  livesText: {fileID: 913315562}
   healthBar: {fileID: 1496959981}
+  arrowStoreScript: {fileID: 0}
 --- !u!114 &1940599848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43569,7 +43621,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0

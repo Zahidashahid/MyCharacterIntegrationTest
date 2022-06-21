@@ -12,14 +12,14 @@ public class GiftData : MonoBehaviour
     public TMP_Text cherryText;
     void Start()
     {
-        gemCount = PlayerPrefs.GetInt("CherryCollected");
-        cherryCount = PlayerPrefs.GetInt("GemCollected");
+        gemCount = SaveSystem.instance.playerData.gemPlayerHas ;
+        cherryCount = SaveSystem.instance.playerData.cherryPlayerHas;
     }
 
     // Update is called once per frame
     public void UpdateGiftsData()
     {
-        gemText.text = "" + gemCount;
-        cherryText.text = "" + cherryCount;
+        gemText.text = "------" + gemCount;
+        cherryText.text = "---------" + cherryCount;
     }
 }

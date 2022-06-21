@@ -5,17 +5,18 @@ using UnityEngine;
 using TMPro;
 public class ArrowStore : MonoBehaviour
 {
-    public int arrowPlayerHas;
+    public static int arrowPlayerHas;
     public int maxNumOfArrow = 100;
     public TMP_Text arrowStoreText;
    
     void Start()
     {
         
-        arrowPlayerHas = PlayerPrefs.GetInt("ArrowPlayerHas");
-        Debug.Log("arrow player has " + arrowPlayerHas);
-        /*PlayerPrefs.SetInt("ArrowPlayerHas", maxNumOfArrow);
-        arrowPlayerHas = PlayerPrefs.GetInt("ArrowPlayerHas");*/
+        arrowPlayerHas =   SaveSystem.instance.playerData.numOfArrows;
+       // Debug.Log("arrow player has " + arrowPlayerHas);
+
+        /*SaveSystem.instance.playerData.arrow, maxNumOfArrow);
+        arrowPlayerHas = SaveSystem.instance.playerData.arrow;*/
         arrowStoreText.text = "X " + arrowPlayerHas;
     }
 
@@ -26,10 +27,19 @@ public class ArrowStore : MonoBehaviour
     }
     public void ArrowUsed()
     {
-        arrowPlayerHas -= 1;
-        PlayerPrefs.SetInt("ArrowPlayerHas", arrowPlayerHas);
-        Debug.Log("PlayerPrefs.GetInt(ArrowPlayerHas) " + PlayerPrefs.GetInt("ArrowPlayerHas"));
-        UpdateArrowText();
+        if (arrowPlayerHas > 0)
+        {
+
+            arrowPlayerHas -= 1;
+            Debug.Log(" Arrow store in data ");
+            SaveSystem.instance.playerData.numOfArrows = arrowPlayerHas;
+            Debug.Log("(ArrowPlayerHas) " +    SaveSystem.instance.playerData.numOfArrows);
+            SaveSystem.instance.SavePlayer();
+            UpdateArrowText();
+        }
+        else
+            Debug.Log("!!!You dont have arrows!!! ");
+        
 
 
     }

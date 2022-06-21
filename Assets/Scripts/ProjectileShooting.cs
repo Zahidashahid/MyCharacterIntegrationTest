@@ -50,7 +50,7 @@ public class ProjectileShooting : MonoBehaviour
            // Debug.Log("Arrow hit Skeleton in scriptprojectile");
            // Debug.Log(hitInfo.collider.name);
            
-            string difficultyLevel = PlayerPrefs.GetString("DifficultyLevel");
+            string difficultyLevel = SaveSystem.instance.playerData.difficultyLevel;
             //Debug.Log(difficultyLevel);
             if (hitInfo.collider.name == "Skeleton" || hitInfo.collider.tag == "Skeleton")
             {
