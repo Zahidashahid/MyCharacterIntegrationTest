@@ -599,18 +599,15 @@ public class PlayerMovement : MonoBehaviour
         if (SaveSystem.instance.playerData.difficultyLevel == "Hard")
         {
             lives = 1;
-            livesText.text = "X " + lives;
         }
         else if (SaveSystem.instance.playerData.difficultyLevel == "Medium")
         {
             lives = 2;
-            livesText.text = "X " + lives;
 
         }
         else if (SaveSystem.instance.playerData.difficultyLevel == "Easy")
         {
             lives = 3;
-            livesText.text = "X " + lives;
 
         }
         return lives;

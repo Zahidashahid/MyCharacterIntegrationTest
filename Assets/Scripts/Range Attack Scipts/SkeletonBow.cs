@@ -31,14 +31,16 @@ public class SkeletonBow : MonoBehaviour
     {
         nextAttackTime = -1;
 
-        if ((PlayerPrefs.GetInt("AvatarSelected") == 2))
+        
+        if ((SaveSystem.instance.playerData.avatarSelected == 2))
         {
             playerObject = GameObject.Find("MushrromPlayer");
         }
-        else if ((PlayerPrefs.GetInt("AvatarSelected") == 1))
+        else if ((SaveSystem.instance.playerData.avatarSelected == 1))
         {
             playerObject = GameObject.Find("Player_Goblin");
         }
+        
         playerPosition = playerObject.transform.position;
         BowPosition = bowObj.transform.position;
        

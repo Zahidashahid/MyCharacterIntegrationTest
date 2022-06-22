@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\RangedAttack.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
+    <Compile Include="Assets\Scripts\Boss Enemy\BossHealth.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MultiPlayer2.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MPRangeAttackMovement.cs" />
+    <Compile Include="Assets\Boss_Run.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\Scripts\Moving Tiles\WayPointFollwer.cs" />
@@ -109,6 +111,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\Scripts\LeftHandMovement.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MPPojectileShootingP2.cs" />
+    <Compile Include="Assets\Scripts\Boss Enemy\Boss.cs" />
+    <Compile Include="Assets\Scripts\Boss Enemy\BossWeapon.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Scripts\Data Base\PlayerData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />

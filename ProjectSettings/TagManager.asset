@@ -39,6 +39,7 @@ TagManager:
   - BodyParts
   - WeaponSprite
   - PauseCanvas
+  - Boss Enemy
   layers:
   - Default
   - TransparentFX
