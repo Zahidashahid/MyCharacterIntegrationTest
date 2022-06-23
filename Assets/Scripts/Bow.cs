@@ -109,8 +109,6 @@ public class Bow : MonoBehaviour
         if (pauseGameScript.isGamePaused == false)
         {
             Debug.Log("Shooting");
-            
-            Debug.Log("arrowLeft  " + ArrowStore.arrowPlayerHas + " >  0 || canAttack" + canAttack);
             if (ArrowStore.arrowPlayerHas > 0 && canAttack)
             {
                 arrowStore.ArrowUsed();

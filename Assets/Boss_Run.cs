@@ -7,8 +7,7 @@ public class Boss_Run : StateMachineBehaviour
     public Transform player;
     public Rigidbody2D rb;
     public Boss boss;
-    public Vector2 target;
-    public float speed = 2.5f;
+    float speed = 2.5f;
     public float attackRange = 5;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -22,7 +21,7 @@ public class Boss_Run : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         boss.LookAtPlayer();
-         target = new Vector2(player.position.x, rb.position.y);
+        Vector2 target = new Vector2(player.position.x, rb.position.y);
         Vector2 newPos =  Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
 

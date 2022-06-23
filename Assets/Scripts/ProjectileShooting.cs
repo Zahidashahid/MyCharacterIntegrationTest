@@ -44,7 +44,9 @@ public class ProjectileShooting : MonoBehaviour
     {
         transform.Translate(velocity);
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, enemy);
-          
+
+        Debug.Log("Arrow hit Skeleton in scriptprojectile");
+        Debug.Log(hitInfo.collider);
         if (hitInfo.collider != null)
         {
            // Debug.Log("Arrow hit Skeleton in scriptprojectile");
@@ -87,6 +89,7 @@ public class ProjectileShooting : MonoBehaviour
             if (hitInfo.collider.tag == "Boss Enemy")
             {
                 hitInfo.collider.GetComponent<BossHealth>().TakeDamage(100);
+                Debug.Log("Hit to boss");
                 
             }  if (hitInfo.collider.tag == "Enemy")
             {

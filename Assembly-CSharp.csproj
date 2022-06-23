@@ -831,10 +831,6 @@
       <Project>{BF1CAA57-67AF-6D5B-0B48-7C726258FAF3}</Project>
       <Name>Unity.Timeline</Name>
     </ProjectReference>
-    <ProjectReference Include="PackageToolsEditor.csproj">
-      <Project>{17881FD3-03CB-DA44-3C19-54A391BE3635}</Project>
-      <Name>PackageToolsEditor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{AB915BDA-217F-415A-8910-4B6E3B907F36}</Project>
       <Name>Unity.TextMeshPro</Name>
@@ -927,10 +923,6 @@
       <Project>{7C306832-FA2C-205D-8E39-F5DB7EC013F6}</Project>
       <Name>Unity.2D.Common.Runtime</Name>
     </ProjectReference>
-    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
-      <Project>{96A06640-A84E-0ADB-8B00-84EDD0DA67C4}</Project>
-      <Name>AstarPathfindingProjectEditor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.2D.SpriteShape.Editor.csproj">
       <Project>{600521F6-099F-5BED-3E96-C3AF23470232}</Project>
       <Name>Unity.2D.SpriteShape.Editor</Name>
@@ -946,6 +938,14 @@
     <ProjectReference Include="Unity.2D.SpriteShape.Runtime.csproj">
       <Project>{DF8E2EA8-23DD-787D-016F-9277B5A1ECFC}</Project>
       <Name>Unity.2D.SpriteShape.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{96A06640-A84E-0ADB-8B00-84EDD0DA67C4}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{17881FD3-03CB-DA44-3C19-54A391BE3635}</Project>
+      <Name>PackageToolsEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
