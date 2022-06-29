@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\Bow.cs" />
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\Enemies.cs" />
+    <Compile Include="Assets\PyroParticles\Prefab\Script\MeteorSwarmScript.cs" />
     <Compile Include="Assets\Scripts\SettingScripts\SoundEffectSetting.cs" />
     <Compile Include="Assets\Scripts\SkeletonSpwaner.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MPScoreManager.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\Scripts\MainMenuDontDestroy.cs" />
     <Compile Include="Assets\Scripts\LootingScripts\TakeLoot.cs" />
     <Compile Include="Assets\Scripts\Shield.cs" />
+    <Compile Include="Assets\PyroParticles\Prefab\Script\FireCollisionForwardScript.cs" />
     <Compile Include="Assets\Scripts\SettingScripts\GiftData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\Moving Tiles\StickyPlatform.cs" />
+    <Compile Include="Assets\PyroParticles\Prefab\Script\FireBaseScript.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MPPlayer2Bow.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MPArrowStore.cs" />
     <Compile Include="Assets\Scripts\EnemyShield.cs" />
@@ -103,7 +106,7 @@
     <Compile Include="Assets\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MPRangeAttackMovement.cs" />
-    <Compile Include="Assets\Boss_Run.cs" />
+    <Compile Include="Assets\Scripts\Boss Enemy\Boss_Run.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\Scripts\Moving Tiles\WayPointFollwer.cs" />
@@ -116,6 +119,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Scripts\Data Base\PlayerData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
+    <Compile Include="Assets\PyroParticles\Prefab\Script\FireLightScript.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MultiplayerGifts.cs" />
     <Compile Include="Assets\Scripts\ProjectileShooting.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MPCameraController.cs" />
@@ -143,6 +147,7 @@
     <Compile Include="Assets\Scripts\Data Base\SaveSystem.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MPProjectileShooting.cs" />
+    <Compile Include="Assets\PyroParticles\Prefab\Script\SingleLineAttribute.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\ShowMainMenu.cs" />
@@ -151,18 +156,23 @@
     <Compile Include="Assets\Scripts\Range Attack Scipts\SkeletonArrowHit.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+    <Compile Include="Assets\PyroParticles\Demo\DemoScript.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MPSkeletonMelleAttack.cs" />
     <Compile Include="Assets\Scripts\SettingScripts\SoundEffect.cs" />
     <Compile Include="Assets\Scripts\SettingScripts\GraphicSetting.cs" />
+    <Compile Include="Assets\PyroParticles\Demo\DemoScriptEditor.cs" />
     <Compile Include="Assets\Scripts\BirdEnemySpwaner.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MPEnemyAI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
+    <Compile Include="Assets\PyroParticles\Prefab\Script\FireProjectileScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
-    <Compile Include="Assets\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
+    <Compile Include="Assets\Scripts\Boss Enemy\Boss_Enrage.cs" />
     <Compile Include="Assets\Scripts\SpwanDestroy.cs" />
+    <Compile Include="Assets\PyroParticles\Prefab\Script\FireConstantBaseScript.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MPSkeletonProjectile.cs" />
     <Compile Include="Assets\Scripts\Multiplayer\MPGameOver.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
@@ -180,6 +190,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\Conifers [BOTD]\Conifers [BOTD] URP Readme.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\PyroParticles\Prefab\Materials\AdditiveTintable.shader" />
     <None Include="Assets\Hero and Opponents\license.txt" />
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Resources\CTI_Internal-DeferredShading.shader" />
     <None Include="Assets\BayatGames\Free Platform Game Assets\Readme.txt" />
@@ -194,6 +205,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\Includes\CTI_TranslucentLighting_301.cginc" />
+    <None Include="Assets\PyroParticles\Readme.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Shaders\CTI_LOD_Bark_301.shader" />
     <None Include="Assets\Conifers [BOTD]\Render Pipeline Support\Built-in RP\CTI Runtime Components\Resources\CTI_Internal-DeferredReflections.shader" />
@@ -831,6 +843,10 @@
       <Project>{BF1CAA57-67AF-6D5B-0B48-7C726258FAF3}</Project>
       <Name>Unity.Timeline</Name>
     </ProjectReference>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{17881FD3-03CB-DA44-3C19-54A391BE3635}</Project>
+      <Name>PackageToolsEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{AB915BDA-217F-415A-8910-4B6E3B907F36}</Project>
       <Name>Unity.TextMeshPro</Name>
@@ -899,10 +915,6 @@
       <Project>{B9902336-753F-64AC-9DBB-58C1D9EC220A}</Project>
       <Name>SimpleInput.Runtime</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.2D.Animation.Triangle.Runtime.csproj">
-      <Project>{66671886-81F7-4CFB-F5E7-D88ACE55FFDA}</Project>
-      <Name>Unity.2D.Animation.Triangle.Runtime</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.2D.Animation.Runtime.csproj">
       <Project>{EC743FF7-FBE8-94E0-7194-8B85773BF3D7}</Project>
       <Name>Unity.2D.Animation.Runtime</Name>
@@ -923,6 +935,10 @@
       <Project>{7C306832-FA2C-205D-8E39-F5DB7EC013F6}</Project>
       <Name>Unity.2D.Common.Runtime</Name>
     </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{96A06640-A84E-0ADB-8B00-84EDD0DA67C4}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.SpriteShape.Editor.csproj">
       <Project>{600521F6-099F-5BED-3E96-C3AF23470232}</Project>
       <Name>Unity.2D.SpriteShape.Editor</Name>
@@ -939,13 +955,9 @@
       <Project>{DF8E2EA8-23DD-787D-016F-9277B5A1ECFC}</Project>
       <Name>Unity.2D.SpriteShape.Runtime</Name>
     </ProjectReference>
-    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
-      <Project>{96A06640-A84E-0ADB-8B00-84EDD0DA67C4}</Project>
-      <Name>AstarPathfindingProjectEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="PackageToolsEditor.csproj">
-      <Project>{17881FD3-03CB-DA44-3C19-54A391BE3635}</Project>
-      <Name>PackageToolsEditor</Name>
+    <ProjectReference Include="Unity.2D.Animation.Triangle.Editor.csproj">
+      <Project>{7A171998-1FA1-4332-7B9D-666175E357AB}</Project>
+      <Name>Unity.2D.Animation.Triangle.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

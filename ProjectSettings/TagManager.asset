@@ -40,6 +40,8 @@ TagManager:
   - WeaponSprite
   - PauseCanvas
   - Boss Enemy
+  - Left Limit Boss
+  - Right Limit Boss
   layers:
   - Default
   - TransparentFX
