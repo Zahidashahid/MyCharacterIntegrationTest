@@ -793,6 +793,10 @@
       <Project>{B9902336-753F-64AC-9DBB-58C1D9EC220A}</Project>
       <Name>SimpleInput.Runtime</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.2D.Animation.Triangle.Runtime.csproj">
+      <Project>{66671886-81F7-4CFB-F5E7-D88ACE55FFDA}</Project>
+      <Name>Unity.2D.Animation.Triangle.Runtime</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.Animation.Runtime.csproj">
       <Project>{EC743FF7-FBE8-94E0-7194-8B85773BF3D7}</Project>
       <Name>Unity.2D.Animation.Runtime</Name>
@@ -832,10 +836,6 @@
     <ProjectReference Include="Unity.2D.SpriteShape.Runtime.csproj">
       <Project>{DF8E2EA8-23DD-787D-016F-9277B5A1ECFC}</Project>
       <Name>Unity.2D.SpriteShape.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.2D.Animation.Triangle.Editor.csproj">
-      <Project>{7A171998-1FA1-4332-7B9D-666175E357AB}</Project>
-      <Name>Unity.2D.Animation.Triangle.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 public class ScoreManager : MonoBehaviour
 {
@@ -23,16 +22,16 @@ public class ScoreManager : MonoBehaviour
     public void GemCollect()
     {
         gemCollected += 1;
-        SaveSystem.instance.playerData.gemPlayerHas = gemCollected;
-        SaveSystem.instance.SavePlayer();
+        PlayerPrefs.SetInt("PlayerGem", gemCollected);
+        //SaveSystem.instance.SavePlayer();
         Debug.Log("----------Gem saved in file ------------ "  );
         UpdateGemText(gemCollected);
     }
     public void CherryCollect()
     {
         cherryCollected += 1;
-        SaveSystem.instance.playerData.cherryPlayerHas = cherryCollected;
-        SaveSystem.instance.SavePlayer();
+        PlayerPrefs.SetInt("PlayerCherry", cherryCollected);
+        //SaveSystem.instance.SavePlayer();
         Debug.Log("----------Gcherry saved in file ------------ ");
         UpdateCherryText(cherryCollected);
     }

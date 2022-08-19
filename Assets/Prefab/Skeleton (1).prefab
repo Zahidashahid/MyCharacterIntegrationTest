@@ -487,9 +487,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1103830163
-  m_SortingLayer: 3
-  m_SortingOrder: 10
+  m_SortingLayerID: -1832347039
+  m_SortingLayer: 2
+  m_SortingOrder: 2
   m_Sprite: {fileID: 4035959289877228764, guid: c5b15ca3a0987ac46b73e4a04e12eeb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -498,7 +498,7 @@ SpriteRenderer:
   m_Size: {x: 1.5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1832316126879599133
@@ -537,7 +537,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.5, y: 7.5}
+    oldSize: {x: 2.3, y: 2.6}
     newSize: {x: 1.5, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -579,7 +579,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
@@ -597,7 +597,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1832316126879599120}
   animator: {fileID: 1832316126879599133}
-  playerAnimator: {fileID: 0}
   rayCast: {fileID: 1832316126257695578}
   leftLimit: {fileID: 4533611394011863624, guid: ec79756ae59202141bed407d594b3db4, type: 3}
   rightLimit: {fileID: 5548860311527099445, guid: 44c909c94f4ff6d40a5906cf20574b3a, type: 3}
@@ -629,7 +628,6 @@ MonoBehaviour:
   playerLayers:
     serializedVersion: 2
     m_Bits: 128
-  attackRange: 2.5
   damage: 30
   attackDistance: 4
   nextAttackTime: 3
@@ -977,7 +975,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.5, y: 7.5}
+    oldSize: {x: 2.3, y: 2.6}
     newSize: {x: 1.5, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -6,12 +6,22 @@
             "id": "7e13e865-dbdc-4968-be66-2be62dec2a49",
             "actions": [
                 {
+                    "name": "xyz",
+                    "type": "Button",
+                    "id": "532badb9-8626-49d6-85d4-295520281b94",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "RightMove",
                     "type": "Button",
                     "id": "504b0c5f-9af0-467b-8ab5-4a3f7465ec65",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "LeftMove",
@@ -19,7 +29,8 @@
                     "id": "686922bd-8324-4559-9c87-33dc990d5fb9",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Jump",
@@ -27,7 +38,8 @@
                     "id": "2834dd03-21b9-486c-bd3a-8674c9f0f480",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "MouseDirection",
@@ -35,7 +47,8 @@
                     "id": "4d692f18-3d81-4f78-8f63-bbfffcdebaf3",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "DashMove",
@@ -43,7 +56,8 @@
                     "id": "60bc66c6-3b18-461c-8be0-e96e83f4c729",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "MelleAttackSinglePlayer",
@@ -51,7 +65,8 @@
                     "id": "a7b896e3-26a1-4f64-a8fa-08fcd9c5a5af",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Multiplayer1Jump",
@@ -59,7 +74,8 @@
                     "id": "cdf15ea4-6124-4861-aac5-c220956d5d64",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "RangeAttackGP",
@@ -67,7 +83,8 @@
                     "id": "84a06783-dec8-4073-b3c3-5d9be024446c",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "RangeAttackPlayer1",
@@ -75,7 +92,8 @@
                     "id": "34a19aee-ae4a-4270-ac28-acdb8faedde7",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "RangeAttackPlayer2",
@@ -83,7 +101,8 @@
                     "id": "dd580252-0b05-48f4-95a5-69912b5d1767",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Move",
@@ -91,7 +110,8 @@
                     "id": "a46efaac-8c61-4dec-850c-4d3ff20c2da3",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "ArowHit",
@@ -99,7 +119,8 @@
                     "id": "d2478ee7-ccb3-4cb8-a660-ee3153ce16c2",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "GunShoot",
@@ -107,7 +128,8 @@
                     "id": "01b8171f-5ed8-4e49-ae3a-73c03f2db329",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "PauseGame",
@@ -115,7 +137,8 @@
                     "id": "2266e04c-2f3c-42ae-a4be-956ff407942a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": " Shield",
@@ -123,7 +146,8 @@
                     "id": "0681b884-a49f-4429-8d07-af4484170a7f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Multiplayer1Movement",
@@ -131,7 +155,8 @@
                     "id": "51c5a356-112d-42b9-b736-dc13b1106f31",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Multiplayer2Movement",
@@ -139,7 +164,8 @@
                     "id": "1e862d4e-7c4a-48e8-ba36-0467a60e3547",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Multiplayer2Jump",
@@ -147,7 +173,8 @@
                     "id": "ecf9adca-81e2-4c3e-93ca-97feb432831f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "MelleAttackByKeyboard",
@@ -155,7 +182,8 @@
                     "id": "bcb0eebc-b2bf-43b6-98eb-dc11bd5a483f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "MPPlayer1Dashmove",
@@ -163,7 +191,8 @@
                     "id": "e3c58dfb-f3ef-4b0a-81ba-44494e53e5f9",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "MPPlayeer2Dashmove",
@@ -171,7 +200,8 @@
                     "id": "fc63e9bf-e454-4f99-847f-239e14c14907",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "ArrowShootP1",
@@ -179,7 +209,8 @@
                     "id": "30958a41-4ed8-40c4-8c8d-1d2f27084be5",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "ArrowShootP2",
@@ -187,7 +218,26 @@
                     "id": "01e2951f-3445-4983-ac18-465017ff13e0",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BossEnemyJump",
+                    "type": "Button",
+                    "id": "9fc7f76c-8832-46dc-8256-90874faf9fe1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OnBtnClickPlay",
+                    "type": "Button",
+                    "id": "22513069-e0db-4820-a590-51f0531d2ee1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -705,6 +755,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "GunShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "007adad0-38e7-4dc1-9a9a-e616b7aaf2a5",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "xyz",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ab7e7e17-b366-4705-941c-ce4e2bd6e74b",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BossEnemyJump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "39fa6ae1-c893-4694-8def-0dd198a5148d",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnBtnClickPlay",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

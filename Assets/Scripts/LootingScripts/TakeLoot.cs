@@ -42,57 +42,59 @@ public class TakeLoot : MonoBehaviour
         {
             //if (Input.GetKey(KeyCode.L))
            // {
-                if (this.tag == "HealthLoot")
-                {
-                    Debug.Log(this.tag);
-                    int healthValuePlayerHas = SaveSystem.instance.playerData.health ;
+            if (this.tag == "HealthLoot")
+            {
+                Debug.Log(this.tag);
+                int healthValuePlayerHas = SaveSystem.instance.playerData.health ;
                 Debug.Log(healthValuePlayerHas);
-                    /*
-                       ---------------------- Logic if player has full health  
-                    */
-                    Debug.Log(this.tag);
-                    if (healthValuePlayerHas >= playerMovement.maxHealth)
+                /*
+                    ---------------------- Logic if player has full health  
+                */
+                Debug.Log(this.tag);
+                if (healthValuePlayerHas >= playerMovement.maxHealth)
+                {
+                    return;
+                }
+                else
+                {
+                    int healthToAddInStore = playerMovement.maxHealth - healthValuePlayerHas;
+                    if (healthToAddInStore <= valueOfThisLoot)
                     {
-                        return;
+                        valueOfThisLoot = valueOfThisLoot - healthToAddInStore;
+                        int healthCount = healthValuePlayerHas + healthToAddInStore;
+                        Debug.Log("numOfhealth PlayerHas  " + healthValuePlayerHas);
+                        Debug.Log("healthToAddInStore " + healthToAddInStore);
+                        Debug.Log("valueOfThisLoot  left " + valueOfThisLoot);
+                        Debug.Log(" new CurrentHealth" + healthCount);
+
+                        PlayerMovement.currentHealth = playerMovement.maxHealth;
+                        /*  SaveSystem.instance.playerData.health  =playerMovement.maxHealth;
+                            SaveSystem.instance.playerData.health = healthCount;*/
+                        PlayerPrefs.SetInt("PlayerHealth", playerMovement.maxHealth);
+                        PlayerPrefs.SetInt("PlayerHealth", healthCount);
+                        healthBar.SetHealth(healthCount);
+                        SaveSystem.instance.SavePlayer();
                     }
                     else
                     {
-                        int healthToAddInStore = playerMovement.maxHealth - healthValuePlayerHas;
-                        if (healthToAddInStore <= valueOfThisLoot)
-                        {
-                            valueOfThisLoot = valueOfThisLoot - healthToAddInStore;
-                            int healthCount = healthValuePlayerHas + healthToAddInStore;
-
-                            PlayerMovement.currentHealth = playerMovement.maxHealth;
-                            SaveSystem.instance.playerData.health  =playerMovement.maxHealth;
-                            Debug.Log("numOfhealth PlayerHas  " + healthValuePlayerHas);
-                            Debug.Log("healthToAddInStore " + healthToAddInStore);
-                            Debug.Log("valueOfThisLoot  left " + valueOfThisLoot);
-                            Debug.Log(" new CurrentHealth" + healthCount);
-                            SaveSystem.instance.playerData.health = healthCount;
-                            healthBar.SetHealth(healthCount);
-                           SaveSystem.instance.SavePlayer();
-                        }
-                        else
-                        {
-                           
-                            int healthCount = healthValuePlayerHas + valueOfThisLoot;
-                            SaveSystem.instance.playerData.health = healthCount;
-                            healthBar.SetHealth(healthCount);
-                            valueOfThisLoot = valueOfThisLoot - valueOfThisLoot;
-                           SaveSystem.instance.SavePlayer();
-                        }
-                        if (healthToAddInStore == 50)
-                        {
-
-                            Destroy(gameObject);
-                        }
-
+                        int healthCount = healthValuePlayerHas + valueOfThisLoot;
+                        /*SaveSystem.instance.playerData.health = healthCount;*/
+                        PlayerPrefs.SetInt("PlayerHealth", healthCount);
+                        healthBar.SetHealth(healthCount);
+                        valueOfThisLoot = valueOfThisLoot - valueOfThisLoot;
+                        SaveSystem.instance.SavePlayer();
                     }
+                    if (healthToAddInStore == 50)
+                    {
+
+                        Destroy(gameObject);
+                    }
+
+                }
 
             }
             else if (this.tag == "ArrowLoot")
-                {
+            {
                     int numOfArrowsPlayerHas = PlayerPrefs.GetInt("ArrowPlayerHas");
                     /*
                         ---------------------- Logic if player has Full arrow i.e store is full can't take the loots
@@ -114,7 +116,8 @@ public class TakeLoot : MonoBehaviour
                             Debug.Log("valueOfThisLoot  left" + valueOfThisLoot);
                             Debug.Log(" new arrowCount" + arrowCount);
                              Debug.Log(" Arrow store in data "); 
-                        SaveSystem.instance.playerData.numOfArrows = arrowCount;
+                            /*SaveSystem.instance.playerData.numOfArrows = arrowCount;*/
+                            PlayerPrefs.SetInt("PlayerHasNumOfArrows",  arrowCount);
                             ArrowStore.arrowPlayerHas = arrowCount;
                             arrowStoreScript.UpdateArrowText();
                            SaveSystem.instance.SavePlayer();
@@ -123,12 +126,13 @@ public class TakeLoot : MonoBehaviour
                         {
                             int arrowCount = numOfArrowsPlayerHas + valueOfThisLoot;
                              Debug.Log(" Arrow store in data "); 
-                        SaveSystem.instance.playerData.numOfArrows = arrowCount;
+                            /*SaveSystem.instance.playerData.numOfArrows = arrowCount;*/
+                            PlayerPrefs.SetInt("PlayerHasNumOfArrows", arrowCount);
                             valueOfThisLoot = valueOfThisLoot - valueOfThisLoot;
                             ArrowStore.arrowPlayerHas = arrowCount;
                             arrowStoreScript.UpdateArrowText();
                            SaveSystem.instance.SavePlayer();
-                    }
+                        }
                         if (arrowsToAddInStore == valueOfThisLoot)
                         {
                             Destroy(gameObject);
@@ -136,14 +140,14 @@ public class TakeLoot : MonoBehaviour
                        
                     }
                     
-                }
-                else 
-                {
-                    return;
-                }
+            }
+            else 
+            {
+                return;
+            }
 
 
-           // }
+         
         }
 
     }

@@ -13,8 +13,7 @@ public class GameUIScript : MonoBehaviour
     public GameObject EnemyEagleSpwan;
     public GameObject RangeAttackSpwan;
     public GameObject RangeAttackPointSpwan;
-    public GameObject avatar1;
-    public GameObject avatar2;
+   
     public AudioSource restartBtnSound;
     public AudioSource bgSound;
     MainMenu mainMenu;
@@ -24,7 +23,8 @@ public class GameUIScript : MonoBehaviour
     public ScoreManager scoreManager;
     PauseGame pauseGameScript;
     string difficultyLevel;
-
+    public GameObject avatar1;
+    public GameObject avatar2;
     public static bool isNewGame;
 
     void Awake()
@@ -42,31 +42,22 @@ public class GameUIScript : MonoBehaviour
         restartButton.SetActive(false);
         gameOverText.enabled = false;*/
         isNewGame = false;
+
         avatar1 = GameObject.Find("Player_Goblin");
         avatar2 = GameObject.Find("MushrromPlayer");
         pauseGameScript = GameObject.Find("PauseGameCanvas").GetComponent<PauseGame>();
         arrowStoreScript = GameObject.FindGameObjectWithTag("ArrowStore").GetComponent<ArrowStore>();
-        Debug.Log("Avatar " + SaveSystem.instance.playerData.avatarSelected);
-        if ((SaveSystem.instance.playerData.avatarSelected == 2))
-        {
-            avatar2.SetActive(true);
-            avatar1.SetActive(false);
-        }
-        else
-        {
-            avatar1.SetActive(true);
-            avatar2.SetActive(false);
-        }
+        
 
         bgSound = GameObject.FindGameObjectWithTag("BGmusicGameObject").GetComponent<AudioSource>();
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
         mainMenu = GameObject.FindGameObjectWithTag("GM").GetComponent<MainMenu>();
-        
+        CheckForAvatarSelected();
         //GameMaster = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
-        if(SaveSystem.instance.playerData.level == "Level 3")
+        if (SaveSystem.instance.playerData.level == "Level 3")
         {
-            difficultyLevel = SaveSystem.instance.playerData.difficultyLevel;
+            difficultyLevel = PlayerPrefs.GetString("difficultyLevel");
             //Debug.Log("Difficulity" + MainMenu.difficultyLevel);
             if (difficultyLevel == "Medium")
             {
@@ -81,7 +72,43 @@ public class GameUIScript : MonoBehaviour
                 RangeAttackSpwan.SetActive(true);
             }
         }
-        SaveSystem.instance.SavePlayer();
+        //SaveSystem.instance.SavePlayer();
+    }
+    void CheckForAvatarSelected()
+    {
+        if (MainMenu.isNewGame || GameUIScript.isNewGame)
+        {
+            if ((PlayerPrefs.GetInt("AvatarSelected") == 1))
+            {
+                avatar1.SetActive(true);
+                avatar2.SetActive(false);
+            }
+
+            else if ((PlayerPrefs.GetInt("AvatarSelected") == 2))
+            {
+                avatar2.SetActive(true);
+                avatar1.SetActive(false);
+
+            }
+
+            Debug.Log("Avatar selected" + SaveSystem.instance.playerData.avatarSelected);
+        }
+        else
+        {
+            if ((SaveSystem.instance.playerData.avatarSelected == 2))
+            {
+                avatar2.SetActive(true);
+                avatar1.SetActive(false);
+
+            }
+            else if ((SaveSystem.instance.playerData.avatarSelected == 1))
+            {
+                avatar1.SetActive(true);
+                avatar2.SetActive(false);
+            }
+            Debug.Log("Avatar selected" + SaveSystem.instance.playerData.avatarSelected);
+
+        }
     }
     public void GameOver()
     {
@@ -108,10 +135,10 @@ public class GameUIScript : MonoBehaviour
         bgSound.Play();
         Time.timeScale = 1f;
 
-        GameMaster.lastCheckPointPos[0] = SaveSystem.instance.playerData.lastCheckPointPos[0];
-        GameMaster.lastCheckPointPos[1] = SaveSystem.instance.playerData.lastCheckPointPos[1];
-        float x = SaveSystem.instance.playerData.lastCheckPointPos[0];
-        float y = SaveSystem.instance.playerData.lastCheckPointPos[1];
+        GameMaster.lastCheckPointPos[0] = PlayerPrefs.GetFloat("lastCheckPointPosX");
+        GameMaster.lastCheckPointPos[1] = PlayerPrefs.GetFloat("lastCheckPointPosY");
+        float x = PlayerPrefs.GetFloat("lastCheckPointPosX");
+        float y = PlayerPrefs.GetFloat("lastCheckPointPosY");
         GameMaster.lastCheckPointPos = new Vector2(x, y);
         playerMovement.transform.position = GameMaster.lastCheckPointPos;
         Debug.Log(difficultyLevel);
@@ -121,16 +148,16 @@ public class GameUIScript : MonoBehaviour
         }
         else if (difficultyLevel == "Medium" || difficultyLevel == "Hard")
         {
-            SaveSystem.instance.playerData.gemPlayerHas = PlayerPrefs.GetInt("GemCollectedTillLastCheckPoint");
-            SaveSystem.instance.playerData.cherryPlayerHas = PlayerPrefs.GetInt("CherryCollectedTillLastCheckPoint");
-           SaveSystem.instance.SavePlayer();
+            PlayerPrefs.SetInt("PlayerGem", PlayerPrefs.GetInt("GemCollectedTillLastCheckPoint"));
+            PlayerPrefs.SetInt("PlayerCherry", PlayerPrefs.GetInt("CherryCollectedTillLastCheckPoint"));
+           //SaveSystem.instance.SavePlayer();
         }
        
         // playerMovement.transform.position = GameMaster.lastCheckPointPos;
 
 
-        scoreManager.UpdateCherryText(SaveSystem.instance.playerData.cherryPlayerHas);
-        scoreManager.UpdateGemText(SaveSystem.instance.playerData.cherryPlayerHas);
+        scoreManager.UpdateCherryText(PlayerPrefs.GetInt("PlayerGem"));
+        scoreManager.UpdateGemText(PlayerPrefs.GetInt("PlayerCherry"));
 
 
 
@@ -153,8 +180,8 @@ public class GameUIScript : MonoBehaviour
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameMaster.lastCheckPointPos = new Vector2(0, 0);
         string currentLevel = SaveSystem.instance.playerData.level;
-        SaveSystem.instance.playerData.avatarSelected = ChangeAvatar.avatarSelected;
-        SaveSystem.instance.SavePlayer();
+        PlayerPrefs.SetInt("AvatarSelected", ChangeAvatar.avatarSelected);
+        //SaveSystem.instance.SavePlayer();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void ResetDataOfLastGame()
@@ -169,9 +196,9 @@ public class GameUIScript : MonoBehaviour
     }
     public void RestLastCheckPoint()
     {
-        SaveSystem.instance.playerData.lastCheckPointPos[0] = -4;
-        SaveSystem.instance.playerData.lastCheckPointPos[1] = 4;
-       SaveSystem.instance.SavePlayer();
+        PlayerPrefs.SetFloat("lastCheckPointPosX",  -4);
+        PlayerPrefs.SetFloat("lastCheckPointPosY",4);
+       //SaveSystem.instance.SavePlayer();
     }
     public void RestartLevel()
     {
@@ -180,7 +207,7 @@ public class GameUIScript : MonoBehaviour
         ResetDataOfLastGame();
 
         //Reset Last check point
-        string currentLevel = SaveSystem.instance.playerData.level;
+        string currentLevel = PlayerPrefs.GetString("CurrentLevel");
         SceneManager.LoadScene(currentLevel);
         Debug.Log(" RestartLevel() Called");
     }

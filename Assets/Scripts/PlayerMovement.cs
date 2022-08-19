@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     public float nextAttackTime = 0f;
     public float distToGroundCapusleCollider = 1.6f;
 
-    float runSpeed = 8f;
+    public float runSpeed = 6f;
     float dashMoveSpeed = 16f;
     //float jumpHight = 10f;
 
@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
     PauseGame pauseGameScript;
     public ArrowStore arrowStoreScript;
     //GameUIScript gameUIScript;
-    
+   
     private void Awake()
     {
         //SaveSystem.instance.LoadPlayer();
@@ -104,12 +104,14 @@ public class PlayerMovement : MonoBehaviour
         jumpVelocity = 10f;
         numberOfDamgeTake = 0;
         isHurt = false;
-        CheckForAwatarSelected();
+        //CheckForAvatarSelected();
         bgSound = GameObject.FindGameObjectWithTag("BGmusicGameObject").GetComponent<AudioSource>();
         pauseGameScript = GameObject.FindGameObjectWithTag("PauseCanvas").GetComponent<PauseGame>();
         arrowStoreScript = GameObject.FindGameObjectWithTag("ArrowStore").GetComponent<ArrowStore>();
         bodyParts = GameObject.FindGameObjectWithTag("BodyParts");
-        weapon = GameObject.FindGameObjectWithTag("WeaponSprite");
+        weapon = GameObject.FindGameObjectWithTag("WeaponSprite"); 
+        animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        transform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         //gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
         animator = GetComponent<Animator>();
         //Eagle_animator = GameObject.FindGameObjectWithTag("Enemy").transform<Animator>();
@@ -117,40 +119,45 @@ public class PlayerMovement : MonoBehaviour
         // bgSound.Play();
 
         
-        if (MainMenu.isNewGame || GameUIScript.isNewGame || (SaveSystem.instance.playerData.level == "Level 1")) 
+        if (MainMenu.isNewGame || GameUIScript.isNewGame ) 
         {
             Debug.Log("-----New Game Started--------");
             Debug.Log("MainMenu.isNewGame" + MainMenu.isNewGame);
             Debug.Log("GameUIScript.isNewGame  " + GameUIScript.isNewGame);
             Debug.Log("SaveSystem.instance.playerData.level == Level 1  " + SaveSystem.instance.playerData.level == "Level 1");
             /*------------Reset Gift collected---------------------*/
-            SaveSystem.instance.playerData.gemPlayerHas = 0; 
-            SaveSystem.instance.playerData.cherryPlayerHas = 0;
+            PlayerPrefs.SetInt("PlayerGem", 0);
+            PlayerPrefs.SetInt("PlayerCherry", 0);
 
             /*-------------Reset arrow Store----------------------*/
-            Debug.Log(" Arrow store in data "); 
-            SaveSystem.instance.playerData.numOfArrows  = arrowStoreScript.maxNumOfArrow;
-            SaveSystem.instance.SavePlayer();
+            Debug.Log(" Arrow store in data ");
+            PlayerPrefs.SetInt("PlayerHasNumOfArrows", arrowStoreScript.maxNumOfArrow);
+            ArrowStore.arrowPlayerHas = arrowStoreScript.maxNumOfArrow;
+             arrowStoreScript.UpdateArrowText();
+            ////SaveSystem.instance.SavePlayer();
             /* -------- Set last check point zero when game restarted-----------*/
             GameMaster.lastCheckPointPos = transform.position;
             Debug.Log("Saving to file");
+            //SaveSystem.instance.playerData.lastCheckPointPos = new float[2];
+            PlayerPrefs.SetFloat("lastCheckPointPosX", transform.position.x);
+            PlayerPrefs.SetFloat("lastCheckPointPosY", transform.position.y);
+            
             SaveSystem.instance.playerData.lastCheckPointPos[0] = transform.position.x;
             SaveSystem.instance.playerData.lastCheckPointPos[1] = transform.position.y;
-            /*
-            SaveSystem.instance.playerData.lastCheckPointPos[0] = transform.position.x;
-            SaveSystem.instance.playerData.lastCheckPointPos[1] = transform.position.y;*/
             currentHealth = maxHealth;
-            SaveSystem.instance.playerData.health = currentHealth;
-            SaveSystem.instance.playerData.level = MainMenu.currentLevel;
+            PlayerPrefs.SetInt("PlayerHealth" , currentHealth );
+            PlayerPrefs.SetString("CurrentLevel", MainMenu.currentLevel);
             lives = CheckDifficultylevel();
+
             livesText.text = "X " + lives;
-            SaveSystem.instance.playerData.lives = lives; 
-            SaveSystem.instance.SavePlayer();
+            PlayerPrefs.GetInt("PlayerLives", lives); 
+            //SaveSystem.instance.SavePlayer();
            // SaveSystem.instance.LoadPlayer();
         }
         else
         {
             Debug.Log(" Game Continue");
+            
             lives = SaveSystem.instance.playerData.lives;
             livesText.text = "X " + lives;
             currentHealth = SaveSystem.instance.playerData.health;
@@ -188,14 +195,14 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        string currentLevel = SaveSystem.instance.playerData.level;
+        string currentLevel = PlayerPrefs.GetString("CurrentLevel");
         /*SaveSystem.instance.playerData.numOfArrows = 150;
-        SaveSystem.instance.SavePlayer();*/
+        //SaveSystem.instance.SavePlayer();*/
         if (currentLevel == "Level 1")
         {
-            SaveSystem.instance.playerData.lastCheckPointPos[0] = transform.position.x;
-            SaveSystem.instance.playerData.lastCheckPointPos[1] = transform.position.y;
-          SaveSystem.instance.SavePlayer();
+            PlayerPrefs.SetFloat("lastCheckPointPosX" , transform.position.x);
+            PlayerPrefs.SetFloat("lastCheckPointPosY" , transform.position.y);
+            //SaveSystem.instance.SavePlayer();
         }
         if (!isJumpBtnPressed)
         {
@@ -228,30 +235,41 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(" move.z " + move.z);*/
 
         //Debug.Log("IsGrounded " + IsGrounded());
-        if (move.x > 0)
+        if (!pauseGameScript.isGamePaused)
         {
-            MovePlayerRight();
-        }
-        else if (move.x < 0)
-        {
-            MoveplayerLeft();
-        }
-      
-        if ( isShieldBtnPressed )
-        {
-            //Debug.Log("SetShield Called");
-            SetShield();
-        }
-        else
-        {
-            //Debug.Log("DisableShield Called");
-            DisableShield();
-        }
-   
-        /*animator.SetFloat("Speed", Mathf.Abs(40));
-        transform.Translate(m, Space.World);*/
+            if (move.x > 0)
+            {
+                MovePlayerRight();
+            }
+            else if (move.x < 0)
+            {
+                MoveplayerLeft();
+            }
+            else if (move.y > 0)
+            {
+                Debug.Log("Moving up ");
+            }
+            else if (move.y < 0)
+            {
+                Debug.Log("Moving down ");
+            }
+
+            if (isShieldBtnPressed)
+            {
+                //Debug.Log("SetShield Called");
+                SetShield();
+            }
+            else
+            {
+                //Debug.Log("DisableShield Called");
+                DisableShield();
+            }
+
+            /*animator.SetFloat("Speed", Mathf.Abs(40));
+            transform.Translate(m, Space.World);*/
             // MovePlayer();
             // MelleAttack();
+        }
     }
    void StopMoving()
    {
@@ -327,9 +345,9 @@ public class PlayerMovement : MonoBehaviour
            /* Debug.Log(" jump count is " + jumpCount);
             Debug.Log(" IsGrounded() is " + IsGrounded());*/
 
-            /*
-             * SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.jumpSound);
-            */
+            
+              SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.jumpSound);
+           
             //grounded = false;
            /* if (direction == 1)
             {
@@ -413,7 +431,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    private bool IsGrounded()
+    public bool IsGrounded()
     {   
         //RaycastHit2D raycastHit2d = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0.1f, Vector2.down, 0.1f, m_WhatIsGround);
         RaycastHit2D raycastHit2d = Physics2D.Raycast(transform.position, Vector2.down, distToGroundCapusleCollider + 0.1f, m_WhatIsGround);
@@ -433,7 +451,7 @@ public class PlayerMovement : MonoBehaviour
 
             SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.meleeAttackSound);
             animator.SetBool("Attack 2", false);
-            string difficultyLevel = SaveSystem.instance.playerData.difficultyLevel;
+            string difficultyLevel = PlayerPrefs.GetString("difficultyLevel");
             //Deteck enemies in range
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weaponAttackPoint.position, attackRange, enemyLayers);
             //damage Them
@@ -505,8 +523,8 @@ public class PlayerMovement : MonoBehaviour
             if (!(animator.GetBool("Sheild")))
             {
                 currentHealth -= damage;
-                SaveSystem.instance.playerData.health = currentHealth;
-                SaveSystem.instance.SavePlayer();
+                PlayerPrefs.SetInt("PlayerHealth" , currentHealth);
+                //SaveSystem.instance.SavePlayer();
                 healthBar.SetHealth(currentHealth);
                 // DisableBodyParts();
 
@@ -519,10 +537,10 @@ public class PlayerMovement : MonoBehaviour
                 if (currentHealth <= 0 && lives <= 1)
                 {
                     // bgSound.Stop();
-                   
-                    SaveSystem.instance.playerData.health = maxHealth;
-                    SaveSystem.instance.playerData.lives = 3;
-                   SaveSystem.instance.SavePlayer();
+
+                    PlayerPrefs.SetInt("PlayerHealth" , maxHealth);
+                    PlayerPrefs.SetInt("PlayerLives", 3);
+                   //SaveSystem.instance.SavePlayer();
                     // Reset gifts collected and last check point
                     ResetData();
                     SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.deathSound);
@@ -573,39 +591,40 @@ public class PlayerMovement : MonoBehaviour
    {
         Debug.Log(" ----  Data Saved in file --- ");
         SaveSystem.instance.playerData.lives = lives;
-        SaveSystem.instance.playerData.lastCheckPointPos[0] = GameMaster.lastCheckPointPos.x;
-        SaveSystem.instance.playerData.lastCheckPointPos[1] = GameMaster.lastCheckPointPos.y;
-        SaveSystem.instance.playerData.health = currentHealth;
-       SaveSystem.instance.SavePlayer();
 
+        PlayerPrefs.SetFloat("lastCheckPointPosX", GameMaster.lastCheckPointPos.x);
+        PlayerPrefs.SetFloat("lastCheckPointPosY", GameMaster.lastCheckPointPos.y);
+       //SaveSystem.instance.SavePlayer();
+
+        PlayerPrefs.SetInt("PlayerHealth",  currentHealth)         ;
 
     }
     public void ResetData()
     {
         Debug.Log(" ---- Reset Data --- ");  
         SaveSystem.instance.playerData.lives = CheckDifficultylevel();
-        SaveSystem.instance.playerData.lastCheckPointPos[0] = 0;
-        SaveSystem.instance.playerData.lastCheckPointPos[1] = 4;
-        SaveSystem.instance.playerData.health = maxHealth;
+    /*    SaveSystem.instance.playerData.lastCheckPointPos[0] = 0;
+        SaveSystem.instance.playerData.lastCheckPointPos[1] = 4;*/
         SaveSystem.instance.playerData.numOfArrows = arrowStoreScript.maxNumOfArrow;
        /* SaveSystem.instance.playerData.gemPlayerHas = 550;
         SaveSystem.instance.playerData.cherryPlayerHas = 550;*/
-        SaveSystem.instance.SavePlayer();
+        //SaveSystem.instance.SavePlayer();
 
+        PlayerPrefs.SetInt("PlayerHealth" , maxHealth);
     }
 
     int CheckDifficultylevel()
     {
-        if (SaveSystem.instance.playerData.difficultyLevel == "Hard")
+        if (PlayerPrefs.GetString("difficultyLevel") == "Hard")
         {
             lives = 1;
         }
-        else if (SaveSystem.instance.playerData.difficultyLevel == "Medium")
+        else if (PlayerPrefs.GetString("difficultyLevel") == "Medium")
         {
             lives = 2;
 
         }
-        else if (SaveSystem.instance.playerData.difficultyLevel == "Easy")
+        else if (PlayerPrefs.GetString("difficultyLevel") == "Easy")
         {
             lives = 3;
 
@@ -619,7 +638,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsDied", true);
         Debug.Log("Player died!");
         ResetData();
-        Debug.Log("SaveSystem.instance.playerData.health " + SaveSystem.instance.playerData.health);
+        Debug.Log("PlayerPrefs.GetInt(PlayerHealth) " + PlayerPrefs.GetInt("PlayerHealth"));
         bgSound.Stop();
         yield return new WaitForSeconds(0.4f);
        // animator.SetBool("IsDied", false);
@@ -633,8 +652,8 @@ public class PlayerMovement : MonoBehaviour
     {
         DisableBodyParts();
         currentHealth = maxHealth;
-        SaveSystem.instance.playerData.health = currentHealth;
-        SaveSystem.instance.SavePlayer();
+        PlayerPrefs.SetInt("PlayerHealth" , currentHealth);
+        //SaveSystem.instance.SavePlayer();
         healthBar.SetHealth(currentHealth);
         lives = lives -  1;
         Debug.Log("lives left " + lives);
@@ -643,7 +662,7 @@ public class PlayerMovement : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
        
         // Die Animation
-        CheckForAwatarSelected();
+        //CheckForAvatarSelected();
         animator.SetBool("IsDied", true);
         Debug.Log("Player died!"); 
         Debug.Log(" died!" + animator.GetBool("IsDied"));
@@ -656,7 +675,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsDied", false);
         livesText.text = "X " + lives;
         Debug.Log("Player Reactive!");
-        if ((SaveSystem.instance.playerData.level == "Level 1"))
+        if ((PlayerPrefs.GetString("CurrentLevel") == "Level 1"))
             transform.position = transform.position + new Vector3(0,10f,0);
         else
         {
@@ -683,35 +702,65 @@ public class PlayerMovement : MonoBehaviour
 
     public void Reset()
     {
-        CheckForAwatarSelected();
+        //CheckForAvatarSelected();
         lives = 3;
         currentHealth = 100;
         Time.timeScale = 1f;
 
-        Debug.Log(" Arrow store in data "); 
-        SaveSystem.instance.playerData.numOfArrows = arrowStoreScript.maxNumOfArrow;
-        SaveSystem.instance.playerData.avatarSelected = ChangeAvatar.avatarSelected;
-        SaveSystem.instance.SavePlayer();
+        Debug.Log(" Arrow store in data ");
+        PlayerPrefs.SetInt("PlayerHasNumOfArrows",  arrowStoreScript.maxNumOfArrow);
+        PlayerPrefs.SetInt("AvatarSelected", ChangeAvatar.avatarSelected);
+        //SaveSystem.instance.SavePlayer();
        // SaveSystem.instance.LoadPlayer();
         SaveData();
     }
 
    
-    void CheckForAwatarSelected()
+   /* void CheckForAvatarSelected()
     {
-        if ((SaveSystem.instance.playerData.avatarSelected == 2))
+        if(MainMenu.isNewGame || GameUIScript.isNewGame)
         {
-            animator = GameObject.Find("MushrromPlayer").GetComponent<Animator>();
-            transform = GameObject.Find("MushrromPlayer").GetComponent<Transform>();
-            Debug.Log("Avatar selected" + (SaveSystem.instance.playerData.avatarSelected));
+            if ((PlayerPrefs.GetInt("AvatarSelected") == 1))
+            {
+                avatar1.SetActive(true);
+                avatar2.SetActive(false);
+                animator = GameObject.Find("Player_Goblin").GetComponent<Animator>();
+                transform = GameObject.Find("Player_Goblin").GetComponent<Transform>(); 
+            }
+
+            else if ((PlayerPrefs.GetInt("AvatarSelected") == 2))
+            {
+                avatar2.SetActive(true);
+                avatar1.SetActive(false);
+                animator = GameObject.Find("MushrromPlayer").GetComponent<Animator>();
+                transform = GameObject.Find("MushrromPlayer").GetComponent<Transform>();
+
+            }
+             
+            Debug.Log("Avatar selected" + SaveSystem.instance.playerData.avatarSelected);
         }
-        else if ((SaveSystem.instance.playerData.avatarSelected == 1))
+        else
         {
-            animator = GameObject.Find("Player_Goblin").GetComponent<Animator>();
-            transform = GameObject.Find("Player_Goblin").GetComponent<Transform>();
-            Debug.Log("Avatar selected" + (SaveSystem.instance.playerData.avatarSelected));
+            if ((SaveSystem.instance.playerData.avatarSelected == 2))
+            {
+                avatar2.SetActive(true);
+                //avatar1.SetActive(false);
+                animator = GameObject.Find("MushrromPlayer").GetComponent<Animator>();
+                transform = GameObject.Find("MushrromPlayer").GetComponent<Transform>();
+
+            }
+            else if ((SaveSystem.instance.playerData.avatarSelected == 1))
+            {
+                avatar1.SetActive(true);
+                //avatar2.SetActive(false);
+                animator = GameObject.Find("Player_Goblin").GetComponent<Animator>();
+                transform = GameObject.Find("Player_Goblin").GetComponent<Transform>();
+
+            }
+            Debug.Log("Avatar selected" + SaveSystem.instance.playerData.avatarSelected);
+
         }
-    }
+    }*/
     private void OnEnable()
     {
         controls.Gameplay.Enable();

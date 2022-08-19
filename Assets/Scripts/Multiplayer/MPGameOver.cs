@@ -68,7 +68,7 @@ public class MPGameOver : MonoBehaviour
         Time.timeScale = 1f;
         float x = PlayerPrefs.GetFloat("LastcheckPointX");
         float y = PlayerPrefs.GetFloat("LastcheckPointy");
-       GameMaster.lastCheckPointPos = new Vector2(x, y);
+        GameMaster.lastCheckPointPos = new Vector2(x, y);
         //playerMovement.transform.position = gm.lastCheckPointPos;
         Debug.Log(difficultyLevel);
         if (difficultyLevel == "Easy")
@@ -118,7 +118,7 @@ public class MPGameOver : MonoBehaviour
         Time.timeScale = 1f;
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameMaster.lastCheckPointPos = new Vector2(0,0);
-        string currentLevel = SaveSystem.instance.playerData.level;
+        string currentLevel = PlayerPrefs.GetString("CurrentLevel");
         SceneManager.LoadScene(currentLevel);
     }
 
@@ -135,7 +135,7 @@ public class MPGameOver : MonoBehaviour
         //Reset arrow Store
         PlayerPrefs.SetInt("ArrowPlayerHas", arrowStoreScript.maxNumOfArrow);
         //Reset Last check point
-        string currentLevel = SaveSystem.instance.playerData.level;
+        string currentLevel = PlayerPrefs.GetString("CurrentLevel");
         SceneManager.LoadScene(currentLevel);
         Debug.Log(" RestartLevel() Called");
     }

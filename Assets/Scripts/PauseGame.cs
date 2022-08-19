@@ -18,6 +18,7 @@ public class PauseGame : MonoBehaviour
     {
         controls = new PlayerController();
         controls.Gameplay.PauseGame.performed += ctx => OnApplicationPause();
+       
 
     }
     private void Start()
@@ -41,18 +42,26 @@ public class PauseGame : MonoBehaviour
                 Debug.Log("Resume called");
             }
         }*/
+      if(Time.timeScale == 0f)
+            isGamePaused = true;
+      else
+            isGamePaused = false;
     }
     void OnApplicationFocus(bool hasFocus)
     {
         //isGamePaused = !hasFocus;
-        if (hasFocus == false)
-            Pause();
-       
+        if ( Time.timeScale == 1f)
+        {
+            if (hasFocus == false)
+                Pause();
+            else
+                Resume();
+        }
     }
 
     void OnApplicationPause()
     {
-        if (!isGamePaused)
+        if (!isGamePaused && Time.timeScale == 1f )
         {
             Pause();
         }
@@ -61,6 +70,7 @@ public class PauseGame : MonoBehaviour
             Resume();
         }
     }
+  
     public void Resume()
     {
         pauseMenuUI.SetActive(false);

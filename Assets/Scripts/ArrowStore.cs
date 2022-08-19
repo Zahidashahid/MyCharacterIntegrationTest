@@ -13,7 +13,7 @@ public class ArrowStore : MonoBehaviour
     {
         
         arrowPlayerHas =   SaveSystem.instance.playerData.numOfArrows;
-       // Debug.Log("arrow player has " + arrowPlayerHas);
+        Debug.Log("arrow player has " + arrowPlayerHas);
 
         /*SaveSystem.instance.playerData.arrow, maxNumOfArrow);
         arrowPlayerHas = SaveSystem.instance.playerData.arrow;*/
@@ -32,9 +32,9 @@ public class ArrowStore : MonoBehaviour
 
             arrowPlayerHas -= 1;
             Debug.Log(" Arrow store in data ");
-            SaveSystem.instance.playerData.numOfArrows = arrowPlayerHas;
-            Debug.Log("(ArrowPlayerHas) " +    SaveSystem.instance.playerData.numOfArrows);
-            SaveSystem.instance.SavePlayer();
+            PlayerPrefs.SetInt("PlayerHasNumOfArrows", arrowPlayerHas);
+            Debug.Log("(ArrowPlayerHas) " + PlayerPrefs.GetInt("PlayerHasNumOfArrows"));
+            //SaveSystem.instance.SavePlayer();
             UpdateArrowText();
         }
         else

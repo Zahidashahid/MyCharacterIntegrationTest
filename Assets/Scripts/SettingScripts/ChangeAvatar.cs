@@ -11,26 +11,30 @@ public class ChangeAvatar : MonoBehaviour
     }
     void CheckAvatar()
     {
+        /*--Not any avatar Selected-----*/
+        Debug.Log("Not any avatar Selected-");
         if ( SaveSystem.instance.playerData.avatarSelected == 1)
         {
-            SaveSystem.instance.playerData.avatarSelected = 1;
+            PlayerPrefs.SetInt("AvatarSelected", 1);
         }
 
         else
         {
-            SaveSystem.instance.playerData.avatarSelected = 2;
+            PlayerPrefs.SetInt("AvatarSelected", 2);
         }
-       SaveSystem.instance.SavePlayer();
+       //SaveSystem.instance.SavePlayer();
     }
     public void SelectAvatarOne()
     {
-        SaveSystem.instance.playerData.avatarSelected = avatarSelected = 1;
-        SaveSystem.instance.SavePlayer();
+        avatarSelected = 1;
+        PlayerPrefs.SetInt("AvatarSelected", avatarSelected );
+        //SaveSystem.instance.SavePlayer();
     }
     public void SelectAvatarTwo()
     {
-        SaveSystem.instance.playerData.avatarSelected = avatarSelected = 2;
-       SaveSystem.instance.SavePlayer();
+        avatarSelected = 2;
+        PlayerPrefs.SetInt("AvatarSelected", avatarSelected);
+        //SaveSystem.instance.SavePlayer();
     }
    
 

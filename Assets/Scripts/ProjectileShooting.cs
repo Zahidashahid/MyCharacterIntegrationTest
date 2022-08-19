@@ -45,17 +45,19 @@ public class ProjectileShooting : MonoBehaviour
         transform.Translate(velocity);
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, enemy);
 
-        Debug.Log("Arrow hit Skeleton in scriptprojectile");
-        Debug.Log(hitInfo.collider);
+       
         if (hitInfo.collider != null)
         {
-           // Debug.Log("Arrow hit Skeleton in scriptprojectile");
-           // Debug.Log(hitInfo.collider.name);
-           
-            string difficultyLevel = SaveSystem.instance.playerData.difficultyLevel;
+            Debug.Log("Arrow hit Skeleton in scriptprojectile");
+            Debug.Log(hitInfo.collider);
+            // Debug.Log("Arrow hit Skeleton in scriptprojectile");
+            // Debug.Log(hitInfo.collider.name);
+
+            string difficultyLevel = PlayerPrefs.GetString("difficultyLevel");
             //Debug.Log(difficultyLevel);
             if (hitInfo.collider.name == "Skeleton" || hitInfo.collider.tag == "Skeleton")
             {
+                GameObject impactGameObject = Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
                 if (difficultyLevel == "Easy")
                 {
                     hitInfo.collider.GetComponent<SkeletonEnemyMovement>().TakeDamage(40);
@@ -72,7 +74,7 @@ public class ProjectileShooting : MonoBehaviour
             }
             if (hitInfo.collider.name == "Range Attack Skeleton" || hitInfo.collider.tag == "RangedAttackSkeleton")
             {
-                
+                GameObject impactGameObject = Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
                 if (difficultyLevel == "Easy")
                 {
                     hitInfo.collider.GetComponent<SkeletonRangeAttackMovement>().TakeDamage(40);
@@ -86,18 +88,21 @@ public class ProjectileShooting : MonoBehaviour
                     hitInfo.collider.GetComponent<SkeletonRangeAttackMovement>().TakeDamage(10);
                 }
             }
-            if (hitInfo.collider.tag == "Boss Enemy")
+            if (hitInfo.collider.tag == "weakPointBoss")
             {
-                hitInfo.collider.GetComponent<BossHealth>().TakeDamage(100);
+                hitInfo.collider.GetComponentInParent<BossHealth>().TakeDamage();
                 Debug.Log("Hit to boss");
-                
-            }  if (hitInfo.collider.tag == "Enemy")
+                GameObject impactGameObject = Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
+
+            } 
+            if (hitInfo.collider.tag == "Enemy")
             {
+                Debug.Log("Enemy hit!!!!!");
                 GameObject hit = hitInfo.collider.gameObject;
                 Destroy(hit);
             }
                 DestroyProjectile();
-            GameObject impactGameObject = Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
+            
         }
     }
     void DestroyProjectile()

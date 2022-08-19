@@ -1,5 +1,4 @@
- using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Boss : MonoBehaviour
@@ -18,7 +17,9 @@ public class Boss : MonoBehaviour
 		{
 			player = GameObject.Find("Player_Goblin").transform;
 		}
+		
 	}
+ 
     public void LookAtPlayer()
 	{
 		Vector3 flipped = transform.localScale;
@@ -37,5 +38,5 @@ public class Boss : MonoBehaviour
 			isFlipped = true;
 		}
 	}
-
+	
 }

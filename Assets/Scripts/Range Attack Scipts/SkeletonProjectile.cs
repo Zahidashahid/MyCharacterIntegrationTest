@@ -24,10 +24,8 @@ public class SkeletonProjectile : MonoBehaviour
     public float offset;
     void Awake()
     {
-       
         //skeletonObject = GameObject.FindGameObjectWithTag("RangedAttackSkeleton");
        // velocity = new Vector3(speed * Time.deltaTime, 0, 0);
-
     }
     void Start()
     {
@@ -70,7 +68,7 @@ public class SkeletonProjectile : MonoBehaviour
         {
             SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.arrowHitSound);
             //Debug.Log("Arrow hit Player");
-            string difficultyLevel = SaveSystem.instance.playerData.difficultyLevel;
+            string difficultyLevel = PlayerPrefs.GetString("difficultyLevel");
             if (difficultyLevel == "Easy")
             {
                 collision.GetComponent<PlayerMovement>().TakeDamage(30);

@@ -11,24 +11,55 @@ public class EnemySpawner : MonoBehaviour
         public string name;
         public Transform enemy;
         public int count;
-        public float rate;
+        public int rate;
     }
     public Wave[] waves;
+    public List<int> TakeList = new List<int>();
     private int nextWave = 0;
+    int randaomNum;
     public Transform[] spwanPoints;
 
     public float timeBetweenWaves = 5f;
     private float waveCountDown;
-
-    public float lifeTime;
+    
     private float searchCountDown = 1f;
     public SpwanState state = SpwanState.COUNTING;
          
     void Start()
     {
-        lifeTime = 15f;
+        string diffcultylevelSelected = PlayerPrefs.GetString("difficultyLevel");
+        switch (diffcultylevelSelected)
+        {
+            case "Easy":
+                foreach(Wave i in waves)
+                {
+                    i.count = 1;
+                    i.rate = 1;
+                    timeBetweenWaves = 6f;
+                }
+                break;
+            case "Medium":
+                foreach (Wave i in waves)
+                {
+                    i.count = 2;
+                    i.rate = 2;
+                    timeBetweenWaves = 2f;
+                }
+                break;
+            case "Hard":
+                foreach (Wave i in waves)
+                {
+                    i.count = 3;
+                    i.rate = 5;
+                    timeBetweenWaves = 1f;
+                }
+                break;
 
-       // Invoke("DestroySpawnEnemy", lifeTime); 
+            default:
+
+                break;
+        }
+        StartCoroutine(SpwanWave(waves[nextWave]));
         if (spwanPoints.Length == 0)
         {
             Debug.LogError("No Spwan points referenced");
@@ -57,6 +88,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 // start spwaning
                 StartCoroutine(SpwanWave (waves[nextWave]));
+                //To empty the listwhen a single wave of spawn s completed
             }
         }
         else
@@ -88,31 +120,36 @@ public class EnemySpawner : MonoBehaviour
                 return false;
             }
         }
-       
         return true;
     }
     IEnumerator SpwanWave(Wave _wave)
     {
-        //ssDebug.Log("Spwaning Wave:" + _wave.name);
+        Debug.Log("[_wave.count]" + _wave.count);
+        TakeList = new List<int>(new int[_wave.count]);
         state = SpwanState.SPWANING;
         //spawn
         for(int i = 0; i < _wave.count; i++)
         {
             SpawnEnemy(_wave.enemy);
-            // yield return new WaitForSeconds(1f/ _wave.rate);
+            TakeList[i] = randaomNum;
+             yield return new WaitForSeconds(1f/ _wave.rate);
         }
         state = SpwanState.WAITING;
         yield break;
     }
     void SpawnEnemy(Transform _enemy)
     {
-        //Debug.Log("Spwaning Enemy :" + _enemy.name);
+        Debug.Log("Spwaning Enemy :" + _enemy.name);
+         randaomNum = Random.Range(0, spwanPoints.Length);
+        while(TakeList.Contains(randaomNum))
+        {
+            Debug.Log("Spawn repeted !!!!!!!!!!" );
+            randaomNum = Random.Range(0, spwanPoints.Length);
+        }
         
-        Transform _sp = spwanPoints[Random.Range(0, spwanPoints.Length)];
-        Instantiate(_enemy, transform.position, transform.rotation);
+        Transform _sp = spwanPoints[randaomNum];
+        Instantiate(_enemy, _sp.position, transform.rotation);
+        Debug.Log("-sp-----------------  " + _sp);
     }
-    void DestroySpawnEnemy()
-    {
-        Destroy(gameObject);
-    }
+    
 }

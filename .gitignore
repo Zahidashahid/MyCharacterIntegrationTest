@@ -459,3 +459,11 @@ FodyWeavers.xsd
 Library/ArtifactDB
 Library/ArtifactDB-lock
 *.json
+*.assets
+*.assets
+*.resS
+*.resS
+*.resS
+Library/PlayerDataCache/Win64/Data/sharedassets3.assets.resS
+Library/PlayerDataCache/Win64/Data/sharedassets1.assets.resS
+*.resS

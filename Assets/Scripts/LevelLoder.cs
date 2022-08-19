@@ -27,7 +27,7 @@ public class LevelLoder : MonoBehaviour
     }
     public void LoadLevel()
     {
-        PlayerPrefs.SetInt("LevelCompleted", 1);
+        PlayerPrefs.SetInt("LevelCompleted", 1); //Need to modify--- why 1?
         if (useIntegerToLoadLevel)
         {
             SceneManager.LoadScene(iLevelToLoad);
@@ -35,8 +35,8 @@ public class LevelLoder : MonoBehaviour
         else
         {
             SceneManager.LoadScene(sLevelToLoad);
-            SaveSystem.instance.playerData.level = sLevelToLoad;
-           SaveSystem.instance.SavePlayer();
+            PlayerPrefs.SetString("CurrentLevel", sLevelToLoad);
+           //SaveSystem.instance.SavePlayer();
             audioSrc.mute = true;
             SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.missionCompletetSound);
             PlayerPrefs.SetString("LevelReached", sLevelToLoad);

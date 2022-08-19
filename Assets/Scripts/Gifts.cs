@@ -27,13 +27,15 @@ public class Gifts : MonoBehaviour
     }
     private void Update()
     {
-        string currentLevel  = SaveSystem.instance.playerData.level;
-     
+        /*-------Why This-----------*/
+       string currentLevel  = PlayerPrefs.GetString("CurrentLevel");
+        //Debug.Log("Gift update" );
         if (currentLevel == "Level 1" || currentLevel == "Level 2")
         {
-            PlayerPrefs.SetInt("GemCollectedTillLastCheckPoint", SaveSystem.instance.playerData.gemPlayerHas);
-            PlayerPrefs.SetInt("CherryCollectedTillLastCheckPoint", SaveSystem.instance.playerData.cherryPlayerHas);
+            PlayerPrefs.SetInt("GemCollectedTillLastCheckPoint", PlayerPrefs.GetInt("PlayerCGem"));
+            PlayerPrefs.SetInt("CherryCollectedTillLastCheckPoint", PlayerPrefs.GetInt("PlayerCherry"));
         }
+        /*------------------*/
     }
     void OnTriggerEnter2D(Collider2D collision)
     {

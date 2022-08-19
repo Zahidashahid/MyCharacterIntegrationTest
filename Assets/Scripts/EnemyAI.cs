@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour
     {
         // animator = GetComponent<Animator>();
         //Debug.Log(playerMovement.lives + "lives left");
-        if ((SaveSystem.instance.playerData.avatarSelected) == 1)
+        if (PlayerPrefs.GetInt("AvatarSelected") == 1)
         {
             playerMovement = GameObject.Find("Player_Goblin").GetComponent<PlayerMovement>();
             animator = GameObject.Find("Player_Goblin").GetComponent<Animator>();
@@ -58,9 +58,9 @@ public class EnemyAI : MonoBehaviour
                 if (PlayerMovement.lives <= 1)
                 {
                     // bgSound.Stop();
-                    SaveSystem.instance.playerData.health = playerMovement.maxHealth;
-                    SaveSystem.instance.playerData.lives = 3;
-                    SaveSystem.instance.SavePlayer();
+                    PlayerPrefs.SetInt("PlayerHealth" , playerMovement.maxHealth);
+                    PlayerPrefs.SetInt("PlayerLives", 3);
+                    //SaveSystem.instance.SavePlayer();
                     SoundEffect.sfInstance.audioS.PlayOneShot(SoundEffect.sfInstance.deathSound);
                     
                     StartCoroutine(playerMovement.Die());
